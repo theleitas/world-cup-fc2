@@ -5715,9 +5715,24 @@
               "team_id": 1118
             },
             "picked_at": "2026-06-28T13:20:06.337885-04:00"
+          },
+          {
+            "pick": 10,
+            "round": 2,
+            "coach": "Spencer",
+            "team": "Portugal",
+            "api_team_id": 27,
+            "goalie": {
+              "id": 369,
+              "name": "Diogo Costa",
+              "photo": "https://media.api-sports.io/football/players/369.png",
+              "team": "Portugal",
+              "team_id": 27
+            },
+            "picked_at": "2026-06-28T13:20:27.182847-04:00"
           }
         ],
-        "current_pick_started_at": 1782667206
+        "current_pick_started_at": 1782667227
       },
       "r16": {
         "active": false,
