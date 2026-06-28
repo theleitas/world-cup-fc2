@@ -5569,10 +5569,35 @@
   "goalie_challenge": {
     "rounds": {
       "r32": {
-        "active": false,
-        "order": [],
-        "picks": [],
-        "current_pick_started_at": 1782664830
+        "active": true,
+        "order": [
+          "Benji",
+          "Peter",
+          "Jayme",
+          "Lamp",
+          "Herb",
+          "Chad",
+          "Spencer",
+          "Jeff"
+        ],
+        "picks": [
+          {
+            "pick": 1,
+            "round": 1,
+            "coach": "Benji",
+            "team": "Argentina",
+            "api_team_id": 26,
+            "goalie": {
+              "id": 2465,
+              "name": "J. Musso",
+              "photo": "https://media.api-sports.io/football/players/2465.png",
+              "team": "Argentina",
+              "team_id": 26
+            },
+            "picked_at": "2026-06-28T13:16:11.763996-04:00"
+          }
+        ],
+        "current_pick_started_at": 1782666971
       },
       "r16": {
         "active": false,
