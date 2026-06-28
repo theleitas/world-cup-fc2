@@ -5745,9 +5745,24 @@
               "team_id": 2384
             },
             "picked_at": "2026-06-28T13:20:51.490886-04:00"
+          },
+          {
+            "pick": 12,
+            "round": 2,
+            "coach": "Herb",
+            "team": "Colombia",
+            "api_team_id": 8,
+            "goalie": {
+              "id": 313,
+              "name": "D. Ospina",
+              "photo": "https://media.api-sports.io/football/players/313.png",
+              "team": "Colombia",
+              "team_id": 8
+            },
+            "picked_at": "2026-06-28T13:27:58.951204-04:00"
           }
         ],
-        "current_pick_started_at": 1782667251
+        "current_pick_started_at": 1782667678
       },
       "r16": {
         "active": false,
