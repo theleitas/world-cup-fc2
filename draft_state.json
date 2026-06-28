@@ -5925,9 +5925,24 @@
               "team_id": 775
             },
             "picked_at": "2026-06-28T15:41:57.513604-04:00"
+          },
+          {
+            "pick": 24,
+            "round": 3,
+            "coach": "Jeff",
+            "team": "Norway",
+            "api_team_id": 1090,
+            "goalie": {
+              "id": 19172,
+              "name": "Ø. Nyland",
+              "photo": "https://media.api-sports.io/football/players/19172.png",
+              "team": "Norway",
+              "team_id": 1090
+            },
+            "picked_at": "2026-06-28T15:42:37.807044-04:00"
           }
         ],
-        "current_pick_started_at": 1782675717
+        "current_pick_started_at": 1782675757
       },
       "r16": {
         "active": false,
