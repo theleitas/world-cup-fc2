@@ -5670,9 +5670,24 @@
               "team_id": 5529
             },
             "picked_at": "2026-06-28T13:18:55.544754-04:00"
+          },
+          {
+            "pick": 7,
+            "round": 1,
+            "coach": "Spencer",
+            "team": "France",
+            "api_team_id": 2,
+            "goalie": {
+              "id": 21628,
+              "name": "B. Samba",
+              "photo": "https://media.api-sports.io/football/players/21628.png",
+              "team": "France",
+              "team_id": 2
+            },
+            "picked_at": "2026-06-28T13:19:12.353349-04:00"
           }
         ],
-        "current_pick_started_at": 1782667135
+        "current_pick_started_at": 1782667152
       },
       "r16": {
         "active": false,
