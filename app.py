@@ -827,6 +827,10 @@ def clean_key(value):
     return re.sub(r"\s+", " ", value).strip()
 
 
+def html_class_slug(value):
+    return re.sub(r"[^a-z0-9_-]+", "-", clean_key(value)).strip("-") or "item"
+
+
 def canonical_team_name(value):
     text = str(value or "").strip()
     if not text:
@@ -2121,6 +2125,30 @@ def pick_goalie_photo(pick):
     return str(goalie.get("photo") or pick.get("goalie_photo") or "").strip()
 
 
+def goalie_last_name(goalie_name):
+    name = str(goalie_name or "").strip()
+    if not name:
+        return ""
+    initial_match = re.match(r"^[A-ZÀ-Þ]\.\s+(.+)$", name)
+    if initial_match:
+        return initial_match.group(1).strip()
+    parts = name.split()
+    return parts[-1] if parts else name
+
+
+def goalie_button_label(goalie, team_name):
+    goalie_name = str((goalie or {}).get("name") or f"{display_team(team_name)} starting goalie").strip()
+    last_name = goalie_last_name(goalie_name) or goalie_name
+    return f"{last_name} {display_team(team_name)}"
+
+
+def goalie_pick_table_label(pick):
+    team = canonical_team_name(pick.get("team"))
+    goalie_name = pick_goalie_name(pick)
+    last_name = goalie_last_name(goalie_name) or goalie_name or "Goalie"
+    return f"{html.escape(last_name)} {display_team_html(team, include_info=False)}"
+
+
 def goalie_fixture_team_side(fixture, team_name, api_team_id=None):
     team_name = canonical_team_name(team_name)
     api_team_id = none_or_int(api_team_id)
@@ -3365,6 +3393,13 @@ def render_goalie_available_teams(state, round_key):
     border-color:var(--draft-button-border)!important;
     color:var(--draft-button-fg)!important;
     box-shadow:0 0 12px color-mix(in srgb, var(--draft-button-border) 35%, transparent)!important;
+    min-height:56px!important;
+    padding-left:54px!important;
+    padding-right:12px!important;
+    position:relative!important;
+    font-size:.9rem!important;
+    font-weight:1000!important;
+    line-height:1.12!important;
 }}
 .st-key-goalie-pick-buttons-{round_key} div[data-testid="stButton"] > button:hover {{
     background:var(--draft-button-hover)!important;
@@ -3383,18 +3418,33 @@ def render_goalie_available_teams(state, round_key):
             for col, goalie in zip(cols, available[row_start:row_start + DRAFT_BUTTON_COLUMNS]):
                 with col:
                     team = canonical_team_name(goalie.get("team"))
-                    label = str(goalie.get("name") or f"{display_team(team)} starting goalie").strip()
-                    st.markdown(
-                        f"""
-<div class='goalie-slot' style='--coach-color:{html.escape(coach_color)}'>
-  {goalie_icon_html(goalie, team)}
-  <div class='goalie-slot-name'>{html.escape(label)}</div>
-  <div class='goalie-slot-team'>{display_team_html(team, include_info=False)}</div>
-</div>
+                    button_key = f"goalie-draft-{round_key}-{html_class_slug(team)}"
+                    label = goalie_button_label(goalie, team)
+                    photo = str(goalie.get("photo") or "").strip()
+                    if photo:
+                        st.markdown(
+                            f"""
+<style>
+.st-key-{button_key} div[data-testid="stButton"] > button::before {{
+    content:"";
+    position:absolute;
+    left:12px;
+    top:50%;
+    transform:translateY(-50%);
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background-image:url("{html.escape(photo, quote=True)}");
+    background-size:cover;
+    background-position:center;
+    border:1px solid color-mix(in srgb, var(--draft-button-border) 58%, rgba(255,255,255,.45));
+    box-shadow:0 0 8px color-mix(in srgb, var(--draft-button-border) 34%, transparent);
+}}
+</style>
 """,
-                        unsafe_allow_html=True,
-                    )
-                    pressed = st.button(f"Draft {label}", key=f"goalie-draft-{round_key}-{team}", width="stretch", disabled=(goalie_round_is_closed(state, round_key) or saving))
+                            unsafe_allow_html=True,
+                        )
+                    pressed = st.button(label, key=button_key, width="stretch", disabled=(goalie_round_is_closed(state, round_key) or saving))
                     if pressed:
                         st.session_state[saving_key] = True
                         st.toast("Saving goalie pick...")
@@ -3417,7 +3467,7 @@ def render_goalie_draft_round_body(state, scores, round_key):
             st.rerun()
     if sequence:
         first_round_order = [item["coach"] for item in sorted([item for item in sequence if item["round"] == 1], key=lambda item: item["pick"])]
-        render_draft_board(f"{info['label']} Goalie Draft", sequence, picks, "team", state, coach_order=first_round_order)
+        render_draft_board(f"{info['label']} Goalie Draft", sequence, picks, "goalie", state, coach_order=first_round_order)
     else:
         st.caption("Draft order will lock and display after every game from the previous stage is final.")
     if sequence and current_pick(sequence, picks):
@@ -4265,12 +4315,15 @@ def render_draft_board(title, sequence, picks, field, state, power_rosters=None,
             pick = pick_map.get(item["pick"])
             cell_color = state["teams"][item["coach"]]["color"]
             if pick:
-                choice = pick[field]
-                if field == "team":
+                if field == "goalie":
+                    label = goalie_pick_table_label(pick)
+                elif field == "team":
+                    choice = pick[field]
                     odds = state["odds"].get(choice, "")
                     odds_html = f"<div class='pick-odds'>({html.escape(str(odds))})</div>" if odds else ""
                     label = f"{display_team_html(choice, include_info=False)}{odds_html}"
                 else:
+                    choice = pick[field]
                     label = display_player_html(choice, include_info=False)
             else:
                 label = "Open"
