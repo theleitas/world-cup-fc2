@@ -2300,7 +2300,7 @@ def goalie_shootout_goals_allowed_for_pick(state, round_key, team_name):
     return shootout_goals_allowed
 
 
-def goalie_challenge_scores(state):
+def goalie_challenge_scores(state, live_scoring=True):
     scores = {coach: {"points": 0, "saves": 0, "shootout_stops": 0, "goals_allowed": 0, "counted_matches": 0, "slots": []} for coach in COACHES}
     challenge = state.get("goalie_challenge", {})
     rounds = challenge.get("rounds", {}) if isinstance(challenge, dict) else {}
@@ -2312,7 +2312,15 @@ def goalie_challenge_scores(state):
             if coach not in scores:
                 continue
             team = canonical_team_name(pick.get("team"))
-            score = goalie_score_for_pick(state, round_key, pick)
+            score = goalie_score_for_pick(state, round_key, pick) if live_scoring else {
+                "points": 0,
+                "saves": 0,
+                "shootout_stops": 0,
+                "goals_allowed": 0,
+                "counted_matches": 0,
+                "actual_goalie_name": "",
+                "actual_goalie_photo": "",
+            }
             scores[coach]["points"] += int(score.get("points", 0))
             scores[coach]["saves"] += int(score.get("saves", 0))
             scores[coach]["shootout_stops"] += int(score.get("shootout_stops", 0))
@@ -2455,9 +2463,9 @@ def cinderella_team_rows(state):
     return sorted(rows, key=lambda item: (item["cinderella"], item["current"]), reverse=True)
 
 
-def calculate_scores(state):
+def calculate_scores(state, include_goalie_live_scores=True):
     matches = state.get("matches", [])
-    goalie_scores = goalie_challenge_scores(state)
+    goalie_scores = goalie_challenge_scores(state, live_scoring=include_goalie_live_scores)
     scores = {}
     for coach, data in state["teams"].items():
         team_points = 0
@@ -3264,7 +3272,7 @@ def set_goalie_round_active(round_key, active):
         if active and not goalie_round_can_start(state, round_key):
             return False
         if active and not round_state.get("picks"):
-            round_state["order"] = goalie_order_from_scores(calculate_scores(state), round_key)
+            round_state["order"] = goalie_order_from_scores(calculate_scores(state, include_goalie_live_scores=False), round_key)
         round_state["active"] = bool(active)
         round_state["current_pick_started_at"] = int(time.time())
         return True
@@ -3280,7 +3288,7 @@ def make_goalie_pick(round_key, goalie):
             return False
         round_state = state["goalie_challenge"]["rounds"][round_key]
         if not round_state.get("order") or not round_state.get("picks"):
-            round_state["order"] = goalie_order_from_scores(calculate_scores(state), round_key)
+            round_state["order"] = goalie_order_from_scores(calculate_scores(state, include_goalie_live_scores=False), round_key)
         round_state["active"] = True
         sequence = build_goalie_sequence(round_state["order"], GOALIE_ROUNDS[round_key]["slots"])
         pick = current_pick(sequence, round_state.get("picks", []))
@@ -3374,7 +3382,7 @@ def render_goalie_available_teams(state, round_key):
         st.caption("No goalies available for this goalie draft yet.")
         return
     round_state = goalie_round_state(state, round_key)
-    current = current_pick(build_goalie_sequence(round_state.get("order") or goalie_order_from_scores(calculate_scores(state), round_key), GOALIE_ROUNDS[round_key]["slots"]), round_state.get("picks", []))
+    current = current_pick(build_goalie_sequence(round_state.get("order") or goalie_order_from_scores(calculate_scores(state, include_goalie_live_scores=False), round_key), GOALIE_ROUNDS[round_key]["slots"]), round_state.get("picks", []))
     coach_color = state["teams"][current["coach"]]["color"] if current else "#FFD54A"
     button_text_color = button_text_color_for_background(coach_color)
     base_color = f"color-mix(in srgb, {coach_color} 34%, #101010)"
@@ -3503,6 +3511,10 @@ def current_goalie_round_key(state, scores):
         if not goalie_round_complete(state, round_key):
             return round_key
     return ""
+
+
+def goalie_draft_is_open(state):
+    return any(goalie_round_can_start(state, round_key) and not goalie_round_complete(state, round_key) for round_key in GOALIE_ROUND_ORDER)
 
 
 def render_current_goalie_draft_room(state, scores):
@@ -5717,7 +5729,8 @@ if FOOTBALL_DATA_TOKEN and (not draft_in_progress) and int(time.time()) - int(st
     if refreshed_state:
         state = normalize_state(refreshed_state)
         state = reconcile_player_stats_with_matches(state)
-scores = calculate_scores(state)
+goalie_draft_open = goalie_draft_is_open(state)
+scores = calculate_scores(state, include_goalie_live_scores=not goalie_draft_open)
 
 render_header(state)
 render_current_goalie_draft_room(state, scores)
