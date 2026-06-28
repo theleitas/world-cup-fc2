@@ -5985,9 +5985,24 @@
               "team_id": 2382
             },
             "picked_at": "2026-06-28T15:45:48.891908-04:00"
+          },
+          {
+            "pick": 28,
+            "round": 4,
+            "coach": "Herb",
+            "team": "Senegal",
+            "api_team_id": 13,
+            "goalie": {
+              "id": 20566,
+              "name": "Y. Diouf",
+              "photo": "https://media.api-sports.io/football/players/20566.png",
+              "team": "Senegal",
+              "team_id": 13
+            },
+            "picked_at": "2026-06-28T16:08:23.120105-04:00"
           }
         ],
-        "current_pick_started_at": 1782675948
+        "current_pick_started_at": 1782677303
       },
       "r16": {
         "active": false,
