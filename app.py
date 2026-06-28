@@ -3388,16 +3388,26 @@ def render_goalie_available_teams(state, round_key):
     --draft-button-hover:{hover_color};
     --draft-button-fg:{button_text_color};
 }}
+.st-key-goalie-pick-buttons-{round_key} [data-testid="column"] {{
+    padding-left:2px!important;
+    padding-right:2px!important;
+}}
+.st-key-goalie-pick-buttons-{round_key} div[data-testid="stVerticalBlock"] {{
+    gap:.22rem!important;
+}}
 .st-key-goalie-pick-buttons-{round_key} div[data-testid="stButton"] > button {{
     background:var(--draft-button-bg)!important;
     border-color:var(--draft-button-border)!important;
     color:var(--draft-button-fg)!important;
     box-shadow:0 0 12px color-mix(in srgb, var(--draft-button-border) 35%, transparent)!important;
-    min-height:56px!important;
-    padding-left:54px!important;
-    padding-right:12px!important;
+    min-height:46px!important;
+    padding:6px 10px 6px 46px!important;
     position:relative!important;
-    font-size:.9rem!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+    font-size:.86rem!important;
     font-weight:1000!important;
     line-height:1.12!important;
 }}
@@ -3428,11 +3438,11 @@ def render_goalie_available_teams(state, round_key):
 .st-key-{button_key} div[data-testid="stButton"] > button::before {{
     content:"";
     position:absolute;
-    left:12px;
+    left:max(10px, calc(50% - 118px));
     top:50%;
     transform:translateY(-50%);
-    width:34px;
-    height:34px;
+    width:30px;
+    height:30px;
     border-radius:50%;
     background-image:url("{html.escape(photo, quote=True)}");
     background-size:cover;
