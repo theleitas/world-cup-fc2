@@ -3725,7 +3725,6 @@ def render_post_standings_sections(state, scores, show_detail_tables=False):
     with st.container(key="post-standings-section-stack"):
         render_standings_section(state, scores)
         render_goalie_challenge(state, scores)
-        render_group_tracker(state)
         render_live_matches(state)
         render_points_tracker(state, scores)
         render_points_journal(state, scores)
@@ -3736,6 +3735,7 @@ def render_post_standings_sections(state, scores, show_detail_tables=False):
                 render_drafted_player_stats(state)
             with st.expander("Cinderella Standings", expanded=False):
                 render_cinderella_standings(state)
+        render_group_tracker(state)
         render_payout_descriptions()
         render_completed_draft_table(state)
         render_payments_section(state)
