@@ -5730,9 +5730,24 @@
               "team_id": 27
             },
             "picked_at": "2026-06-28T13:20:27.182847-04:00"
+          },
+          {
+            "pick": 11,
+            "round": 2,
+            "coach": "Chad",
+            "team": "USA",
+            "api_team_id": 2384,
+            "goalie": {
+              "id": 50999,
+              "name": "M. Turner",
+              "photo": "https://media.api-sports.io/football/players/50999.png",
+              "team": "USA",
+              "team_id": 2384
+            },
+            "picked_at": "2026-06-28T13:20:51.490886-04:00"
           }
         ],
-        "current_pick_started_at": 1782667227
+        "current_pick_started_at": 1782667251
       },
       "r16": {
         "active": false,
