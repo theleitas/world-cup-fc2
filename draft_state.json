@@ -5850,9 +5850,24 @@
               "team_id": 1501
             },
             "picked_at": "2026-06-28T15:06:18.671920-04:00"
+          },
+          {
+            "pick": 19,
+            "round": 3,
+            "coach": "Jayme",
+            "team": "Croatia",
+            "api_team_id": 3,
+            "goalie": {
+              "id": 1305,
+              "name": "D. Livakovic",
+              "photo": "https://media.api-sports.io/football/players/1305.png",
+              "team": "Croatia",
+              "team_id": 3
+            },
+            "picked_at": "2026-06-28T15:10:39.265988-04:00"
           }
         ],
-        "current_pick_started_at": 1782673578
+        "current_pick_started_at": 1782673839
       },
       "r16": {
         "active": false,
