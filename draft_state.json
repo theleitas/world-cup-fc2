@@ -5700,9 +5700,24 @@
               "team_id": 1
             },
             "picked_at": "2026-06-28T13:19:58.273073-04:00"
+          },
+          {
+            "pick": 9,
+            "round": 2,
+            "coach": "Jeff",
+            "team": "Netherlands",
+            "api_team_id": 1118,
+            "goalie": {
+              "id": 129058,
+              "name": "B. Verbruggen",
+              "photo": "https://media.api-sports.io/football/players/129058.png",
+              "team": "Netherlands",
+              "team_id": 1118
+            },
+            "picked_at": "2026-06-28T13:20:06.337885-04:00"
           }
         ],
-        "current_pick_started_at": 1782667198
+        "current_pick_started_at": 1782667206
       },
       "r16": {
         "active": false,
