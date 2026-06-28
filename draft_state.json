@@ -5910,9 +5910,24 @@
               "team_id": 1532
             },
             "picked_at": "2026-06-28T15:32:46.135891-04:00"
+          },
+          {
+            "pick": 23,
+            "round": 3,
+            "coach": "Spencer",
+            "team": "Ghana",
+            "api_team_id": 1504,
+            "goalie": {
+              "id": 3412,
+              "name": "L. Zigi",
+              "photo": "https://media.api-sports.io/football/players/3412.png",
+              "team": "Ghana",
+              "team_id": 1504
+            },
+            "picked_at": "2026-06-28T15:37:22.818984-04:00"
           }
         ],
-        "current_pick_started_at": 1782675166
+        "current_pick_started_at": 1782675442
       },
       "r16": {
         "active": false,
