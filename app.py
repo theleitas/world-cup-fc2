@@ -455,6 +455,8 @@ GOALIE_ROUND_ORDER = ["r32", "r16", "r8"]
 API_FOOTBALL_BASE_URL = "https://v3.football.api-sports.io"
 API_FOOTBALL_WORLD_CUP_LEAGUE_ID = 1
 API_FOOTBALL_WORLD_CUP_SEASON = 2026
+API_FOOTBALL_SKIP_DETAIL_STATUS_SHORTS = {"NS", "TBD", "PST", "CANC", "ABD", "AWD", "WO"}
+API_FOOTBALL_SKIP_DETAIL_STATUS_WORDS = ("not started", "time to be defined", "postponed", "cancelled", "canceled", "abandoned", "walkover")
 GOALIE_ROUNDS = {
     "r32": {"label": "Round of 32", "stage": "Round of 32", "slots": 4, "previous": "Group Stage", "previous_stage": "Group Stage", "previous_required_matches": 72},
     "r16": {"label": "Round of 16", "stage": "Round of 16", "slots": 2, "previous": "Round of 32", "previous_stage": "Round of 32", "previous_required_matches": 16},
@@ -811,17 +813,19 @@ def read_secret(*path):
 
 
 GITHUB_TOKEN = read_secret("GITHUB", "TOKEN") or os.environ.get("GITHUB_TOKEN")
-GITHUB_OWNER = read_secret("GITHUB", "OWNER") or os.environ.get("GITHUB_OWNER") or REPO_OWNER
+CONFIGURED_GITHUB_OWNER = read_secret("GITHUB", "OWNER") or os.environ.get("GITHUB_OWNER")
+GITHUB_OWNER = CONFIGURED_GITHUB_OWNER if CONFIGURED_GITHUB_OWNER == REPO_OWNER else REPO_OWNER
 CONFIGURED_GITHUB_REPO = read_secret("GITHUB", "REPO_NAME") or os.environ.get("GITHUB_REPO_NAME")
 GITHUB_REPO = CONFIGURED_GITHUB_REPO if CONFIGURED_GITHUB_REPO == REPO_NAME else REPO_NAME
 FOOTBALL_DATA_TOKEN = read_secret("FOOTBALL_DATA", "TOKEN") or os.environ.get("FOOTBALL_DATA_TOKEN")
 API_FOOTBALL_TOKEN = read_secret("API_FOOTBALL", "TOKEN") or os.environ.get("API_FOOTBALL_TOKEN")
 
 GITHUB_HEADERS = {
-    "Authorization": f"Bearer {GITHUB_TOKEN}",
     "Accept": "application/vnd.github+json",
     "X-GitHub-Api-Version": "2022-11-28",
 }
+if GITHUB_TOKEN:
+    GITHUB_HEADERS["Authorization"] = f"Bearer {GITHUB_TOKEN}"
 
 
 def clean_key(value):
@@ -1913,13 +1917,6 @@ def score_match_for_team(match, team_name):
     return result_points + goals_for + clean_sheet
 
 
-def match_has_goalie_score_context(match):
-    if match.get("home_score") is None or match.get("away_score") is None:
-        return False
-    status = str(match.get("status", "")).lower()
-    return status not in ["scheduled", "timed", "postponed", "cancelled", "canceled", "suspended"]
-
-
 def goalie_round_matches(state, round_key):
     target_stage = GOALIE_ROUNDS.get(round_key, {}).get("stage", "")
     return [
@@ -1982,6 +1979,23 @@ def normalize_api_football_fixture(item):
         "away_score": none_or_int(goals.get("away")),
         "score": score,
     }
+
+
+def api_football_fixture_can_have_details(fixture):
+    if not none_or_int(fixture.get("api_fixture_id")):
+        return False
+    status_short = str(fixture.get("status_short") or "").strip().upper()
+    if status_short in API_FOOTBALL_SKIP_DETAIL_STATUS_SHORTS:
+        return False
+    status = str(fixture.get("status") or "").strip().lower()
+    if any(word in status for word in API_FOOTBALL_SKIP_DETAIL_STATUS_WORDS):
+        return False
+    if fixture.get("elapsed") is not None or fixture.get("home_score") is not None or fixture.get("away_score") is not None:
+        return True
+    kickoff = match_datetime(fixture.get("date"))
+    if kickoff and datetime.now(ZoneInfo("UTC")) < kickoff:
+        return False
+    return True
 
 
 @st.cache_data(ttl=60, show_spinner=False)
@@ -2212,7 +2226,7 @@ def goalie_score_for_pick(state, round_key, pick):
     for fixture in goalie_round_api_fixtures(state, round_key):
         side = goalie_fixture_team_side(fixture, team, api_team_id)
         fixture_id = none_or_int(fixture.get("api_fixture_id"))
-        if not side or not fixture_id:
+        if not side or not fixture_id or not api_football_fixture_can_have_details(fixture):
             continue
         match_saves = 0
         match_goals_allowed = 0
@@ -2272,45 +2286,8 @@ def goalie_score_for_pick(state, round_key, pick):
     }
 
 
-def goalie_goals_allowed_for_pick(state, round_key, team_name):
-    team_name = canonical_team_name(team_name)
-    goals_allowed = 0
-    counted_matches = 0
-    for match in goalie_round_matches(state, round_key):
-        if not match_has_goalie_score_context(match):
-            continue
-        home = canonical_team_name(match.get("home"))
-        away = canonical_team_name(match.get("away"))
-        if team_name not in [home, away]:
-            continue
-        home_score = int(match.get("home_score") or 0)
-        away_score = int(match.get("away_score") or 0)
-        goals_allowed += away_score if team_name == home else home_score
-        counted_matches += 1
-    return goals_allowed, counted_matches
-
-
-def goalie_shootout_goals_allowed_for_pick(state, round_key, team_name):
-    team_name = canonical_team_name(team_name)
-    shootout_goals_allowed = 0
-    for match in goalie_round_matches(state, round_key):
-        if not match_has_goalie_score_context(match):
-            continue
-        home = canonical_team_name(match.get("home"))
-        away = canonical_team_name(match.get("away"))
-        if team_name not in [home, away]:
-            continue
-        score_node = match.get("score_node") if isinstance(match.get("score_node"), dict) else {}
-        penalties = score_node.get("penalties") if isinstance(score_node.get("penalties"), dict) else {}
-        home_penalties = none_or_int(penalties.get("home"))
-        away_penalties = none_or_int(penalties.get("away"))
-        if home_penalties is None or away_penalties is None:
-            continue
-        shootout_goals_allowed += away_penalties if team_name == home else home_penalties
-    return shootout_goals_allowed
-
-
 def goalie_challenge_scores(state, live_scoring=True):
+    live_scoring = bool(live_scoring and API_FOOTBALL_TOKEN)
     scores = {coach: {"points": 0, "saves": 0, "shootout_stops": 0, "goals_allowed": 0, "counted_matches": 0, "slots": []} for coach in COACHES}
     challenge = state.get("goalie_challenge", {})
     rounds = challenge.get("rounds", {}) if isinstance(challenge, dict) else {}
@@ -3514,10 +3491,6 @@ def current_goalie_round_key(state, scores):
         if not goalie_round_complete(state, round_key):
             return round_key
     return ""
-
-
-def goalie_draft_is_open(state):
-    return any(goalie_round_can_start(state, round_key) and not goalie_round_complete(state, round_key) for round_key in GOALIE_ROUND_ORDER)
 
 
 def render_current_goalie_draft_room(state, scores):
