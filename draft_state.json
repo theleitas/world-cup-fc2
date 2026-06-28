@@ -5910,9 +5910,24 @@
               "team_id": 1532
             },
             "picked_at": "2026-06-28T15:32:46.135891-04:00"
+          },
+          {
+            "pick": 23,
+            "round": 3,
+            "coach": "Spencer",
+            "team": "Austria",
+            "api_team_id": 775,
+            "goalie": {
+              "id": 7525,
+              "name": "A. Schlager",
+              "photo": "https://media.api-sports.io/football/players/7525.png",
+              "team": "Austria",
+              "team_id": 775
+            },
+            "picked_at": "2026-06-28T15:41:57.513604-04:00"
           }
         ],
-        "current_pick_started_at": 1782675707
+        "current_pick_started_at": 1782675717
       },
       "r16": {
         "active": false,
