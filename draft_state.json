@@ -5970,9 +5970,24 @@
               "team_id": 2380
             },
             "picked_at": "2026-06-28T15:43:58.404347-04:00"
+          },
+          {
+            "pick": 27,
+            "round": 4,
+            "coach": "Chad",
+            "team": "Ecuador",
+            "api_team_id": 2382,
+            "goalie": {
+              "id": 16380,
+              "name": "H. Galíndez",
+              "photo": "https://media.api-sports.io/football/players/16380.png",
+              "team": "Ecuador",
+              "team_id": 2382
+            },
+            "picked_at": "2026-06-28T15:45:48.891908-04:00"
           }
         ],
-        "current_pick_started_at": 1782675838
+        "current_pick_started_at": 1782675948
       },
       "r16": {
         "active": false,
