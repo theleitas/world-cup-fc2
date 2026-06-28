@@ -9,7 +9,7 @@
       "national_teams": [
         "Spain",
         "Ecuador",
-        "Côte d'Ivoire",
+        "Ivory Coast",
         "Egypt",
         "Panama",
         "Congo DR"
@@ -305,7 +305,7 @@
       "pick": 24,
       "round": 3,
       "coach": "Benji",
-      "team": "Côte d'Ivoire",
+      "team": "Ivory Coast",
       "picked_at": "2026-06-08T20:56:00.524962-04:00"
     },
     {
@@ -646,7 +646,7 @@
     "Paraguay": "+15000",
     "Scotland": "+25000",
     "Bosnia and Herzegovina": "+25000",
-    "Côte d'Ivoire": "+30000",
+    "Ivory Coast": "+30000",
     "Czechia": "+30000",
     "Egypt": "+30000",
     "Ghana": "+35000",
@@ -696,7 +696,7 @@
     "Paraguay": 18.0,
     "Scotland": 12.0,
     "Bosnia and Herzegovina": 12.0,
-    "Côte d'Ivoire": 12.0,
+    "Ivory Coast": 12.0,
     "Czechia": 12.0,
     "Egypt": 12.0,
     "Ghana": 12.0,
@@ -1293,7 +1293,7 @@
       "stage": "Group Stage",
       "group": "GROUP_E",
       "matchday": 1,
-      "home": "Côte d'Ivoire",
+      "home": "Ivory Coast",
       "away": "Ecuador",
       "home_score": 1,
       "away_score": 0,
@@ -1321,7 +1321,7 @@
           "minute": 90,
           "injury_time": null,
           "type": "REGULAR",
-          "team": "Côte d'Ivoire",
+          "team": "Ivory Coast",
           "scorer": "Amad Diallo",
           "assist": "Wilfried Singo"
         }
@@ -2597,7 +2597,7 @@
       "group": "GROUP_E",
       "matchday": 2,
       "home": "Germany",
-      "away": "Côte d'Ivoire",
+      "away": "Ivory Coast",
       "home_score": 2,
       "away_score": 1,
       "status": "Finished",
@@ -2624,7 +2624,7 @@
           "minute": 30,
           "injury_time": null,
           "type": "REGULAR",
-          "team": "Côte d'Ivoire",
+          "team": "Ivory Coast",
           "scorer": "Franck Kessié",
           "assist": ""
         },
@@ -3794,7 +3794,7 @@
       "group": "GROUP_E",
       "matchday": 3,
       "home": "Curaçao",
-      "away": "Côte d'Ivoire",
+      "away": "Ivory Coast",
       "home_score": 0,
       "away_score": 2,
       "status": "Finished",
@@ -3821,7 +3821,7 @@
           "minute": 7,
           "injury_time": null,
           "type": "REGULAR",
-          "team": "Côte d'Ivoire",
+          "team": "Ivory Coast",
           "scorer": "Nicolas Pépé",
           "assist": "Yan Diomandé"
         },
@@ -3829,7 +3829,7 @@
           "minute": 64,
           "injury_time": null,
           "type": "REGULAR",
-          "team": "Côte d'Ivoire",
+          "team": "Ivory Coast",
           "scorer": "Nicolas Pépé",
           "assist": "Ibrahim Sangaré"
         }
@@ -4866,7 +4866,7 @@
       "stage": "Last 32",
       "group": null,
       "matchday": null,
-      "home": "Côte d'Ivoire",
+      "home": "Ivory Coast",
       "away": "Norway",
       "home_score": null,
       "away_score": null,
@@ -5401,7 +5401,7 @@
     "Algeria": "Round of 32",
     "Cabo Verde": "Round of 32",
     "Congo DR": "Round of 32",
-    "Côte d'Ivoire": "Round of 32",
+    "Ivory Coast": "Round of 32",
     "Egypt": "Round of 32",
     "Ghana": "Round of 32",
     "Morocco": "Round of 32",
@@ -5446,7 +5446,7 @@
       "national_teams": [
         "Spain",
         "Ecuador",
-        "Côte d'Ivoire",
+        "Ivory Coast",
         "Egypt",
         "Panama",
         "Congo DR"
@@ -5840,13 +5840,13 @@
             "pick": 18,
             "round": 3,
             "coach": "Peter",
-            "team": "Côte d'Ivoire",
+            "team": "Ivory Coast",
             "api_team_id": 1501,
             "goalie": {
               "id": 64190,
               "name": "Y. Fofana",
               "photo": "https://media.api-sports.io/football/players/64190.png",
-              "team": "Côte d'Ivoire",
+              "team": "Ivory Coast",
               "team_id": 1501
             },
             "picked_at": "2026-06-28T15:06:18.671920-04:00"
