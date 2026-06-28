@@ -5625,9 +5625,24 @@
               "team_id": 10
             },
             "picked_at": "2026-06-28T13:16:38.751811-04:00"
+          },
+          {
+            "pick": 4,
+            "round": 1,
+            "coach": "Lamp",
+            "team": "Brazil",
+            "api_team_id": 6,
+            "goalie": {
+              "id": 280,
+              "name": "Alisson Becker",
+              "photo": "https://media.api-sports.io/football/players/280.png",
+              "team": "Brazil",
+              "team_id": 6
+            },
+            "picked_at": "2026-06-28T13:17:17.884009-04:00"
           }
         ],
-        "current_pick_started_at": 1782666998
+        "current_pick_started_at": 1782667037
       },
       "r16": {
         "active": false,
