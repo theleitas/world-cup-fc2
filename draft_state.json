@@ -6015,9 +6015,24 @@
               "team_id": 1504
             },
             "picked_at": "2026-06-28T16:19:24.533779-04:00"
+          },
+          {
+            "pick": 30,
+            "round": 4,
+            "coach": "Jayme",
+            "team": "Cabo Verde",
+            "api_team_id": 1533,
+            "goalie": {
+              "id": 15304,
+              "name": "Vózinha",
+              "photo": "https://media.api-sports.io/football/players/15304.png",
+              "team": "Cabo Verde",
+              "team_id": 1533
+            },
+            "picked_at": "2026-06-28T16:27:49.812835-04:00"
           }
         ],
-        "current_pick_started_at": 1782677964
+        "current_pick_started_at": 1782678469
       },
       "r16": {
         "active": false,
