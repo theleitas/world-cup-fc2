@@ -139,6 +139,7 @@ div[class*="st-key-points-journal-text"] textarea:disabled {
 .goalie-slot-tb { color:#b9c2c9; font-size:.62rem; line-height:1; font-weight:900; }
 .goalie-tb-pill { border:1px solid rgba(185,194,201,.24); border-radius:6px; background:rgba(255,255,255,.045); color:#b9c2c9; font-size:.72rem; font-weight:950; line-height:1.15; text-align:center; padding:4px 6px; margin:0 0 7px; }
 .goalie-tb-pill b { color:var(--coach-color); margin-left:4px; text-shadow:0 0 7px var(--coach-color); }
+.goalie-tb-line { display:block; margin-top:2px; font-style:italic; }
 .coach-live-impact { border-top:1px solid rgba(185,194,201,.28); margin-top:6px; padding-top:6px; }
 .live-impact-title { display:flex; align-items:center; justify-content:center; gap:6px; color:#ffd54a; font-size:.78rem; font-weight:1000; text-transform:uppercase; }
 .live-dot { width:.55rem; height:.55rem; border-radius:50%; background:#ff1744; box-shadow:0 0 9px #ff1744; display:inline-block; }
@@ -3554,7 +3555,7 @@ def goalie_slot_cells_html(slots):
   <div class='goalie-slot-name'>{html.escape(goalie["name"])}</div>
   <div class='goalie-slot-team'>{display_team_html(team, include_info=False)}</div>
   <div class='goalie-slot-ga'>Saves {int(slot.get("saves", 0))}</div>
-  <div class='goalie-slot-tb'>Goals Allowed Tiebreaker {int(slot.get("goals_allowed", 0))}</div>
+  <div class='goalie-slot-tb'>GATB {int(slot.get("goals_allowed", 0))}</div>
 </div>
 """
         )
@@ -3589,7 +3590,7 @@ def render_goalie_challenge_standings(state, scores):
     </div>
     <div class='score-badge'>{int(item.get("goalie_challenge_points", 0))}</div>
   </div>
-  <div class='goalie-tb-pill'>Saves:<b>{int(item.get("goalie_challenge_saves", 0))}</b> | Shootout Saves:<b>{int(item.get("goalie_challenge_shootout_stops", 0))}</b> | Goals Allowed Tiebreaker:<b>{int(item.get("goalie_challenge_goals_allowed", 0))}</b></div>
+  <div class='goalie-tb-pill'>Saves:<b>{int(item.get("goalie_challenge_saves", 0))}</b> | Shootout Saves:<b>{int(item.get("goalie_challenge_shootout_stops", 0))}</b><span class='goalie-tb-line'>Goals Allowed Tiebreaker:<b>{int(item.get("goalie_challenge_goals_allowed", 0))}</b></span></div>
   <div class='goalie-slot-grid'>{goalie_slot_cells_html(item.get("goalie_challenge_slots", []))}</div>
 </div>
 """
