@@ -5940,9 +5940,24 @@
               "team_id": 1090
             },
             "picked_at": "2026-06-28T15:42:37.807044-04:00"
+          },
+          {
+            "pick": 25,
+            "round": 4,
+            "coach": "Jeff",
+            "team": "Sweden",
+            "api_team_id": 5,
+            "goalie": {
+              "id": 48033,
+              "name": "J. Widell Zetterström",
+              "photo": "https://media.api-sports.io/football/players/48033.png",
+              "team": "Sweden",
+              "team_id": 5
+            },
+            "picked_at": "2026-06-28T15:43:12.811736-04:00"
           }
         ],
-        "current_pick_started_at": 1782675757
+        "current_pick_started_at": 1782675792
       },
       "r16": {
         "active": false,
