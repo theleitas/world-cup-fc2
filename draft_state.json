@@ -5865,9 +5865,24 @@
               "team_id": 3
             },
             "picked_at": "2026-06-28T15:10:39.265988-04:00"
+          },
+          {
+            "pick": 20,
+            "round": 3,
+            "coach": "Lamp",
+            "team": "Japan",
+            "api_team_id": 12,
+            "goalie": {
+              "id": 199578,
+              "name": "Z. Suzuki",
+              "photo": "https://media.api-sports.io/football/players/199578.png",
+              "team": "Japan",
+              "team_id": 12
+            },
+            "picked_at": "2026-06-28T15:15:41.349159-04:00"
           }
         ],
-        "current_pick_started_at": 1782673839
+        "current_pick_started_at": 1782674141
       },
       "r16": {
         "active": false,
