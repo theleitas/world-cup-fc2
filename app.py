@@ -131,7 +131,10 @@ div[class*="st-key-points-journal-text"] textarea:disabled {
 .goalie-slot-empty { color:#6f777d; font-size:.68rem; font-weight:900; }
 .goalie-slot-flag { font-size:1.3rem; line-height:1; }
 .goalie-slot-flag .flag-icon { margin:0; width:1.05em; height:1.05em; vertical-align:0; }
+.goalie-icon { width:34px; height:34px; border-radius:50%; object-fit:cover; border:1px solid color-mix(in srgb, var(--coach-color, #FFD54A) 55%, rgba(255,255,255,.4)); background:#111; box-shadow:0 0 8px color-mix(in srgb, var(--coach-color, #FFD54A) 28%, transparent); }
+.goalie-icon-fallback { width:34px; height:34px; border-radius:50%; display:grid; place-items:center; border:1px solid rgba(255,255,255,.25); background:#151515; font-size:1.15rem; }
 .goalie-slot-name { color:#fff; font-size:.72rem; line-height:.98; font-weight:850; overflow-wrap:anywhere; }
+.goalie-slot-team { color:#b9c2c9; font-size:.6rem; line-height:.9; font-weight:900; overflow-wrap:anywhere; }
 .goalie-slot-ga { color:var(--coach-color); font-size:.7rem; line-height:1; font-weight:1000; text-shadow:0 0 7px var(--coach-color); }
 .goalie-slot-tb { color:#b9c2c9; font-size:.62rem; line-height:1; font-weight:900; }
 .goalie-tb-pill { border:1px solid rgba(185,194,201,.24); border-radius:6px; background:rgba(255,255,255,.045); color:#b9c2c9; font-size:.72rem; font-weight:950; line-height:1.15; text-align:center; padding:4px 6px; margin:0 0 7px; }
@@ -432,12 +435,16 @@ REPO_NAME = "world-cup-fc2"
 TITLE_THUMBNAIL_PATH = "titlethumb.png"
 AUTO_SCORE_REFRESH_SECONDS = 5 * 60
 DRAFT_AUTO_REFRESH_SECONDS = 20
+GOALIE_LIVE_REFRESH_SECONDS = 60
 DRAFT_DEADLINE_TEXT = "Draft will end on Thursday, June 11 at 3pm"
 
 TEAM_ROUND_DIRECTIONS = ["forward", "reverse", "reverse", "forward", "reverse", "forward"]
 PLAYER_ROUND_DIRECTIONS = ["reverse", "forward"]
 DRAFT_BUTTON_COLUMNS = 2
 GOALIE_ROUND_ORDER = ["r32", "r16", "r8"]
+API_FOOTBALL_BASE_URL = "https://v3.football.api-sports.io"
+API_FOOTBALL_WORLD_CUP_LEAGUE_ID = 1
+API_FOOTBALL_WORLD_CUP_SEASON = 2026
 GOALIE_ROUNDS = {
     "r32": {"label": "Round of 32", "stage": "Round of 32", "slots": 4, "previous": "Group Stage", "previous_stage": "Group Stage", "previous_required_matches": 72},
     "r16": {"label": "Round of 16", "stage": "Round of 16", "slots": 2, "previous": "Round of 32", "previous_stage": "Round of 32", "previous_required_matches": 16},
@@ -798,6 +805,7 @@ GITHUB_OWNER = read_secret("GITHUB", "OWNER") or os.environ.get("GITHUB_OWNER") 
 CONFIGURED_GITHUB_REPO = read_secret("GITHUB", "REPO_NAME") or os.environ.get("GITHUB_REPO_NAME")
 GITHUB_REPO = CONFIGURED_GITHUB_REPO if CONFIGURED_GITHUB_REPO == REPO_NAME else REPO_NAME
 FOOTBALL_DATA_TOKEN = read_secret("FOOTBALL_DATA", "TOKEN") or os.environ.get("FOOTBALL_DATA_TOKEN")
+API_FOOTBALL_TOKEN = read_secret("API_FOOTBALL", "TOKEN") or os.environ.get("API_FOOTBALL_TOKEN")
 
 GITHUB_HEADERS = {
     "Authorization": f"Bearer {GITHUB_TOKEN}",
@@ -1436,6 +1444,11 @@ def normalize_goalie_picks(raw_picks, sequence):
         team = canonical_team_name(raw.get("team"))
         if not team or team in seen_teams:
             continue
+        goalie = raw.get("goalie") if isinstance(raw.get("goalie"), dict) else {}
+        goalie_id = none_or_int(raw.get("goalie_id") or goalie.get("id"))
+        team_id = none_or_int(raw.get("api_team_id") or goalie.get("team_id"))
+        goalie_name = str(raw.get("goalie_name") or goalie.get("name") or "").strip()
+        goalie_photo = str(raw.get("goalie_photo") or goalie.get("photo") or "").strip()
         expected = sequence_by_pick[pick_number]
         picks.append(
             {
@@ -1443,6 +1456,14 @@ def normalize_goalie_picks(raw_picks, sequence):
                 "round": expected["round"],
                 "coach": expected["coach"],
                 "team": team,
+                "api_team_id": team_id,
+                "goalie": {
+                    "id": goalie_id,
+                    "name": goalie_name,
+                    "photo": goalie_photo,
+                    "team": team,
+                    "team_id": team_id,
+                },
                 "picked_at": str(raw.get("picked_at") or ""),
             }
         )
@@ -1895,6 +1916,324 @@ def goalie_round_matches(state, round_key):
     ]
 
 
+def api_football_headers(token):
+    return {"x-apisports-key": token}
+
+
+def api_football_payload(token, endpoint, params=None):
+    if not token:
+        return {}
+    resp = requests.get(
+        f"{API_FOOTBALL_BASE_URL}{endpoint}",
+        headers=api_football_headers(token),
+        params=params or {},
+        timeout=18,
+    )
+    resp.raise_for_status()
+    payload = resp.json()
+    errors = payload.get("errors")
+    if errors:
+        raise RuntimeError(f"API-Football {endpoint} error: {errors}")
+    return payload
+
+
+def api_fixture_stage(fixture):
+    league = fixture.get("league") if isinstance(fixture.get("league"), dict) else {}
+    return str(league.get("round") or "")
+
+
+def normalize_api_football_fixture(item):
+    fixture = item.get("fixture") if isinstance(item.get("fixture"), dict) else {}
+    league = item.get("league") if isinstance(item.get("league"), dict) else {}
+    teams = item.get("teams") if isinstance(item.get("teams"), dict) else {}
+    goals = item.get("goals") if isinstance(item.get("goals"), dict) else {}
+    score = item.get("score") if isinstance(item.get("score"), dict) else {}
+    home = teams.get("home") if isinstance(teams.get("home"), dict) else {}
+    away = teams.get("away") if isinstance(teams.get("away"), dict) else {}
+    status = fixture.get("status") if isinstance(fixture.get("status"), dict) else {}
+    return {
+        "api_fixture_id": none_or_int(fixture.get("id")),
+        "date": fixture.get("date"),
+        "stage": str(league.get("round") or ""),
+        "status_short": str(status.get("short") or ""),
+        "status": str(status.get("long") or ""),
+        "elapsed": none_or_int(status.get("elapsed")),
+        "home": canonical_team_name(home.get("name")),
+        "away": canonical_team_name(away.get("name")),
+        "home_api_id": none_or_int(home.get("id")),
+        "away_api_id": none_or_int(away.get("id")),
+        "home_logo": str(home.get("logo") or ""),
+        "away_logo": str(away.get("logo") or ""),
+        "home_score": none_or_int(goals.get("home")),
+        "away_score": none_or_int(goals.get("away")),
+        "score": score,
+    }
+
+
+@st.cache_data(ttl=60, show_spinner=False)
+def fetch_api_football_world_cup_fixtures(token, season=API_FOOTBALL_WORLD_CUP_SEASON):
+    payload = api_football_payload(
+        token,
+        "/fixtures",
+        {
+            "league": API_FOOTBALL_WORLD_CUP_LEAGUE_ID,
+            "season": season,
+            "timezone": "America/New_York",
+        },
+    )
+    return [normalize_api_football_fixture(item) for item in payload.get("response", [])]
+
+
+@st.cache_data(ttl=24 * 60 * 60, show_spinner=False)
+def fetch_api_football_squad_goalies(token, team_id):
+    if not token or not team_id:
+        return []
+    payload = api_football_payload(token, "/players/squads", {"team": int(team_id)})
+    teams = payload.get("response", [])
+    if not teams:
+        return []
+    goalies = []
+    for item in teams:
+        for player in item.get("players", []) or []:
+            position = str(player.get("position") or "").lower()
+            if "goalkeeper" not in position and position != "g":
+                continue
+            number = none_or_int(player.get("number"))
+            goalies.append(
+                {
+                    "id": none_or_int(player.get("id")),
+                    "name": str(player.get("name") or "").strip(),
+                    "number": number,
+                    "position": str(player.get("position") or "Goalkeeper"),
+                    "photo": str(player.get("photo") or ""),
+                    "team_id": int(team_id),
+                }
+            )
+    return sorted(goalies, key=lambda item: (0 if item.get("number") == 1 else 1, item.get("number") or 999, item.get("name") or ""))
+
+
+@st.cache_data(ttl=45, show_spinner=False)
+def fetch_api_football_fixture_players(token, fixture_id):
+    if not token or not fixture_id:
+        return []
+    payload = api_football_payload(token, "/fixtures/players", {"fixture": int(fixture_id)})
+    return payload.get("response", [])
+
+
+@st.cache_data(ttl=30, show_spinner=False)
+def fetch_api_football_fixture_events(token, fixture_id):
+    if not token or not fixture_id:
+        return []
+    payload = api_football_payload(token, "/fixtures/events", {"fixture": int(fixture_id)})
+    return payload.get("response", [])
+
+
+def api_football_fixtures_safe():
+    try:
+        return fetch_api_football_world_cup_fixtures(API_FOOTBALL_TOKEN)
+    except Exception:
+        return []
+
+
+def api_football_team_map():
+    teams = {}
+    for fixture in api_football_fixtures_safe():
+        for side in ["home", "away"]:
+            team = canonical_team_name(fixture.get(side))
+            team_id = none_or_int(fixture.get(f"{side}_api_id"))
+            if team and team_id and team not in teams:
+                teams[team] = {
+                    "id": team_id,
+                    "name": team,
+                    "logo": str(fixture.get(f"{side}_logo") or ""),
+                }
+    return teams
+
+
+def goalie_icon_html(goalie, team_name):
+    photo = str((goalie or {}).get("photo") or "").strip()
+    if photo:
+        return f"<img class='goalie-icon' src='{html.escape(photo, quote=True)}' alt='{html.escape((goalie or {}).get('name') or team_name)}'>"
+    return f"<div class='goalie-icon-fallback'>{team_flag_html(team_name)}</div>"
+
+
+def goalie_round_api_fixtures(state, round_key):
+    target_stage = GOALIE_ROUNDS.get(round_key, {}).get("stage", "")
+    fixtures = [
+        fixture
+        for fixture in api_football_fixtures_safe()
+        if stage_to_advancement(fixture.get("stage")) == target_stage
+    ]
+    if fixtures:
+        return fixtures
+    return [
+        {
+            "api_fixture_id": None,
+            "date": match.get("date"),
+            "stage": match.get("stage"),
+            "status": match.get("status"),
+            "status_short": "",
+            "home": canonical_team_name(match.get("home")),
+            "away": canonical_team_name(match.get("away")),
+            "home_api_id": None,
+            "away_api_id": None,
+            "score": match.get("score_node") if isinstance(match.get("score_node"), dict) else {},
+        }
+        for match in goalie_round_matches(state, round_key)
+    ]
+
+
+def goalie_round_available_goalies(state, round_key):
+    team_map = api_football_team_map()
+    goalies = []
+    for team in goalie_round_available_teams(state, round_key):
+        team_info = team_map.get(team, {})
+        team_id = none_or_int(team_info.get("id"))
+        primary = None
+        if team_id:
+            try:
+                squad_goalies = fetch_api_football_squad_goalies(API_FOOTBALL_TOKEN, team_id)
+                primary = squad_goalies[0] if squad_goalies else None
+            except Exception:
+                primary = None
+        if not primary:
+            primary = {
+                "id": None,
+                "name": f"{display_team(team)} starting goalie",
+                "photo": "",
+                "team_id": team_id,
+            }
+        primary = dict(primary)
+        primary["team"] = team
+        primary["team_id"] = team_id
+        primary["team_logo"] = team_info.get("logo") or ""
+        goalies.append(primary)
+    return goalies
+
+
+def pick_goalie_name(pick):
+    goalie = pick.get("goalie") if isinstance(pick.get("goalie"), dict) else {}
+    return str(goalie.get("name") or pick.get("goalie_name") or "").strip()
+
+
+def pick_goalie_photo(pick):
+    goalie = pick.get("goalie") if isinstance(pick.get("goalie"), dict) else {}
+    return str(goalie.get("photo") or pick.get("goalie_photo") or "").strip()
+
+
+def goalie_fixture_team_side(fixture, team_name, api_team_id=None):
+    team_name = canonical_team_name(team_name)
+    api_team_id = none_or_int(api_team_id)
+    for side in ["home", "away"]:
+        if api_team_id and none_or_int(fixture.get(f"{side}_api_id")) == api_team_id:
+            return side
+        if team_name and canonical_team_name(fixture.get(side)) == team_name:
+            return side
+    return ""
+
+
+def goalie_shootout_stats_for_fixture(fixture, side):
+    score = fixture.get("score") if isinstance(fixture.get("score"), dict) else {}
+    penalties = score.get("penalty") if isinstance(score.get("penalty"), dict) else {}
+    opponent = "away" if side == "home" else "home"
+    goals_allowed = none_or_int(penalties.get(opponent))
+    shootout_stops = 0
+    fixture_id = none_or_int(fixture.get("api_fixture_id"))
+    if fixture_id:
+        try:
+            own_team_id = none_or_int(fixture.get(f"{side}_api_id"))
+            opponent_team_id = none_or_int(fixture.get(f"{opponent}_api_id"))
+            own_team = canonical_team_name(fixture.get(side))
+            opponent_team = canonical_team_name(fixture.get(opponent))
+            for event in fetch_api_football_fixture_events(API_FOOTBALL_TOKEN, fixture_id):
+                if str(event.get("comments") or "").lower() != "penalty shootout":
+                    continue
+                detail = str(event.get("detail") or "").lower()
+                team = event.get("team") if isinstance(event.get("team"), dict) else {}
+                event_team_id = none_or_int(team.get("id"))
+                event_team = canonical_team_name(team.get("name"))
+                is_opponent = (opponent_team_id and event_team_id == opponent_team_id) or (opponent_team and event_team == opponent_team)
+                is_own = (own_team_id and event_team_id == own_team_id) or (own_team and event_team == own_team)
+                if is_opponent and detail == "missed penalty":
+                    shootout_stops += 1
+                elif is_own:
+                    continue
+        except Exception:
+            pass
+    return shootout_stops, goals_allowed or 0
+
+
+def goalie_score_for_pick(state, round_key, pick):
+    team = canonical_team_name(pick.get("team"))
+    api_team_id = none_or_int(pick.get("api_team_id") or (pick.get("goalie") or {}).get("team_id"))
+    saves = 0
+    shootout_stops = 0
+    goals_allowed = 0
+    counted_matches = 0
+    played_goalies = []
+    for fixture in goalie_round_api_fixtures(state, round_key):
+        side = goalie_fixture_team_side(fixture, team, api_team_id)
+        fixture_id = none_or_int(fixture.get("api_fixture_id"))
+        if not side or not fixture_id:
+            continue
+        match_saves = 0
+        match_goals_allowed = 0
+        match_had_goalie_stats = False
+        try:
+            for team_block in fetch_api_football_fixture_players(API_FOOTBALL_TOKEN, fixture_id):
+                api_team = team_block.get("team") if isinstance(team_block.get("team"), dict) else {}
+                block_team_id = none_or_int(api_team.get("id"))
+                block_team_name = canonical_team_name(api_team.get("name"))
+                if api_team_id and block_team_id != api_team_id:
+                    continue
+                if not api_team_id and block_team_name != team:
+                    continue
+                for player in team_block.get("players", []) or []:
+                    player_node = player.get("player") if isinstance(player.get("player"), dict) else {}
+                    stats = (player.get("statistics") or [{}])[0]
+                    games = stats.get("games") if isinstance(stats.get("games"), dict) else {}
+                    goals = stats.get("goals") if isinstance(stats.get("goals"), dict) else {}
+                    position = str(games.get("position") or "").upper()
+                    minutes = none_or_int(games.get("minutes")) or 0
+                    player_saves = none_or_int(goals.get("saves")) or 0
+                    player_conceded = none_or_int(goals.get("conceded")) or 0
+                    if position not in ["G", "GOALKEEPER"] and not (minutes and (player_saves or player_conceded)):
+                        continue
+                    if minutes <= 0 and player_saves == 0 and player_conceded == 0:
+                        continue
+                    match_had_goalie_stats = True
+                    match_saves += player_saves
+                    match_goals_allowed += player_conceded
+                    played_goalies.append(
+                        {
+                            "id": none_or_int(player_node.get("id")),
+                            "name": str(player_node.get("name") or "").strip(),
+                            "photo": str(player_node.get("photo") or "").strip(),
+                            "minutes": minutes,
+                        }
+                    )
+        except Exception:
+            pass
+        match_shootout_stops, match_shootout_ga = goalie_shootout_stats_for_fixture(fixture, side)
+        if match_had_goalie_stats or match_shootout_stops or match_shootout_ga:
+            counted_matches += 1
+        saves += match_saves
+        shootout_stops += match_shootout_stops
+        goals_allowed += match_goals_allowed + match_shootout_ga
+    starter = sorted(played_goalies, key=lambda item: item.get("minutes") or 0, reverse=True)[0] if played_goalies else {}
+    drafted_name = pick_goalie_name(pick)
+    drafted_photo = pick_goalie_photo(pick)
+    return {
+        "points": saves + shootout_stops - goals_allowed,
+        "saves": saves,
+        "shootout_stops": shootout_stops,
+        "goals_allowed": goals_allowed,
+        "counted_matches": counted_matches,
+        "actual_goalie_name": starter.get("name") or drafted_name,
+        "actual_goalie_photo": starter.get("photo") or drafted_photo,
+    }
+
+
 def goalie_goals_allowed_for_pick(state, round_key, team_name):
     team_name = canonical_team_name(team_name)
     goals_allowed = 0
@@ -1934,7 +2273,7 @@ def goalie_shootout_goals_allowed_for_pick(state, round_key, team_name):
 
 
 def goalie_challenge_scores(state):
-    scores = {coach: {"points": 0, "shootout_ga": 0, "counted_matches": 0, "slots": []} for coach in COACHES}
+    scores = {coach: {"points": 0, "saves": 0, "shootout_stops": 0, "goals_allowed": 0, "counted_matches": 0, "slots": []} for coach in COACHES}
     challenge = state.get("goalie_challenge", {})
     rounds = challenge.get("rounds", {}) if isinstance(challenge, dict) else {}
     for round_key in GOALIE_ROUND_ORDER:
@@ -1945,20 +2284,27 @@ def goalie_challenge_scores(state):
             if coach not in scores:
                 continue
             team = canonical_team_name(pick.get("team"))
-            goals_allowed, counted = goalie_goals_allowed_for_pick(state, round_key, team)
-            shootout_ga = goalie_shootout_goals_allowed_for_pick(state, round_key, team)
-            scores[coach]["points"] += goals_allowed
-            scores[coach]["shootout_ga"] += shootout_ga
-            scores[coach]["counted_matches"] += counted
+            score = goalie_score_for_pick(state, round_key, pick)
+            scores[coach]["points"] += int(score.get("points", 0))
+            scores[coach]["saves"] += int(score.get("saves", 0))
+            scores[coach]["shootout_stops"] += int(score.get("shootout_stops", 0))
+            scores[coach]["goals_allowed"] += int(score.get("goals_allowed", 0))
+            scores[coach]["counted_matches"] += int(score.get("counted_matches", 0))
             scores[coach]["slots"].append(
                 {
                     "round_key": round_key,
                     "round_label": round_label,
                     "pick": int(pick.get("pick") or 0),
                     "team": team,
-                    "goals_allowed": goals_allowed,
-                    "shootout_ga": shootout_ga,
-                    "counted": counted,
+                    "goalie_name": pick_goalie_name(pick) or score.get("actual_goalie_name") or f"{display_team(team)} goalie",
+                    "goalie_photo": pick_goalie_photo(pick) or score.get("actual_goalie_photo") or "",
+                    "actual_goalie_name": score.get("actual_goalie_name") or "",
+                    "actual_goalie_photo": score.get("actual_goalie_photo") or "",
+                    "points": int(score.get("points", 0)),
+                    "saves": int(score.get("saves", 0)),
+                    "shootout_stops": int(score.get("shootout_stops", 0)),
+                    "goals_allowed": int(score.get("goals_allowed", 0)),
+                    "counted": int(score.get("counted_matches", 0)),
                 }
             )
     return scores
@@ -2119,7 +2465,7 @@ def calculate_scores(state):
             player_breakdown.append((player, points))
 
         total_points = team_points + player_points
-        goalie_score = goalie_scores.get(coach, {"points": 0, "shootout_ga": 0, "counted_matches": 0, "slots": []})
+        goalie_score = goalie_scores.get(coach, {"points": 0, "saves": 0, "shootout_stops": 0, "goals_allowed": 0, "counted_matches": 0, "slots": []})
         scores[coach] = {
             "coach": coach,
             "color": data["color"],
@@ -2128,7 +2474,9 @@ def calculate_scores(state):
             "player_points": player_points,
             "total_points": total_points,
             "goalie_challenge_points": int(goalie_score.get("points", 0)),
-            "goalie_challenge_shootout_ga": int(goalie_score.get("shootout_ga", 0)),
+            "goalie_challenge_saves": int(goalie_score.get("saves", 0)),
+            "goalie_challenge_shootout_stops": int(goalie_score.get("shootout_stops", 0)),
+            "goalie_challenge_goals_allowed": int(goalie_score.get("goals_allowed", 0)),
             "goalie_challenge_counted": int(goalie_score.get("counted_matches", 0)),
             "goalie_challenge_slots": goalie_score.get("slots", []),
             "group_stage_points": group_stage_points + player_group_points,
@@ -2162,11 +2510,11 @@ def award_leaders(scores):
     if max(item.get("empire_count", 0) for item in values) > 0:
         leaders["Empire Builder"] = max(values, key=lambda item: (item["empire_count"], item["empire_goals"], item["total_points"]))
     if any(item.get("goalie_challenge_counted", 0) > 0 for item in values):
-        leaders["Goalie Challenge Winner"] = min(
+        leaders["Goalie Challenge Winner"] = max(
             values,
             key=lambda item: (
                 item.get("goalie_challenge_points", 0),
-                item.get("goalie_challenge_shootout_ga", 0),
+                -item.get("goalie_challenge_goals_allowed", 0),
                 -item.get("total_points", 0),
             ),
         )
@@ -2477,10 +2825,13 @@ def render_payout_descriptions():
 National teams earn +3 for a win, +1 for a draw, +1 for each goal scored, and +1 for a clean sheet. Star players earn +4 for each goal and +3 for each assist. Advancement bonuses are added automatically only after the prior stage is fully final and the next round is officially populated: Round of 32 +5, Round of 16 +8, Quarterfinals +12, Semifinals +15, Final +20, and Champion +25. These advancement bonuses are total bonuses for the team's deepest confirmed finish, not added together round by round. During live matches, points are shown based on the current state of the match. For example, a team leading 2-0 live would currently show +3 for the win, +2 for goals, and +1 for the clean sheet.</div>
 
 <div class='payout-desc'><b>Goalie Challenge - $25 Side Bet</b><br>
-Goalie Challenge is completely separate from the main World Cup FC2 standings and never changes the overall Gold, Silver, or Bronze totals. Coaches draft teams, not individual goalkeepers, before the Round of 32, Round of 16, and Round of 8. Each coach drafts 4 teams for the Round of 32, 2 teams for the Round of 16, and 1 team for the Round of 8. The Round of 32 draft order is reverse group-stage rank after the group stage is final. Later goalie draft orders are reverse main standings before that goalie round starts, not including any Goalie Challenge points. Each goalie draft snakes each round. The score is total goals allowed by those drafted teams in that specific round only. Penalty kicks scored during regular time or extra time count as normal goals against. Penalty shootout goals do not add to the Goalie Challenge score; they are tracked separately as Shootout GA and used only as the first tiebreaker if coaches are tied in normal goals allowed. Lowest total goals allowed wins Goalie Challenge Gold ($125), second lowest wins Silver ($50), and third lowest wins Bronze ($25). Draft sections unlock only after every game from the previous stage is complete and the full next round is officially populated, then close at the first kickoff of that round.</div>
+Goalie Challenge is completely separate from the main World Cup FC2 standings and never changes the overall Gold, Silver, or Bronze totals. Coaches draft the primary listed goalkeeper for a team before the Round of 32, Round of 16, and Round of 8, but the pick scores as that team's playing goalkeeper slot for that round. That protects a coach if the listed goalkeeper is injured, benched, or replaced. Each coach drafts 4 goalie slots for the Round of 32, 2 goalie slots for the Round of 16, and 1 goalie slot for the Round of 8. The Round of 32 draft order is reverse group-stage rank after the group stage is final. Later goalie draft orders are reverse main standings before that goalie round starts, not including any Goalie Challenge points. Each goalie draft snakes each round. The score is API-Football saves plus shootout stops, minus total goals allowed. Highest score wins Goalie Challenge Gold ($125), second highest wins Silver ($50), and third highest wins Bronze ($25). If coaches tie, the first tiebreaker is fewest total goals allowed across all drafted goalie slots. Draft sections unlock only after every game from the previous stage is complete and the full next round is officially populated, then close at the first kickoff of that round.</div>
+
+<div class='payout-desc'><b>How Goalie Saves Are Counted</b><br>
+Regular-match goalkeeper saves come directly from API-Football's per-player fixture statistic at <code>goals.saves</code>, updated during live matches by API-Football. Goals allowed come from the playing goalkeeper's <code>goals.conceded</code> plus any opponent penalty-shootout goals. API-Football's public event feed marks shootout attempts as <code>Penalty</code> or <code>Missed Penalty</code> with <code>Penalty Shootout</code> comments; it does not publicly distinguish a saved shootout penalty from a miss wide or off the post. For this app, every opponent shootout <code>Missed Penalty</code> is counted as a shootout stop worth +1, and every opponent shootout <code>Penalty</code> is a goal allowed worth -1.</div>
 
 <div class='payout-desc'><b>Standings Card Abbreviations</b><br>
-"Group" means Group Stage Winner points only: group-stage drafted team points plus group-stage drafted player points. It excludes advancement bonuses, knockout matches, Empire Builder, Cinderella, and Goalie Challenge. "Empire" means Empire Builder, shown as teams advanced to the Round of 16 or later and then goals scored by those advanced teams for the tiebreaker. "Cinderella" means the coach's best single-team overperformance against the locked FIFA ranking baseline. "Goalie Challenge Points" means normal goals allowed in the separate goalie side bet; lower is better and those points do not affect the main total. "Shootout GA" or "SO TB" means penalty shootout goals allowed and is only a Goalie Challenge tiebreaker, not added score. Live Matches appears only for matches currently live and shows the active match score plus live team and player points from that match. Power Rating is the preseason roster strength estimate shown at the bottom of each card.</div>
+"Group" means Group Stage Winner points only: group-stage drafted team points plus group-stage drafted player points. It excludes advancement bonuses, knockout matches, Empire Builder, Cinderella, and Goalie Challenge. "Empire" means Empire Builder, shown as teams advanced to the Round of 16 or later and then goals scored by those advanced teams for the tiebreaker. "Cinderella" means the coach's best single-team overperformance against the locked FIFA ranking baseline. "Goalie Challenge Points" means saves plus shootout stops minus goals allowed in the separate goalie side bet; higher is better and those points do not affect the main total. "GA TB" means total goals allowed and is the first Goalie Challenge tiebreaker; lower is better. Live Matches appears only for matches currently live and shows the active match score plus live team and player points from that match. Power Rating is the preseason roster strength estimate shown at the bottom of each card.</div>
 
 <div class='payout-desc'><b>Goalie Challenge Draft Timing</b><br>
 The Round of 32 goalie draft begins only after every group-stage match is final and the full Round of 32 field and fixtures are official, then ends before the first Round of 32 kickoff. The Round of 16 goalie draft begins only after every Round of 32 match is final and official Round of 16 fixtures are populated, then ends before the first Round of 16 kickoff. The Round of 8 goalie draft begins only after every Round of 16 match is final and quarterfinal fixtures are populated, then ends before the first quarterfinal kickoff.</div>
@@ -2892,7 +3243,7 @@ def set_goalie_round_active(round_key, active):
     return mutate_shared_state(mutator, f"Update {GOALIE_ROUNDS.get(round_key, {}).get('label', 'Goalie')} draft")
 
 
-def make_goalie_pick(round_key, team_name):
+def make_goalie_pick(round_key, goalie):
     def mutator(state):
         state = normalize_state(state)
         if round_key not in GOALIE_ROUNDS:
@@ -2905,21 +3256,33 @@ def make_goalie_pick(round_key, team_name):
         round_state["active"] = True
         sequence = build_goalie_sequence(round_state["order"], GOALIE_ROUNDS[round_key]["slots"])
         pick = current_pick(sequence, round_state.get("picks", []))
-        team = canonical_team_name(team_name)
+        team = canonical_team_name((goalie or {}).get("team"))
         if not pick or team not in goalie_round_available_teams(state, round_key) or team in goalie_round_drafted_teams(state, round_key):
             return False
+        goalie_name = str((goalie or {}).get("name") or f"{display_team(team)} starting goalie").strip()
+        goalie_photo = str((goalie or {}).get("photo") or "").strip()
+        goalie_id = none_or_int((goalie or {}).get("id"))
+        api_team_id = none_or_int((goalie or {}).get("team_id"))
         round_state["picks"].append(
             {
                 "pick": pick["pick"],
                 "round": pick["round"],
                 "coach": pick["coach"],
                 "team": team,
+                "api_team_id": api_team_id,
+                "goalie": {
+                    "id": goalie_id,
+                    "name": goalie_name,
+                    "photo": goalie_photo,
+                    "team": team,
+                    "team_id": api_team_id,
+                },
                 "picked_at": datetime.now(ZoneInfo("America/New_York")).isoformat(),
             }
         )
         round_state["current_pick_started_at"] = int(time.time())
         return True
-    return mutate_shared_state(mutator, f"Draft {team_name} for Goalie Challenge")
+    return mutate_shared_state(mutator, f"Draft {(goalie or {}).get('name') or (goalie or {}).get('team') or 'goalie'} for Goalie Challenge")
 
 
 def undo_goalie_pick(round_key):
@@ -2977,9 +3340,10 @@ def render_goalie_available_teams(state, round_key):
     if not goalie_round_can_start(state, round_key):
         st.caption("This goalie draft will unlock after the prior stage is fully final and the next round is fully populated.")
         return
-    available = [team for team in goalie_round_available_teams(state, round_key) if team not in goalie_round_drafted_teams(state, round_key)]
+    drafted_teams = goalie_round_drafted_teams(state, round_key)
+    available = [goalie for goalie in goalie_round_available_goalies(state, round_key) if canonical_team_name(goalie.get("team")) not in drafted_teams]
     if not available:
-        st.caption("No teams available for this goalie draft yet.")
+        st.caption("No goalies available for this goalie draft yet.")
         return
     round_state = goalie_round_state(state, round_key)
     current = current_pick(build_goalie_sequence(round_state.get("order") or goalie_order_from_scores(calculate_scores(state), round_key), GOALIE_ROUNDS[round_key]["slots"]), round_state.get("picks", []))
@@ -3016,14 +3380,25 @@ def render_goalie_available_teams(state, round_key):
     with st.container(key=f"goalie-pick-buttons-{round_key}"):
         for row_start in range(0, len(available), DRAFT_BUTTON_COLUMNS):
             cols = st.columns(DRAFT_BUTTON_COLUMNS, gap="small")
-            for col, team in zip(cols, available[row_start:row_start + DRAFT_BUTTON_COLUMNS]):
+            for col, goalie in zip(cols, available[row_start:row_start + DRAFT_BUTTON_COLUMNS]):
                 with col:
-                    label = display_team(team)
-                    pressed = st.button(label, key=f"goalie-draft-{round_key}-{team}", width="stretch", disabled=(goalie_round_is_closed(state, round_key) or saving))
+                    team = canonical_team_name(goalie.get("team"))
+                    label = str(goalie.get("name") or f"{display_team(team)} starting goalie").strip()
+                    st.markdown(
+                        f"""
+<div class='goalie-slot' style='--coach-color:{html.escape(coach_color)}'>
+  {goalie_icon_html(goalie, team)}
+  <div class='goalie-slot-name'>{html.escape(label)}</div>
+  <div class='goalie-slot-team'>{display_team_html(team, include_info=False)}</div>
+</div>
+""",
+                        unsafe_allow_html=True,
+                    )
+                    pressed = st.button(f"Draft {label}", key=f"goalie-draft-{round_key}-{team}", width="stretch", disabled=(goalie_round_is_closed(state, round_key) or saving))
                     if pressed:
                         st.session_state[saving_key] = True
                         st.toast("Saving goalie pick...")
-                        ok, _ = make_goalie_pick(round_key, team)
+                        ok, _ = make_goalie_pick(round_key, goalie)
                         st.session_state[saving_key] = False
                         if ok:
                             st.rerun()
@@ -3086,20 +3461,25 @@ def goalie_slot_cells_html(slots):
         round_slots = sorted([slot for slot in slots if slot.get("round_key") == round_key], key=lambda item: item.get("pick", 0))
         ordered_slots.extend(round_slots)
         while len([slot for slot in ordered_slots if slot.get("round_key") == round_key]) < GOALIE_ROUNDS[round_key]["slots"]:
-            ordered_slots.append({"round_key": round_key, "team": "", "goals_allowed": 0})
+            ordered_slots.append({"round_key": round_key, "team": "", "saves": 0, "goals_allowed": 0})
     for slot in ordered_slots[:7]:
         team = canonical_team_name(slot.get("team"))
         if not team:
             label = GOALIE_ROUNDS.get(slot.get("round_key"), {}).get("label", "Open")
             cells.append(f"<div class='goalie-slot goalie-slot-empty'><span>{html.escape(label)}</span></div>")
             continue
+        goalie = {
+            "name": slot.get("actual_goalie_name") or slot.get("goalie_name") or f"{display_team(team)} goalie",
+            "photo": slot.get("actual_goalie_photo") or slot.get("goalie_photo") or "",
+        }
         cells.append(
             f"""
 <div class='goalie-slot'>
-  <div class='goalie-slot-flag'>{team_flag_html(team)}</div>
-  <div class='goalie-slot-name'>{html.escape(team)}</div>
-  <div class='goalie-slot-ga'>GA {int(slot.get("goals_allowed", 0))}</div>
-  <div class='goalie-slot-tb'>SO TB {int(slot.get("shootout_ga", 0))}</div>
+  {goalie_icon_html(goalie, team)}
+  <div class='goalie-slot-name'>{html.escape(goalie["name"])}</div>
+  <div class='goalie-slot-team'>{display_team_html(team, include_info=False)}</div>
+  <div class='goalie-slot-ga'>Saves {int(slot.get("saves", 0))}</div>
+  <div class='goalie-slot-tb'>GA TB {int(slot.get("goals_allowed", 0))}</div>
 </div>
 """
         )
@@ -3110,8 +3490,8 @@ def render_goalie_challenge_standings(state, scores):
     ranked = sorted(
         scores.values(),
         key=lambda item: (
-            int(item.get("goalie_challenge_points", 0)),
-            int(item.get("goalie_challenge_shootout_ga", 0)),
+            -int(item.get("goalie_challenge_points", 0)),
+            int(item.get("goalie_challenge_goals_allowed", 0)),
             -int(item.get("goalie_challenge_counted", 0)),
             -int(item.get("total_points", 0)),
         ),
@@ -3134,7 +3514,7 @@ def render_goalie_challenge_standings(state, scores):
     </div>
     <div class='score-badge'>{int(item.get("goalie_challenge_points", 0))}</div>
   </div>
-  <div class='goalie-tb-pill'>Shootout GA tiebreaker only:<b>{int(item.get("goalie_challenge_shootout_ga", 0))}</b></div>
+  <div class='goalie-tb-pill'>Saves:<b>{int(item.get("goalie_challenge_saves", 0))}</b> | Shootout stops:<b>{int(item.get("goalie_challenge_shootout_stops", 0))}</b> | GA tiebreaker:<b>{int(item.get("goalie_challenge_goals_allowed", 0))}</b></div>
   <div class='goalie-slot-grid'>{goalie_slot_cells_html(item.get("goalie_challenge_slots", []))}</div>
 </div>
 """
@@ -3148,7 +3528,7 @@ def render_goalie_challenge(state, scores):
         st.markdown("<div class='section-title'>Standings</div>", unsafe_allow_html=True)
         render_goalie_challenge_standings(state, scores)
         st.markdown(
-            "<div class='goalie-rules-note'>Lowest total goals allowed wins this $25 side bet. Shootout goals allowed are tracked only as the first tiebreaker and do not add to the main Goalie Challenge score.</div>",
+            "<div class='goalie-rules-note'>Highest Goalie Challenge score wins this $25 side bet. Score = API-Football goalkeeper saves plus shootout stops, minus goals allowed. If coaches tie, the first tiebreaker is fewest total goals allowed across their drafted goalie slots.</div>",
             unsafe_allow_html=True,
         )
 
@@ -4908,6 +5288,7 @@ def goalie_challenge_admin_rows(state):
                     "Round": label,
                     "Pick": int(pick.get("pick") or 0),
                     "Coach": pick.get("coach") or "",
+                    "Goalie": pick_goalie_name(pick),
                     "Team": canonical_team_name(pick.get("team")),
                 }
             )
@@ -4921,7 +5302,7 @@ def render_goalie_challenge_admin_editor(state):
     rows = goalie_challenge_admin_rows(state)
     if rows:
         edited = st.data_editor(
-            pd.DataFrame(rows, columns=["Round", "Pick", "Coach", "Team"]),
+            pd.DataFrame(rows, columns=["Round", "Pick", "Coach", "Goalie", "Team"]),
             hide_index=True,
             width="stretch",
             num_rows="fixed",
@@ -4953,6 +5334,13 @@ def render_goalie_challenge_admin_editor(state):
                             "round": ((pick_number - 1) // len(COACHES)) + 1,
                             "coach": coach,
                             "team": team,
+                            "goalie": {
+                                "id": None,
+                                "name": str(row.get("Goalie") or f"{display_team(team)} starting goalie").strip(),
+                                "photo": "",
+                                "team": team,
+                                "team_id": None,
+                            },
                             "picked_at": datetime.now(ZoneInfo("America/New_York")).isoformat(),
                         }
                     )
@@ -5256,6 +5644,8 @@ if draft_in_progress:
         st.session_state["draft_last_synced_at"] = int(time.time())
 else:
     st_autorefresh(interval=5 * 60 * 1000, key="world_cup_fc_refresh")
+if API_FOOTBALL_TOKEN and not draft_in_progress:
+    st_autorefresh(interval=GOALIE_LIVE_REFRESH_SECONDS * 1000, key="world_cup_fc_goalie_refresh")
 if FOOTBALL_DATA_TOKEN and (not draft_in_progress) and int(time.time()) - int(state.get("last_score_refresh_attempt_at") or 0) >= AUTO_SCORE_REFRESH_SECONDS:
     _, refreshed_state = refresh_api_scores()
     if refreshed_state:

@@ -40,9 +40,12 @@ REPO_NAME = "world-cup-fc2"
 
 [FOOTBALL_DATA]
 TOKEN = "PASTE_MY_FOOTBALL_DATA_TOKEN_HERE"
+
+[API_FOOTBALL]
+TOKEN = "PASTE_MY_API_FOOTBALL_TOKEN_HERE"
 ```
 
-If no GitHub token is present, the app reads and writes local `draft_state.json`.
+If no GitHub token is present, the app reads and writes local `draft_state.json`. Football-Data powers the main league scoring. API-Football is used only for the separate Goalie Challenge goalkeeper saves scoring.
 
 ## Admin
 
