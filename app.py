@@ -2944,7 +2944,7 @@ def render_standings(state, scores, show_title=True):
     <div class='side-bet-pill'><span>Empire</span><b>{int(item["empire_count"])} teams<br>{int(item["empire_goals"])} goals</b></div>
     <div class='side-bet-pill'><span>Cinderella</span><b>{html.escape(cinderella_text)}</b></div>
   </div>
-  <div class='goalie-main-pill'><span>Goalie Challenge Points</span><b>{int(item.get("goalie_challenge_points", 0))}</b></div>
+  <div class='goalie-main-pill'><span>Saves</span><b>{int(item.get("goalie_challenge_points", 0))}</b></div>
   {teams}
   {players}
   {live_html}
@@ -3539,7 +3539,7 @@ def goalie_slot_cells_html(slots):
   <div class='goalie-slot-name'>{html.escape(goalie["name"])}</div>
   <div class='goalie-slot-team'>{display_team_html(team, include_info=False)}</div>
   <div class='goalie-slot-ga'>Saves {int(slot.get("saves", 0))}</div>
-  <div class='goalie-slot-tb'>GA TB {int(slot.get("goals_allowed", 0))}</div>
+  <div class='goalie-slot-tb'>Goals Allowed Tiebreaker {int(slot.get("goals_allowed", 0))}</div>
 </div>
 """
         )
@@ -3574,7 +3574,7 @@ def render_goalie_challenge_standings(state, scores):
     </div>
     <div class='score-badge'>{int(item.get("goalie_challenge_points", 0))}</div>
   </div>
-  <div class='goalie-tb-pill'>Saves:<b>{int(item.get("goalie_challenge_saves", 0))}</b> | Shootout stops:<b>{int(item.get("goalie_challenge_shootout_stops", 0))}</b> | GA tiebreaker:<b>{int(item.get("goalie_challenge_goals_allowed", 0))}</b></div>
+  <div class='goalie-tb-pill'>Saves:<b>{int(item.get("goalie_challenge_saves", 0))}</b> | Shootout Saves:<b>{int(item.get("goalie_challenge_shootout_stops", 0))}</b> | Goals Allowed Tiebreaker:<b>{int(item.get("goalie_challenge_goals_allowed", 0))}</b></div>
   <div class='goalie-slot-grid'>{goalie_slot_cells_html(item.get("goalie_challenge_slots", []))}</div>
 </div>
 """
