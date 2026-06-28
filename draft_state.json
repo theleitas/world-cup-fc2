@@ -5610,9 +5610,24 @@
               "team_id": 9
             },
             "picked_at": "2026-06-28T13:16:19.100928-04:00"
+          },
+          {
+            "pick": 3,
+            "round": 1,
+            "coach": "Jayme",
+            "team": "England",
+            "api_team_id": 10,
+            "goalie": {
+              "id": 2932,
+              "name": "J. Pickford",
+              "photo": "https://media.api-sports.io/football/players/2932.png",
+              "team": "England",
+              "team_id": 10
+            },
+            "picked_at": "2026-06-28T13:16:38.751811-04:00"
           }
         ],
-        "current_pick_started_at": 1782666979
+        "current_pick_started_at": 1782666998
       },
       "r16": {
         "active": false,
