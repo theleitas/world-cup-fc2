@@ -5835,9 +5835,24 @@
               "team_id": 31
             },
             "picked_at": "2026-06-28T15:01:08.427177-04:00"
+          },
+          {
+            "pick": 18,
+            "round": 3,
+            "coach": "Peter",
+            "team": "Côte d'Ivoire",
+            "api_team_id": 1501,
+            "goalie": {
+              "id": 64190,
+              "name": "Y. Fofana",
+              "photo": "https://media.api-sports.io/football/players/64190.png",
+              "team": "Côte d'Ivoire",
+              "team_id": 1501
+            },
+            "picked_at": "2026-06-28T15:06:18.671920-04:00"
           }
         ],
-        "current_pick_started_at": 1782673268
+        "current_pick_started_at": 1782673578
       },
       "r16": {
         "active": false,
