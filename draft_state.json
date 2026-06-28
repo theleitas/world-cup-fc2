@@ -5775,9 +5775,24 @@
               "team_id": 25
             },
             "picked_at": "2026-06-28T14:35:59.314434-04:00"
+          },
+          {
+            "pick": 14,
+            "round": 2,
+            "coach": "Jayme",
+            "team": "South Africa",
+            "api_team_id": 1531,
+            "goalie": {
+              "id": 3275,
+              "name": "R. Williams",
+              "photo": "https://media.api-sports.io/football/players/3275.png",
+              "team": "South Africa",
+              "team_id": 1531
+            },
+            "picked_at": "2026-06-28T14:41:32.681448-04:00"
           }
         ],
-        "current_pick_started_at": 1782671759
+        "current_pick_started_at": 1782672092
       },
       "r16": {
         "active": false,
