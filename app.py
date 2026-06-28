@@ -795,7 +795,8 @@ def read_secret(*path):
 
 GITHUB_TOKEN = read_secret("GITHUB", "TOKEN") or os.environ.get("GITHUB_TOKEN")
 GITHUB_OWNER = read_secret("GITHUB", "OWNER") or os.environ.get("GITHUB_OWNER") or REPO_OWNER
-GITHUB_REPO = read_secret("GITHUB", "REPO_NAME") or os.environ.get("GITHUB_REPO_NAME") or REPO_NAME
+CONFIGURED_GITHUB_REPO = read_secret("GITHUB", "REPO_NAME") or os.environ.get("GITHUB_REPO_NAME")
+GITHUB_REPO = CONFIGURED_GITHUB_REPO if CONFIGURED_GITHUB_REPO == REPO_NAME else REPO_NAME
 FOOTBALL_DATA_TOKEN = read_secret("FOOTBALL_DATA", "TOKEN") or os.environ.get("FOOTBALL_DATA_TOKEN")
 
 GITHUB_HEADERS = {
