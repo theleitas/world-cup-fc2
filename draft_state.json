@@ -5925,24 +5925,9 @@
               "team_id": 1504
             },
             "picked_at": "2026-06-28T15:37:22.818984-04:00"
-          },
-          {
-            "pick": 24,
-            "round": 3,
-            "coach": "Jeff",
-            "team": "Austria",
-            "api_team_id": 775,
-            "goalie": {
-              "id": 7525,
-              "name": "A. Schlager",
-              "photo": "https://media.api-sports.io/football/players/7525.png",
-              "team": "Austria",
-              "team_id": 775
-            },
-            "picked_at": "2026-06-28T15:38:01.079628-04:00"
           }
         ],
-        "current_pick_started_at": 1782675481
+        "current_pick_started_at": 1782675661
       },
       "r16": {
         "active": false,
