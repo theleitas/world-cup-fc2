@@ -2139,7 +2139,7 @@ def goalie_last_name(goalie_name):
 def goalie_button_label(goalie, team_name):
     goalie_name = str((goalie or {}).get("name") or f"{display_team(team_name)} starting goalie").strip()
     last_name = goalie_last_name(goalie_name) or goalie_name
-    return f"{last_name} - {display_team(team_name)}"
+    return f"{last_name} | {display_team(team_name)}"
 
 
 def goalie_pick_table_label(pick):
@@ -3401,7 +3401,7 @@ def render_goalie_available_teams(state, round_key):
     color:var(--draft-button-fg)!important;
     box-shadow:0 0 12px color-mix(in srgb, var(--draft-button-border) 35%, transparent)!important;
     min-height:50px!important;
-    padding:6px 10px 6px 52px!important;
+    padding:6px 10px 6px 42px!important;
     position:relative!important;
     display:flex!important;
     align-items:center!important;
@@ -3438,7 +3438,7 @@ def render_goalie_available_teams(state, round_key):
 .st-key-{button_key} div[data-testid="stButton"] > button::before {{
     content:"";
     position:absolute;
-    left:max(10px, calc(50% - 128px));
+    left:max(10px, calc(50% - 106px));
     top:50%;
     transform:translateY(-50%);
     width:36px;
