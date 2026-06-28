@@ -5805,9 +5805,24 @@
               "team_id": 20
             },
             "picked_at": "2026-06-28T14:53:39.586271-04:00"
+          },
+          {
+            "pick": 16,
+            "round": 2,
+            "coach": "Benji",
+            "team": "Egypt",
+            "api_team_id": 32,
+            "goalie": {
+              "id": 16797,
+              "name": "Mohamed El Shenawy",
+              "photo": "https://media.api-sports.io/football/players/16797.png",
+              "team": "Egypt",
+              "team_id": 32
+            },
+            "picked_at": "2026-06-28T15:00:28.630495-04:00"
           }
         ],
-        "current_pick_started_at": 1782672819
+        "current_pick_started_at": 1782673228
       },
       "r16": {
         "active": false,
