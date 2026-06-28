@@ -5640,9 +5640,24 @@
               "team_id": 6
             },
             "picked_at": "2026-06-28T13:17:17.884009-04:00"
+          },
+          {
+            "pick": 5,
+            "round": 1,
+            "coach": "Herb",
+            "team": "Mexico",
+            "api_team_id": 16,
+            "goalie": {
+              "id": 270774,
+              "name": "J. Rangel",
+              "photo": "https://media.api-sports.io/football/players/270774.png",
+              "team": "Mexico",
+              "team_id": 16
+            },
+            "picked_at": "2026-06-28T13:17:53.977299-04:00"
           }
         ],
-        "current_pick_started_at": 1782667037
+        "current_pick_started_at": 1782667073
       },
       "r16": {
         "active": false,
