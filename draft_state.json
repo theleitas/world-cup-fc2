@@ -6054,9 +6054,24 @@
               "team_id": 1508
             },
             "picked_at": "2026-06-28T16:45:25.250502-04:00"
+          },
+          {
+            "pick": 32,
+            "round": 4,
+            "coach": "Benji",
+            "team": "Bosnia and Herzegovina",
+            "api_team_id": 1113,
+            "goalie": {
+              "id": 9026,
+              "name": "N. Vasilj",
+              "photo": "https://media.api-sports.io/football/players/9026.png",
+              "team": "Bosnia and Herzegovina",
+              "team_id": 1113
+            },
+            "picked_at": "2026-06-28T17:30:19.380915-04:00"
           }
         ],
-        "current_pick_started_at": 1782679525
+        "current_pick_started_at": 1782682219
       },
       "r16": {
         "active": false,
