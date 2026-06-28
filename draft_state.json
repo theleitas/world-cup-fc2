@@ -5655,9 +5655,24 @@
               "team_id": 16
             },
             "picked_at": "2026-06-28T13:17:53.977299-04:00"
+          },
+          {
+            "pick": 6,
+            "round": 1,
+            "coach": "Chad",
+            "team": "Canada",
+            "api_team_id": 5529,
+            "goalie": {
+              "id": 51148,
+              "name": "D. St. Clair",
+              "photo": "https://media.api-sports.io/football/players/51148.png",
+              "team": "Canada",
+              "team_id": 5529
+            },
+            "picked_at": "2026-06-28T13:18:55.544754-04:00"
           }
         ],
-        "current_pick_started_at": 1782667073
+        "current_pick_started_at": 1782667135
       },
       "r16": {
         "active": false,
