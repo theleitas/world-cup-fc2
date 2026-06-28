@@ -6000,9 +6000,24 @@
               "team_id": 13
             },
             "picked_at": "2026-06-28T16:08:23.120105-04:00"
+          },
+          {
+            "pick": 29,
+            "round": 4,
+            "coach": "Lamp",
+            "team": "Ghana",
+            "api_team_id": 1504,
+            "goalie": {
+              "id": 3412,
+              "name": "L. Zigi",
+              "photo": "https://media.api-sports.io/football/players/3412.png",
+              "team": "Ghana",
+              "team_id": 1504
+            },
+            "picked_at": "2026-06-28T16:19:24.533779-04:00"
           }
         ],
-        "current_pick_started_at": 1782677303
+        "current_pick_started_at": 1782677964
       },
       "r16": {
         "active": false,
