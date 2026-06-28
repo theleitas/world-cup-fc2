@@ -5895,9 +5895,24 @@
               "team_id": 15
             },
             "picked_at": "2026-06-28T15:26:17.256442-04:00"
+          },
+          {
+            "pick": 22,
+            "round": 3,
+            "coach": "Chad",
+            "team": "Algeria",
+            "api_team_id": 1532,
+            "goalie": {
+              "id": 304229,
+              "name": "M. Mastil",
+              "photo": "https://media.api-sports.io/football/players/304229.png",
+              "team": "Algeria",
+              "team_id": 1532
+            },
+            "picked_at": "2026-06-28T15:32:46.135891-04:00"
           }
         ],
-        "current_pick_started_at": 1782674777
+        "current_pick_started_at": 1782675166
       },
       "r16": {
         "active": false,
