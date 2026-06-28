@@ -5790,9 +5790,24 @@
               "team_id": 1531
             },
             "picked_at": "2026-06-28T14:41:32.681448-04:00"
+          },
+          {
+            "pick": 15,
+            "round": 2,
+            "coach": "Peter",
+            "team": "Australia",
+            "api_team_id": 20,
+            "goalie": {
+              "id": 2741,
+              "name": "M. Ryan",
+              "photo": "https://media.api-sports.io/football/players/2741.png",
+              "team": "Australia",
+              "team_id": 20
+            },
+            "picked_at": "2026-06-28T14:53:39.586271-04:00"
           }
         ],
-        "current_pick_started_at": 1782672092
+        "current_pick_started_at": 1782672819
       },
       "r16": {
         "active": false,
