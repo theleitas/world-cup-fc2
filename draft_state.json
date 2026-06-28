@@ -5955,9 +5955,24 @@
               "team_id": 5
             },
             "picked_at": "2026-06-28T15:43:12.811736-04:00"
+          },
+          {
+            "pick": 26,
+            "round": 4,
+            "coach": "Spencer",
+            "team": "Paraguay",
+            "api_team_id": 2380,
+            "goalie": {
+              "id": 535737,
+              "name": "R. Fernandez",
+              "photo": "https://media.api-sports.io/football/players/535737.png",
+              "team": "Paraguay",
+              "team_id": 2380
+            },
+            "picked_at": "2026-06-28T15:43:58.404347-04:00"
           }
         ],
-        "current_pick_started_at": 1782675792
+        "current_pick_started_at": 1782675838
       },
       "r16": {
         "active": false,
