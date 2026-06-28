@@ -124,16 +124,22 @@ div[class*="st-key-points-journal-text"] textarea:disabled {
 .goalie-main-pill b { color:var(--coach-color); font-size:1.05rem; font-weight:1000; margin-left:6px; text-shadow:0 0 8px var(--coach-color); }
 .goalie-rules-note { border:1px solid rgba(255,213,74,.4); border-radius:8px; background:#070707; color:#fff7cf; font-size:.86rem; font-weight:850; line-height:1.35; padding:8px 10px; margin:8px 0 10px; }
 .payment-panel + .payment-panel { margin-top:10px; }
-.goalie-card-grid { margin-top:8px; margin-bottom:8px; }
+.goalie-card-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); margin-top:8px; margin-bottom:8px; }
 .goalie-card .coach-head { margin-bottom:7px; }
-.goalie-slot-grid { display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:4px; }
-.goalie-slot { min-height:54px; border:1px solid color-mix(in srgb, var(--coach-color) 48%, rgba(255,255,255,.16)); border-radius:5px; background:rgba(255,255,255,.045); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; padding:4px 3px; text-align:center; box-shadow:inset 0 0 8px rgba(255,255,255,.035), 0 0 7px color-mix(in srgb, var(--coach-color) 20%, transparent); }
+.goalie-slot-grid { display:flex; flex-direction:column; gap:6px; }
+.goalie-round-row { display:grid; grid-template-columns:42px minmax(0, 1fr); align-items:stretch; gap:5px; }
+.goalie-round-label { border:1px solid rgba(185,194,201,.22); border-radius:999px; background:rgba(255,255,255,.035); color:#b9c2c9; display:flex; align-items:center; justify-content:center; text-align:center; font-size:.62rem; line-height:1; font-weight:1000; }
+.goalie-round-bubbles { display:grid; gap:4px; }
+.goalie-round-bubbles-r32 { grid-template-columns:repeat(4, minmax(0, 1fr)); }
+.goalie-round-bubbles-r16 { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+.goalie-round-bubbles-r8 { grid-template-columns:minmax(0, 1fr); }
+.goalie-slot { min-height:56px; border:1px solid color-mix(in srgb, var(--coach-color) 48%, rgba(255,255,255,.16)); border-radius:999px; background:rgba(255,255,255,.045); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; padding:5px 4px; text-align:center; overflow:hidden; box-shadow:inset 0 0 8px rgba(255,255,255,.035), 0 0 7px color-mix(in srgb, var(--coach-color) 20%, transparent); }
 .goalie-slot-empty { color:#6f777d; font-size:.68rem; font-weight:900; }
 .goalie-slot-flag { font-size:1.3rem; line-height:1; }
 .goalie-slot-flag .flag-icon { margin:0; width:1.05em; height:1.05em; vertical-align:0; }
-.goalie-icon { width:34px; height:34px; border-radius:50%; object-fit:cover; border:1px solid color-mix(in srgb, var(--coach-color, #FFD54A) 55%, rgba(255,255,255,.4)); background:#111; box-shadow:0 0 8px color-mix(in srgb, var(--coach-color, #FFD54A) 28%, transparent); }
-.goalie-icon-fallback { width:34px; height:34px; border-radius:50%; display:grid; place-items:center; border:1px solid rgba(255,255,255,.25); background:#151515; font-size:1.15rem; }
-.goalie-slot-name { color:#fff; font-size:.72rem; line-height:.98; font-weight:850; overflow-wrap:anywhere; }
+.goalie-icon { width:30px; height:30px; border-radius:50%; object-fit:cover; border:1px solid color-mix(in srgb, var(--coach-color, #FFD54A) 55%, rgba(255,255,255,.4)); background:#111; box-shadow:0 0 8px color-mix(in srgb, var(--coach-color, #FFD54A) 28%, transparent); }
+.goalie-icon-fallback { width:30px; height:30px; border-radius:50%; display:grid; place-items:center; border:1px solid rgba(255,255,255,.25); background:#151515; font-size:1.05rem; }
+.goalie-slot-name { color:#fff; font-size:.68rem; line-height:.96; font-weight:850; overflow-wrap:anywhere; }
 .goalie-slot-team { color:#b9c2c9; font-size:.6rem; line-height:.9; font-weight:900; overflow-wrap:anywhere; }
 .goalie-slot-ga { color:var(--coach-color); font-size:.7rem; line-height:1; font-weight:1000; text-shadow:0 0 7px var(--coach-color); }
 .goalie-slot-tb { color:#b9c2c9; font-size:.62rem; line-height:1; font-weight:900; }
@@ -367,7 +373,8 @@ div[class*="st-key-btn-match-timeline"] div[data-testid="stButton"] > button:hov
     .payment-grid { grid-template-columns:1fr 1fr; gap:5px; }
     .payment-row { font-size:.78rem; padding:5px 6px; }
     .standings-grid { grid-template-columns:1fr; }
-    .goalie-slot-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    .goalie-round-row { grid-template-columns:38px minmax(0, 1fr); gap:4px; }
+    .goalie-round-bubbles-r32 { grid-template-columns:repeat(2, minmax(0, 1fr)); }
     .coach-card { min-height:auto; }
     .coach-face, .coach-face-placeholder { width:60px; height:60px; }
     .score-badge { width:52px; height:52px; font-size:1.08rem; }
@@ -417,9 +424,11 @@ div[class*="st-key-btn-match-timeline"] div[data-testid="stButton"] > button:hov
 }
 @media (min-width:701px) and (max-width:900px) {
     .standings-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    .goalie-card-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
 }
 @media (min-width:901px) and (max-width:1180px) {
     .standings-grid { grid-template-columns:repeat(3, minmax(0, 1fr)); }
+    .goalie-card-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
 }
 </style>
 """,
@@ -3531,25 +3540,23 @@ def render_current_goalie_draft_room(state, scores):
 
 
 def goalie_slot_cells_html(slots):
-    cells = []
-    ordered_slots = []
+    rows = []
     for round_key in GOALIE_ROUND_ORDER:
         round_slots = sorted([slot for slot in slots if slot.get("round_key") == round_key], key=lambda item: item.get("pick", 0))
-        ordered_slots.extend(round_slots)
-        while len([slot for slot in ordered_slots if slot.get("round_key") == round_key]) < GOALIE_ROUNDS[round_key]["slots"]:
-            ordered_slots.append({"round_key": round_key, "team": "", "saves": 0, "goals_allowed": 0})
-    for slot in ordered_slots[:7]:
-        team = canonical_team_name(slot.get("team"))
-        if not team:
-            label = GOALIE_ROUNDS.get(slot.get("round_key"), {}).get("label", "Open")
-            cells.append(f"<div class='goalie-slot goalie-slot-empty'><span>{html.escape(label)}</span></div>")
-            continue
-        goalie = {
-            "name": slot.get("actual_goalie_name") or slot.get("goalie_name") or f"{display_team(team)} goalie",
-            "photo": slot.get("actual_goalie_photo") or slot.get("goalie_photo") or "",
-        }
-        cells.append(
-            f"""
+        while len(round_slots) < GOALIE_ROUNDS[round_key]["slots"]:
+            round_slots.append({"round_key": round_key, "team": "", "saves": 0, "goals_allowed": 0})
+        bubbles = []
+        for slot in round_slots[:GOALIE_ROUNDS[round_key]["slots"]]:
+            team = canonical_team_name(slot.get("team"))
+            if not team:
+                bubbles.append("<div class='goalie-slot goalie-slot-empty'><span>Open</span></div>")
+                continue
+            goalie = {
+                "name": slot.get("actual_goalie_name") or slot.get("goalie_name") or f"{display_team(team)} goalie",
+                "photo": slot.get("actual_goalie_photo") or slot.get("goalie_photo") or "",
+            }
+            bubbles.append(
+                f"""
 <div class='goalie-slot'>
   {goalie_icon_html(goalie, team)}
   <div class='goalie-slot-name'>{html.escape(goalie["name"])}</div>
@@ -3558,8 +3565,16 @@ def goalie_slot_cells_html(slots):
   <div class='goalie-slot-tb'>GATB {int(slot.get("goals_allowed", 0))}</div>
 </div>
 """
+            )
+        rows.append(
+            f"""
+<div class='goalie-round-row goalie-round-row-{round_key}'>
+  <div class='goalie-round-label'>{html.escape(GOALIE_ROUNDS[round_key]["label"].replace("Round of ", "R"))}</div>
+  <div class='goalie-round-bubbles goalie-round-bubbles-{round_key}'>{''.join(bubbles)}</div>
+</div>
+"""
         )
-    return "".join(cells)
+    return "".join(rows)
 
 
 def render_goalie_challenge_standings(state, scores):
