@@ -1,0 +1,5653 @@
+{
+  "app_title": "World Cup FC2",
+  "draft_active": true,
+  "teams": {
+    "Benji": {
+      "team_name": "Benji",
+      "color": "#FFD54A",
+      "image": "Benji.png",
+      "national_teams": [
+        "Spain",
+        "Ecuador",
+        "Côte d'Ivoire",
+        "Egypt",
+        "Panama",
+        "Congo DR"
+      ],
+      "star_players": [
+        "Desire Doue (France)",
+        "Julian Alvarez (Argentina)"
+      ]
+    },
+    "Jeff": {
+      "team_name": "Jeff",
+      "color": "#FF7A1A",
+      "image": "Jeff.png",
+      "national_teams": [
+        "France",
+        "Türkiye",
+        "Canada",
+        "Austria",
+        "Uzbekistan",
+        "Qatar"
+      ],
+      "star_players": [
+        "Vinicius Junior (Brazil)",
+        "Lionel Messi (Argentina)"
+      ]
+    },
+    "Peter": {
+      "team_name": "Peter",
+      "color": "#FF2DAA",
+      "image": "Peter.png",
+      "national_teams": [
+        "England",
+        "Morocco",
+        "Sweden",
+        "Korea Republic",
+        "Tunisia",
+        "New Zealand"
+      ],
+      "star_players": [
+        "Michael Olise (France)",
+        "Raphinha (Brazil)"
+      ]
+    },
+    "Chad": {
+      "team_name": "Chad",
+      "color": "#B56CFF",
+      "image": "Chad.png",
+      "national_teams": [
+        "Portugal",
+        "USA",
+        "Senegal",
+        "Paraguay",
+        "Bosnia and Herzegovina",
+        "Cabo Verde"
+      ],
+      "star_players": [
+        "Harry Kane (England)",
+        "Cristiano Ronaldo (Portugal)"
+      ]
+    },
+    "Lamp": {
+      "team_name": "Lamp",
+      "color": "#FF3D3D",
+      "image": "Lamp.png",
+      "national_teams": [
+        "Brazil",
+        "Belgium",
+        "Uruguay",
+        "IR Iran",
+        "Ghana",
+        "Haiti"
+      ],
+      "star_players": [
+        "Erling Haaland (Norway)",
+        "Bukayo Saka (England)"
+      ]
+    },
+    "Herb": {
+      "team_name": "Herb",
+      "color": "#3F7BFF",
+      "image": "Herb.png",
+      "national_teams": [
+        "Germany",
+        "Colombia",
+        "Croatia",
+        "Czechia",
+        "South Africa",
+        "Iraq"
+      ],
+      "star_players": [
+        "Ousmane Dembele (France)",
+        "Lautaro Martinez (Argentina)"
+      ]
+    },
+    "Jayme": {
+      "team_name": "Jayme",
+      "color": "#40FF6A",
+      "image": "Jayme.png",
+      "national_teams": [
+        "Mexico",
+        "Norway",
+        "Japan",
+        "Scotland",
+        "Saudi Arabia",
+        "Curaçao"
+      ],
+      "star_players": [
+        "Lamine Yamal (Spain)",
+        "Luis Diaz (Colombia)"
+      ]
+    },
+    "Spencer": {
+      "team_name": "Spencer",
+      "color": "#00E5FF",
+      "image": "Spencer.png",
+      "national_teams": [
+        "Argentina",
+        "Netherlands",
+        "Switzerland",
+        "Australia",
+        "Algeria",
+        "Jordan"
+      ],
+      "star_players": [
+        "Kylian Mbappe (France)",
+        "Neymar Jr. (Brazil)"
+      ]
+    }
+  },
+  "team_picks": [
+    {
+      "pick": 1,
+      "round": 1,
+      "coach": "Benji",
+      "team": "Spain",
+      "picked_at": "2026-06-07T20:02:02.730432-04:00"
+    },
+    {
+      "pick": 2,
+      "round": 1,
+      "coach": "Jeff",
+      "team": "France",
+      "picked_at": "2026-06-07T20:17:21.152519-04:00"
+    },
+    {
+      "pick": 3,
+      "round": 1,
+      "coach": "Peter",
+      "team": "England",
+      "picked_at": "2026-06-07T21:44:00.171219-04:00"
+    },
+    {
+      "pick": 4,
+      "round": 1,
+      "coach": "Chad",
+      "team": "Portugal",
+      "picked_at": "2026-06-07T21:53:57.802874-04:00"
+    },
+    {
+      "pick": 5,
+      "round": 1,
+      "coach": "Lamp",
+      "team": "Brazil",
+      "picked_at": "2026-06-07T22:38:50.737505-04:00"
+    },
+    {
+      "pick": 6,
+      "round": 1,
+      "coach": "Herb",
+      "team": "Germany",
+      "picked_at": "2026-06-08T07:02:17.515886-04:00"
+    },
+    {
+      "pick": 7,
+      "round": 1,
+      "coach": "Jayme",
+      "team": "Mexico",
+      "picked_at": "2026-06-08T07:10:00.980811-04:00"
+    },
+    {
+      "pick": 8,
+      "round": 1,
+      "coach": "Spencer",
+      "team": "Argentina",
+      "picked_at": "2026-06-08T07:58:09.775644-04:00"
+    },
+    {
+      "pick": 9,
+      "round": 2,
+      "coach": "Spencer",
+      "team": "Netherlands",
+      "picked_at": "2026-06-08T07:59:03.160302-04:00"
+    },
+    {
+      "pick": 10,
+      "round": 2,
+      "coach": "Jayme",
+      "team": "Norway",
+      "picked_at": "2026-06-08T08:05:54.306479-04:00"
+    },
+    {
+      "pick": 11,
+      "round": 2,
+      "coach": "Herb",
+      "team": "Colombia",
+      "picked_at": "2026-06-08T08:45:42.184175-04:00"
+    },
+    {
+      "pick": 12,
+      "round": 2,
+      "coach": "Lamp",
+      "team": "Belgium",
+      "picked_at": "2026-06-08T10:31:19.855415-04:00"
+    },
+    {
+      "pick": 13,
+      "round": 2,
+      "coach": "Chad",
+      "team": "USA",
+      "picked_at": "2026-06-08T10:38:32.440244-04:00"
+    },
+    {
+      "pick": 14,
+      "round": 2,
+      "coach": "Peter",
+      "team": "Morocco",
+      "picked_at": "2026-06-08T12:43:14.006027-04:00"
+    },
+    {
+      "pick": 15,
+      "round": 2,
+      "coach": "Jeff",
+      "team": "Türkiye",
+      "picked_at": "2026-06-08T13:56:51.134518-04:00"
+    },
+    {
+      "pick": 16,
+      "round": 2,
+      "coach": "Benji",
+      "team": "Ecuador",
+      "picked_at": "2026-06-08T14:01:47.045792-04:00"
+    },
+    {
+      "pick": 17,
+      "round": 3,
+      "coach": "Spencer",
+      "team": "Switzerland",
+      "picked_at": "2026-06-08T14:08:57.935789-04:00"
+    },
+    {
+      "pick": 18,
+      "round": 3,
+      "coach": "Jayme",
+      "team": "Japan",
+      "picked_at": "2026-06-08T14:19:09.546066-04:00"
+    },
+    {
+      "pick": 19,
+      "round": 3,
+      "coach": "Herb",
+      "team": "Croatia",
+      "picked_at": "2026-06-08T16:41:32.369290-04:00"
+    },
+    {
+      "pick": 20,
+      "round": 3,
+      "coach": "Lamp",
+      "team": "Uruguay",
+      "picked_at": "2026-06-08T17:56:50.948986-04:00"
+    },
+    {
+      "pick": 21,
+      "round": 3,
+      "coach": "Chad",
+      "team": "Senegal",
+      "picked_at": "2026-06-08T18:10:52.440808-04:00"
+    },
+    {
+      "pick": 22,
+      "round": 3,
+      "coach": "Peter",
+      "team": "Sweden",
+      "picked_at": "2026-06-08T19:23:07.404239-04:00"
+    },
+    {
+      "pick": 23,
+      "round": 3,
+      "coach": "Jeff",
+      "team": "Canada",
+      "picked_at": "2026-06-08T20:07:18.731465-04:00"
+    },
+    {
+      "pick": 24,
+      "round": 3,
+      "coach": "Benji",
+      "team": "Côte d'Ivoire",
+      "picked_at": "2026-06-08T20:56:00.524962-04:00"
+    },
+    {
+      "pick": 25,
+      "round": 4,
+      "coach": "Benji",
+      "team": "Egypt",
+      "picked_at": "2026-06-08T21:01:47.391526-04:00"
+    },
+    {
+      "pick": 26,
+      "round": 4,
+      "coach": "Jeff",
+      "team": "Austria",
+      "picked_at": "2026-06-08T21:32:59.840840-04:00"
+    },
+    {
+      "pick": 27,
+      "round": 4,
+      "coach": "Peter",
+      "team": "Korea Republic",
+      "picked_at": "2026-06-08T21:52:16.980087-04:00"
+    },
+    {
+      "pick": 28,
+      "round": 4,
+      "coach": "Chad",
+      "team": "Paraguay",
+      "picked_at": "2026-06-08T22:06:31.553684-04:00"
+    },
+    {
+      "pick": 29,
+      "round": 4,
+      "coach": "Lamp",
+      "team": "IR Iran",
+      "picked_at": "2026-06-08T22:18:14.616173-04:00"
+    },
+    {
+      "pick": 30,
+      "round": 4,
+      "coach": "Herb",
+      "team": "Czechia",
+      "picked_at": "2026-06-08T22:20:21.934395-04:00"
+    },
+    {
+      "pick": 31,
+      "round": 4,
+      "coach": "Jayme",
+      "team": "Scotland",
+      "picked_at": "2026-06-09T05:38:55.535274-04:00"
+    },
+    {
+      "pick": 32,
+      "round": 4,
+      "coach": "Spencer",
+      "team": "Australia",
+      "picked_at": "2026-06-09T18:01:20.036750-04:00"
+    },
+    {
+      "pick": 33,
+      "round": 5,
+      "coach": "Spencer",
+      "team": "Algeria",
+      "picked_at": "2026-06-09T18:01:24.035546-04:00"
+    },
+    {
+      "pick": 34,
+      "round": 5,
+      "coach": "Jayme",
+      "team": "Saudi Arabia",
+      "picked_at": "2026-06-09T18:19:14.175888-04:00"
+    },
+    {
+      "pick": 35,
+      "round": 5,
+      "coach": "Herb",
+      "team": "South Africa",
+      "picked_at": "2026-06-09T18:49:36.532272-04:00"
+    },
+    {
+      "pick": 36,
+      "round": 5,
+      "coach": "Lamp",
+      "team": "Ghana",
+      "picked_at": "2026-06-09T18:55:06.075906-04:00"
+    },
+    {
+      "pick": 37,
+      "round": 5,
+      "coach": "Chad",
+      "team": "Bosnia and Herzegovina",
+      "picked_at": "2026-06-09T19:06:31.696313-04:00"
+    },
+    {
+      "pick": 38,
+      "round": 5,
+      "coach": "Peter",
+      "team": "Tunisia",
+      "picked_at": "2026-06-09T20:29:33.129335-04:00"
+    },
+    {
+      "pick": 39,
+      "round": 5,
+      "coach": "Jeff",
+      "team": "Uzbekistan",
+      "picked_at": "2026-06-09T20:30:25.936345-04:00"
+    },
+    {
+      "pick": 40,
+      "round": 5,
+      "coach": "Benji",
+      "team": "Panama",
+      "picked_at": "2026-06-09T20:55:00.213848-04:00"
+    },
+    {
+      "pick": 41,
+      "round": 6,
+      "coach": "Benji",
+      "team": "Congo DR",
+      "picked_at": "2026-06-09T20:55:09.911104-04:00"
+    },
+    {
+      "pick": 42,
+      "round": 6,
+      "coach": "Jeff",
+      "team": "Qatar",
+      "picked_at": "2026-06-10T06:08:07.985416-04:00"
+    },
+    {
+      "pick": 43,
+      "round": 6,
+      "coach": "Peter",
+      "team": "New Zealand",
+      "picked_at": "2026-06-10T06:35:24.527678-04:00"
+    },
+    {
+      "pick": 44,
+      "round": 6,
+      "coach": "Chad",
+      "team": "Cabo Verde",
+      "picked_at": "2026-06-10T06:47:10.970420-04:00"
+    },
+    {
+      "pick": 45,
+      "round": 6,
+      "coach": "Lamp",
+      "team": "Haiti",
+      "picked_at": "2026-06-10T07:09:12.576117-04:00"
+    },
+    {
+      "pick": 46,
+      "round": 6,
+      "coach": "Herb",
+      "team": "Iraq",
+      "picked_at": "2026-06-10T09:24:50.737806-04:00"
+    },
+    {
+      "pick": 47,
+      "round": 6,
+      "coach": "Jayme",
+      "team": "Curaçao",
+      "picked_at": "2026-06-10T10:22:27.070835-04:00"
+    },
+    {
+      "pick": 48,
+      "round": 6,
+      "coach": "Spencer",
+      "team": "Jordan",
+      "picked_at": "2026-06-10T10:22:45.102043-04:00"
+    }
+  ],
+  "player_picks": [
+    {
+      "pick": 49,
+      "round": 1,
+      "coach": "Spencer",
+      "player": "Kylian Mbappe (France)",
+      "picked_at": "2026-06-10T17:44:45.823226-04:00"
+    },
+    {
+      "pick": 50,
+      "round": 1,
+      "coach": "Jayme",
+      "player": "Lamine Yamal (Spain)",
+      "picked_at": "2026-06-10T17:46:35.820780-04:00"
+    },
+    {
+      "pick": 51,
+      "round": 1,
+      "coach": "Herb",
+      "player": "Ousmane Dembele (France)",
+      "picked_at": "2026-06-10T18:10:24.890382-04:00"
+    },
+    {
+      "pick": 52,
+      "round": 1,
+      "coach": "Lamp",
+      "player": "Erling Haaland (Norway)",
+      "picked_at": "2026-06-10T18:13:31.360351-04:00"
+    },
+    {
+      "pick": 53,
+      "round": 1,
+      "coach": "Chad",
+      "player": "Harry Kane (England)",
+      "picked_at": "2026-06-10T21:23:08.178581-04:00"
+    },
+    {
+      "pick": 54,
+      "round": 1,
+      "coach": "Peter",
+      "player": "Michael Olise (France)",
+      "picked_at": "2026-06-10T21:48:56.362287-04:00"
+    },
+    {
+      "pick": 55,
+      "round": 1,
+      "coach": "Jeff",
+      "player": "Vinicius Junior (Brazil)",
+      "picked_at": "2026-06-10T22:11:28.894092-04:00"
+    },
+    {
+      "pick": 56,
+      "round": 1,
+      "coach": "Benji",
+      "player": "Desire Doue (France)",
+      "picked_at": "2026-06-10T22:19:30.372529-04:00"
+    },
+    {
+      "pick": 57,
+      "round": 2,
+      "coach": "Benji",
+      "player": "Julian Alvarez (Argentina)",
+      "picked_at": "2026-06-10T22:20:18.364829-04:00"
+    },
+    {
+      "pick": 58,
+      "round": 2,
+      "coach": "Jeff",
+      "player": "Lionel Messi (Argentina)",
+      "picked_at": "2026-06-10T22:31:22.355980-04:00"
+    },
+    {
+      "pick": 59,
+      "round": 2,
+      "coach": "Peter",
+      "player": "Raphinha (Brazil)",
+      "picked_at": "2026-06-10T22:44:32.626075-04:00"
+    },
+    {
+      "pick": 60,
+      "round": 2,
+      "coach": "Chad",
+      "player": "Cristiano Ronaldo (Portugal)",
+      "picked_at": "2026-06-11T06:46:18.382386-04:00"
+    },
+    {
+      "pick": 61,
+      "round": 2,
+      "coach": "Lamp",
+      "player": "Bukayo Saka (England)",
+      "picked_at": "2026-06-11T06:50:53.285949-04:00"
+    },
+    {
+      "pick": 62,
+      "round": 2,
+      "coach": "Herb",
+      "player": "Lautaro Martinez (Argentina)",
+      "picked_at": "2026-06-11T11:45:10.903432-04:00"
+    },
+    {
+      "pick": 63,
+      "round": 2,
+      "coach": "Jayme",
+      "player": "Luis Diaz (Colombia)",
+      "picked_at": "2026-06-11T13:16:14.684528-04:00"
+    },
+    {
+      "pick": 64,
+      "round": 2,
+      "coach": "Spencer",
+      "player": "Neymar Jr. (Brazil)",
+      "picked_at": "2026-06-11T13:33:12.940114-04:00"
+    }
+  ],
+  "players": [
+    "Lamine Yamal (Spain)",
+    "Kylian Mbappe (France)",
+    "Harry Kane (England)",
+    "Ousmane Dembele (France)",
+    "Michael Olise (France)",
+    "Erling Haaland (Norway)",
+    "Vinicius Junior (Brazil)",
+    "Julian Alvarez (Argentina)",
+    "Raphinha (Brazil)",
+    "Lionel Messi (Argentina)",
+    "Luis Diaz (Colombia)",
+    "Antoine Semenyo (Ghana)",
+    "Lautaro Martinez (Argentina)",
+    "Bukayo Saka (England)",
+    "Desire Doue (France)",
+    "Jeremy Doku (Belgium)",
+    "Cristiano Ronaldo (Portugal)",
+    "Neymar Jr. (Brazil)",
+    "Sadio Mane (Senegal)",
+    "Nico Williams (Spain)",
+    "Mohamed Salah (Egypt)",
+    "Omar Marmoush (Egypt)",
+    "Patrick Schick (Czechia)",
+    "Victor Gyokeres (Sweden)",
+    "Arda Guler (Türkiye)"
+  ],
+  "odds": {
+    "Spain": "+400",
+    "France": "+450",
+    "England": "+600",
+    "Brazil": "+800",
+    "Argentina": "+800",
+    "Portugal": "+800",
+    "Germany": "+1400",
+    "Netherlands": "+2000",
+    "Norway": "+2500",
+    "Belgium": "+3300",
+    "Colombia": "+3300",
+    "Morocco": "+5000",
+    "Japan": "+5000",
+    "USA": "+6600",
+    "Mexico": "+6600",
+    "Uruguay": "+6600",
+    "Switzerland": "+8000",
+    "Croatia": "+8000",
+    "Türkiye": "+8000",
+    "Ecuador": "+10000",
+    "Sweden": "+10000",
+    "Senegal": "+15000",
+    "Canada": "+15000",
+    "Austria": "+15000",
+    "Paraguay": "+15000",
+    "Scotland": "+25000",
+    "Bosnia and Herzegovina": "+25000",
+    "Côte d'Ivoire": "+30000",
+    "Czechia": "+30000",
+    "Egypt": "+30000",
+    "Ghana": "+35000",
+    "Algeria": "+40000",
+    "Korea Republic": "+40000",
+    "Australia": "+50000",
+    "Tunisia": "+50000",
+    "IR Iran": "+50000",
+    "Congo DR": "+75000",
+    "South Africa": "+90000",
+    "Saudi Arabia": "+100000",
+    "Qatar": "+100000",
+    "Panama": "+100000",
+    "Iraq": "+100000",
+    "New Zealand": "+100000",
+    "Cabo Verde": "+100000",
+    "Uzbekistan": "+100000",
+    "Jordan": "+100000",
+    "Haiti": "+100000",
+    "Curaçao": "+100000"
+  },
+  "expected_points": {
+    "Spain": 54.0,
+    "France": 54.0,
+    "England": 44.0,
+    "Brazil": 44.0,
+    "Argentina": 44.0,
+    "Portugal": 44.0,
+    "Germany": 35.0,
+    "Netherlands": 35.0,
+    "Norway": 35.0,
+    "Belgium": 26.0,
+    "Colombia": 26.0,
+    "Morocco": 26.0,
+    "Japan": 26.0,
+    "USA": 26.0,
+    "Mexico": 26.0,
+    "Uruguay": 26.0,
+    "Switzerland": 18.0,
+    "Croatia": 18.0,
+    "Türkiye": 18.0,
+    "Ecuador": 18.0,
+    "Sweden": 18.0,
+    "Senegal": 18.0,
+    "Canada": 18.0,
+    "Austria": 18.0,
+    "Paraguay": 18.0,
+    "Scotland": 12.0,
+    "Bosnia and Herzegovina": 12.0,
+    "Côte d'Ivoire": 12.0,
+    "Czechia": 12.0,
+    "Egypt": 12.0,
+    "Ghana": 12.0,
+    "Algeria": 12.0,
+    "Korea Republic": 12.0,
+    "Australia": 7.0,
+    "Tunisia": 7.0,
+    "IR Iran": 7.0,
+    "Congo DR": 7.0,
+    "South Africa": 7.0,
+    "Saudi Arabia": 7.0,
+    "Qatar": 7.0,
+    "Panama": 7.0,
+    "Iraq": 7.0,
+    "New Zealand": 7.0,
+    "Cabo Verde": 7.0,
+    "Uzbekistan": 7.0,
+    "Jordan": 7.0,
+    "Haiti": 7.0,
+    "Curaçao": 7.0
+  },
+  "matches": [
+    {
+      "id": "537327",
+      "date": "2026-06-11T19:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_A",
+      "matchday": 1,
+      "home": "Mexico",
+      "away": "South Africa",
+      "home_score": 2,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 2,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 9,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Mexico",
+          "scorer": "Julián Quiñones",
+          "assist": "Erik Lira"
+        },
+        {
+          "minute": 67,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Mexico",
+          "scorer": "Raúl Jiménez",
+          "assist": "Roberto Alvarado"
+        }
+      ]
+    },
+    {
+      "id": "537328",
+      "date": "2026-06-12T02:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_A",
+      "matchday": 1,
+      "home": "Korea Republic",
+      "away": "Czechia",
+      "home_score": 2,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 2,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 59,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Czechia",
+          "scorer": "Ladislav Krejčí",
+          "assist": "Vladimir Coufal"
+        },
+        {
+          "minute": 67,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Korea Republic",
+          "scorer": "In-beom Hwang",
+          "assist": "Kang-in Lee"
+        },
+        {
+          "minute": 80,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Korea Republic",
+          "scorer": "Hyun-Gyu Oh",
+          "assist": "In-beom Hwang"
+        }
+      ]
+    },
+    {
+      "id": "537333",
+      "date": "2026-06-12T19:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_B",
+      "matchday": 1,
+      "home": "Canada",
+      "away": "Bosnia and Herzegovina",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 1,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 21,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Bosnia and Herzegovina",
+          "scorer": "Jovo Lukić",
+          "assist": "Sead Kolašinac"
+        },
+        {
+          "minute": 78,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Canada",
+          "scorer": "Cyle Larin",
+          "assist": "Promise Akinpelu"
+        }
+      ]
+    },
+    {
+      "id": "537345",
+      "date": "2026-06-13T01:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_D",
+      "matchday": 1,
+      "home": "USA",
+      "away": "Paraguay",
+      "home_score": 4,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 4,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 7,
+          "injury_time": null,
+          "type": "OWN",
+          "team": "Paraguay",
+          "scorer": "Damian Bobadilla",
+          "assist": ""
+        },
+        {
+          "minute": 31,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "USA",
+          "scorer": "Folarin Balogun",
+          "assist": "Christian Pulisic"
+        },
+        {
+          "minute": 45,
+          "injury_time": 5,
+          "type": "REGULAR",
+          "team": "USA",
+          "scorer": "Folarin Balogun",
+          "assist": ""
+        },
+        {
+          "minute": 73,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Paraguay",
+          "scorer": "Mauricio",
+          "assist": "Julio Enciso"
+        },
+        {
+          "minute": 90,
+          "injury_time": 8,
+          "type": "REGULAR",
+          "team": "USA",
+          "scorer": "Gio Reyna",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537334",
+      "date": "2026-06-13T19:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_B",
+      "matchday": 1,
+      "home": "Qatar",
+      "away": "Switzerland",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 1,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 17,
+          "injury_time": null,
+          "type": "PENALTY",
+          "team": "Switzerland",
+          "scorer": "Breel Embolo",
+          "assist": ""
+        },
+        {
+          "minute": 90,
+          "injury_time": 4,
+          "type": "REGULAR",
+          "team": "Qatar",
+          "scorer": "Boualem Khoukhi",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537339",
+      "date": "2026-06-13T22:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_C",
+      "matchday": 1,
+      "home": "Brazil",
+      "away": "Morocco",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 1,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 21,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Morocco",
+          "scorer": "Ismael Saibari",
+          "assist": "Brahim Diaz"
+        },
+        {
+          "minute": 32,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Brazil",
+          "scorer": "Vinicius Junior",
+          "assist": "Bruno Guimarães"
+        }
+      ]
+    },
+    {
+      "id": "537340",
+      "date": "2026-06-14T01:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_C",
+      "matchday": 1,
+      "home": "Haiti",
+      "away": "Scotland",
+      "home_score": 0,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 0,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 28,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Scotland",
+          "scorer": "John McGinn",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537346",
+      "date": "2026-06-14T04:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_D",
+      "matchday": 1,
+      "home": "Australia",
+      "away": "Türkiye",
+      "home_score": 2,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 2,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 27,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Australia",
+          "scorer": "Nestor Irankunda",
+          "assist": "Paul Okon-Engstler"
+        },
+        {
+          "minute": 75,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Australia",
+          "scorer": "Connor Metcalfe",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537351",
+      "date": "2026-06-14T17:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_E",
+      "matchday": 1,
+      "home": "Germany",
+      "away": "Curaçao",
+      "home_score": 7,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 7,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 6,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Germany",
+          "scorer": "Felix Kalu Nmecha",
+          "assist": "Florian Wirtz"
+        },
+        {
+          "minute": 21,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Curaçao",
+          "scorer": "Livano Comenencia",
+          "assist": ""
+        },
+        {
+          "minute": 38,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Germany",
+          "scorer": "Nico Schlotterbeck",
+          "assist": "Nathaniel Brown"
+        },
+        {
+          "minute": 45,
+          "injury_time": 5,
+          "type": "PENALTY",
+          "team": "Germany",
+          "scorer": "Kai Havertz",
+          "assist": ""
+        },
+        {
+          "minute": 47,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Germany",
+          "scorer": "Jamal Musiala",
+          "assist": "Joshua Kimmich"
+        },
+        {
+          "minute": 68,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Germany",
+          "scorer": "Nathaniel Brown",
+          "assist": "Deniz Undav"
+        },
+        {
+          "minute": 78,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Germany",
+          "scorer": "Deniz Undav",
+          "assist": "Joshua Kimmich"
+        },
+        {
+          "minute": 88,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Germany",
+          "scorer": "Kai Havertz",
+          "assist": "Deniz Undav"
+        }
+      ]
+    },
+    {
+      "id": "537357",
+      "date": "2026-06-14T20:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_F",
+      "matchday": 1,
+      "home": "Netherlands",
+      "away": "Japan",
+      "home_score": 2,
+      "away_score": 2,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 2,
+          "away": 2
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 51,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Netherlands",
+          "scorer": "Virgil van Dijk",
+          "assist": "Ryan Gravenberch"
+        },
+        {
+          "minute": 57,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Japan",
+          "scorer": "Keito Nakamura",
+          "assist": "Takefusa Kubo"
+        },
+        {
+          "minute": 64,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Netherlands",
+          "scorer": "Crysencio Summerville",
+          "assist": "Ryan Gravenberch"
+        },
+        {
+          "minute": 89,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Japan",
+          "scorer": "Daichi Kamada",
+          "assist": "Koki Ogawa"
+        }
+      ]
+    },
+    {
+      "id": "537352",
+      "date": "2026-06-14T23:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_E",
+      "matchday": 1,
+      "home": "Côte d'Ivoire",
+      "away": "Ecuador",
+      "home_score": 1,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 1,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 90,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Côte d'Ivoire",
+          "scorer": "Amad Diallo",
+          "assist": "Wilfried Singo"
+        }
+      ]
+    },
+    {
+      "id": "537358",
+      "date": "2026-06-15T02:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_F",
+      "matchday": 1,
+      "home": "Sweden",
+      "away": "Tunisia",
+      "home_score": 5,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 5,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 7,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Sweden",
+          "scorer": "Yasin Ayari",
+          "assist": ""
+        },
+        {
+          "minute": 30,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Sweden",
+          "scorer": "Alexander Isak",
+          "assist": "Viktor Gyökeres"
+        },
+        {
+          "minute": 43,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Tunisia",
+          "scorer": "Omar Rekik",
+          "assist": "Hannibal Mejbri"
+        },
+        {
+          "minute": 59,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Sweden",
+          "scorer": "Viktor Gyökeres",
+          "assist": "Alexander Isak"
+        },
+        {
+          "minute": 84,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Sweden",
+          "scorer": "Mattias Svanberg",
+          "assist": "Alexander Isak"
+        },
+        {
+          "minute": 90,
+          "injury_time": 6,
+          "type": "REGULAR",
+          "team": "Sweden",
+          "scorer": "Yasin Ayari",
+          "assist": "Lucas Bergvall"
+        }
+      ]
+    },
+    {
+      "id": "537369",
+      "date": "2026-06-15T16:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_H",
+      "matchday": 1,
+      "home": "Spain",
+      "away": "Cabo Verde",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 0,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537363",
+      "date": "2026-06-15T19:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_G",
+      "matchday": 1,
+      "home": "Belgium",
+      "away": "Egypt",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 1,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 19,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Egypt",
+          "scorer": "Emam Ashour",
+          "assist": "Mohamed Salah"
+        },
+        {
+          "minute": 66,
+          "injury_time": null,
+          "type": "OWN",
+          "team": "Egypt",
+          "scorer": "Mohamed Hany",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537370",
+      "date": "2026-06-15T22:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_H",
+      "matchday": 1,
+      "home": "Saudi Arabia",
+      "away": "Uruguay",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 1,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 41,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Saudi Arabia",
+          "scorer": "Abdulelah Al Amri",
+          "assist": ""
+        },
+        {
+          "minute": 80,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Uruguay",
+          "scorer": "Maximiliano Araújo",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537364",
+      "date": "2026-06-16T01:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_G",
+      "matchday": 1,
+      "home": "IR Iran",
+      "away": "New Zealand",
+      "home_score": 2,
+      "away_score": 2,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 2,
+          "away": 2
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 7,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "New Zealand",
+          "scorer": "Elijah Just",
+          "assist": "Chris Wood"
+        },
+        {
+          "minute": 32,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "IR Iran",
+          "scorer": "Ramin Rezaeian",
+          "assist": ""
+        },
+        {
+          "minute": 54,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "New Zealand",
+          "scorer": "Elijah Just",
+          "assist": "Chris Wood"
+        },
+        {
+          "minute": 64,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "IR Iran",
+          "scorer": "Mohammad Mohebi",
+          "assist": "Ramin Rezaeian"
+        }
+      ]
+    },
+    {
+      "id": "537391",
+      "date": "2026-06-16T19:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_I",
+      "matchday": 1,
+      "home": "France",
+      "away": "Senegal",
+      "home_score": 3,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 3,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 66,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "France",
+          "scorer": "Kylian Mbappé",
+          "assist": "Michael Olise"
+        },
+        {
+          "minute": 82,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "France",
+          "scorer": "Bradley Barcola",
+          "assist": "Adrien Rabiot"
+        },
+        {
+          "minute": 90,
+          "injury_time": 5,
+          "type": "REGULAR",
+          "team": "Senegal",
+          "scorer": "Ibrahim M'Baye",
+          "assist": "Iliman Ndiaye"
+        },
+        {
+          "minute": 90,
+          "injury_time": 6,
+          "type": "REGULAR",
+          "team": "France",
+          "scorer": "Kylian Mbappé",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537392",
+      "date": "2026-06-16T22:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_I",
+      "matchday": 1,
+      "home": "Iraq",
+      "away": "Norway",
+      "home_score": 1,
+      "away_score": 4,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 1,
+          "away": 4
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 29,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Norway",
+          "scorer": "Erling Haaland",
+          "assist": "David Wolfe"
+        },
+        {
+          "minute": 39,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Iraq",
+          "scorer": "Aymen Hussein",
+          "assist": "Amir Al Ammari"
+        },
+        {
+          "minute": 43,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Norway",
+          "scorer": "Erling Haaland",
+          "assist": ""
+        },
+        {
+          "minute": 76,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Norway",
+          "scorer": "Leo Østigård",
+          "assist": "Martin Ødegaard"
+        },
+        {
+          "minute": 90,
+          "injury_time": 6,
+          "type": "OWN",
+          "team": "Iraq",
+          "scorer": "Aymen Hussein",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537397",
+      "date": "2026-06-17T01:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_J",
+      "matchday": 1,
+      "home": "Argentina",
+      "away": "Algeria",
+      "home_score": 3,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 3,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 17,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Argentina",
+          "scorer": "Lionel Messi",
+          "assist": "Rodrigo de Paul"
+        },
+        {
+          "minute": 60,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Argentina",
+          "scorer": "Lionel Messi",
+          "assist": ""
+        },
+        {
+          "minute": 76,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Argentina",
+          "scorer": "Lionel Messi",
+          "assist": "Nicolás González"
+        }
+      ]
+    },
+    {
+      "id": "537398",
+      "date": "2026-06-17T04:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_J",
+      "matchday": 1,
+      "home": "Austria",
+      "away": "Jordan",
+      "home_score": 3,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 3,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 20,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Austria",
+          "scorer": "Romano Schmid",
+          "assist": "Xaver Schlager"
+        },
+        {
+          "minute": 50,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Jordan",
+          "scorer": "Ali Olwan",
+          "assist": "Noor Al Rawabdeh"
+        },
+        {
+          "minute": 76,
+          "injury_time": null,
+          "type": "OWN",
+          "team": "Jordan",
+          "scorer": "Yazan Al Arab",
+          "assist": "Marcel Sabitzer"
+        },
+        {
+          "minute": 90,
+          "injury_time": 12,
+          "type": "PENALTY",
+          "team": "Austria",
+          "scorer": "Marko Arnautovic",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537403",
+      "date": "2026-06-17T17:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_K",
+      "matchday": 1,
+      "home": "Portugal",
+      "away": "Congo DR",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 1,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 6,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Portugal",
+          "scorer": "Joao Neves",
+          "assist": "Pedro Neto"
+        },
+        {
+          "minute": 45,
+          "injury_time": 5,
+          "type": "REGULAR",
+          "team": "Congo DR",
+          "scorer": "Yoane Wissa",
+          "assist": "Arthur Masuaku"
+        }
+      ]
+    },
+    {
+      "id": "537409",
+      "date": "2026-06-17T20:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_L",
+      "matchday": 1,
+      "home": "England",
+      "away": "Croatia",
+      "home_score": 4,
+      "away_score": 2,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 4,
+          "away": 2
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 12,
+          "injury_time": null,
+          "type": "PENALTY",
+          "team": "England",
+          "scorer": "Harry Kane",
+          "assist": "Noni Madueke"
+        },
+        {
+          "minute": 36,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Croatia",
+          "scorer": "Martin Baturina",
+          "assist": "Petar Sucic"
+        },
+        {
+          "minute": 42,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "England",
+          "scorer": "Harry Kane",
+          "assist": "Declan Rice"
+        },
+        {
+          "minute": 45,
+          "injury_time": 5,
+          "type": "REGULAR",
+          "team": "Croatia",
+          "scorer": "Petar Musa",
+          "assist": "Ivan Perišić"
+        },
+        {
+          "minute": 47,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "England",
+          "scorer": "Jude Bellingham",
+          "assist": ""
+        },
+        {
+          "minute": 85,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "England",
+          "scorer": "Marcus Rashford",
+          "assist": "Bukayo Saka"
+        }
+      ]
+    },
+    {
+      "id": "537410",
+      "date": "2026-06-17T23:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_L",
+      "matchday": 1,
+      "home": "Ghana",
+      "away": "Panama",
+      "home_score": 1,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 1,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 90,
+          "injury_time": 5,
+          "type": "REGULAR",
+          "team": "Ghana",
+          "scorer": "Caleb Yirenkyi",
+          "assist": "Brandon Thomas-Asante"
+        }
+      ]
+    },
+    {
+      "id": "537404",
+      "date": "2026-06-18T02:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_K",
+      "matchday": 1,
+      "home": "Uzbekistan",
+      "away": "Colombia",
+      "home_score": 1,
+      "away_score": 3,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 1,
+          "away": 3
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 40,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Colombia",
+          "scorer": "Daniel Muñoz",
+          "assist": "Luis Díaz"
+        },
+        {
+          "minute": 60,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Uzbekistan",
+          "scorer": "Abbosbek Fayzullaev",
+          "assist": ""
+        },
+        {
+          "minute": 65,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Colombia",
+          "scorer": "Luis Díaz",
+          "assist": "Gustavo Puerta"
+        },
+        {
+          "minute": 90,
+          "injury_time": 9,
+          "type": "REGULAR",
+          "team": "Colombia",
+          "scorer": "Jaminton Campaz",
+          "assist": "Cucho Hernández"
+        }
+      ]
+    },
+    {
+      "id": "537329",
+      "date": "2026-06-18T16:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_A",
+      "matchday": 2,
+      "home": "Czechia",
+      "away": "South Africa",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 1,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 6,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Czechia",
+          "scorer": "Michal Sadílek",
+          "assist": "Alexandr Sojka"
+        },
+        {
+          "minute": 83,
+          "injury_time": null,
+          "type": "PENALTY",
+          "team": "South Africa",
+          "scorer": "Teboho Mokoena",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537335",
+      "date": "2026-06-18T19:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_B",
+      "matchday": 2,
+      "home": "Switzerland",
+      "away": "Bosnia and Herzegovina",
+      "home_score": 4,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 4,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 74,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Switzerland",
+          "scorer": "Johan Manzambi",
+          "assist": ""
+        },
+        {
+          "minute": 84,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Switzerland",
+          "scorer": "Ruben Vargas",
+          "assist": "Breel Embolo"
+        },
+        {
+          "minute": 90,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Switzerland",
+          "scorer": "Johan Manzambi",
+          "assist": "Ruben Vargas"
+        },
+        {
+          "minute": 90,
+          "injury_time": 3,
+          "type": "REGULAR",
+          "team": "Bosnia and Herzegovina",
+          "scorer": "Ermin Mahmic",
+          "assist": ""
+        },
+        {
+          "minute": 90,
+          "injury_time": 7,
+          "type": "PENALTY",
+          "team": "Switzerland",
+          "scorer": "Granit Xhaka",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537336",
+      "date": "2026-06-18T22:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_B",
+      "matchday": 2,
+      "home": "Canada",
+      "away": "Qatar",
+      "home_score": 6,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 6,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 16,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Canada",
+          "scorer": "Cyle Larin",
+          "assist": ""
+        },
+        {
+          "minute": 29,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Canada",
+          "scorer": "Jonathan David",
+          "assist": ""
+        },
+        {
+          "minute": 45,
+          "injury_time": 3,
+          "type": "REGULAR",
+          "team": "Canada",
+          "scorer": "Jonathan David",
+          "assist": ""
+        },
+        {
+          "minute": 64,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Canada",
+          "scorer": "Nathan-Dylan Saliba",
+          "assist": ""
+        },
+        {
+          "minute": 75,
+          "injury_time": null,
+          "type": "OWN",
+          "team": "Qatar",
+          "scorer": "Mohamed Al-Mannai",
+          "assist": ""
+        },
+        {
+          "minute": 90,
+          "injury_time": 2,
+          "type": "REGULAR",
+          "team": "Canada",
+          "scorer": "Jonathan David",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537330",
+      "date": "2026-06-19T01:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_A",
+      "matchday": 2,
+      "home": "Mexico",
+      "away": "Korea Republic",
+      "home_score": 1,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 1,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 50,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Mexico",
+          "scorer": "Luis Romo",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537348",
+      "date": "2026-06-19T19:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_D",
+      "matchday": 2,
+      "home": "USA",
+      "away": "Australia",
+      "home_score": 2,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 2,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 11,
+          "injury_time": null,
+          "type": "OWN",
+          "team": "Australia",
+          "scorer": "Cameron Burgess",
+          "assist": ""
+        },
+        {
+          "minute": 43,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "USA",
+          "scorer": "Alex Freeman",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537342",
+      "date": "2026-06-19T22:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_C",
+      "matchday": 2,
+      "home": "Scotland",
+      "away": "Morocco",
+      "home_score": 0,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 0,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 2,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Morocco",
+          "scorer": "Ismael Saibari",
+          "assist": "Brahim Diaz"
+        }
+      ]
+    },
+    {
+      "id": "537341",
+      "date": "2026-06-20T00:30:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_C",
+      "matchday": 2,
+      "home": "Brazil",
+      "away": "Haiti",
+      "home_score": 3,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 3,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 23,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Brazil",
+          "scorer": "Matheus Cunha",
+          "assist": ""
+        },
+        {
+          "minute": 36,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Brazil",
+          "scorer": "Matheus Cunha",
+          "assist": "Vinicius Junior"
+        },
+        {
+          "minute": 45,
+          "injury_time": 3,
+          "type": "REGULAR",
+          "team": "Brazil",
+          "scorer": "Vinicius Junior",
+          "assist": "Lucas Paquetá"
+        }
+      ]
+    },
+    {
+      "id": "537347",
+      "date": "2026-06-20T03:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_D",
+      "matchday": 2,
+      "home": "Türkiye",
+      "away": "Paraguay",
+      "home_score": 0,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 0,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 2,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Paraguay",
+          "scorer": "Matías Galarza",
+          "assist": "Julio Enciso"
+        }
+      ]
+    },
+    {
+      "id": "537359",
+      "date": "2026-06-20T17:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_F",
+      "matchday": 2,
+      "home": "Netherlands",
+      "away": "Sweden",
+      "home_score": 5,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 5,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 5,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Netherlands",
+          "scorer": "Brian Brobbey",
+          "assist": "Cody Gakpo"
+        },
+        {
+          "minute": 17,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Netherlands",
+          "scorer": "Brian Brobbey",
+          "assist": "Denzel Dumfries"
+        },
+        {
+          "minute": 47,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Netherlands",
+          "scorer": "Cody Gakpo",
+          "assist": "Denzel Dumfries"
+        },
+        {
+          "minute": 54,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Netherlands",
+          "scorer": "Cody Gakpo",
+          "assist": "Crysencio Summerville"
+        },
+        {
+          "minute": 59,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Sweden",
+          "scorer": "Anthony Elanga",
+          "assist": "Alexander Isak"
+        },
+        {
+          "minute": 89,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Netherlands",
+          "scorer": "Crysencio Summerville",
+          "assist": "Memphis Depay"
+        }
+      ]
+    },
+    {
+      "id": "537353",
+      "date": "2026-06-20T20:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_E",
+      "matchday": 2,
+      "home": "Germany",
+      "away": "Côte d'Ivoire",
+      "home_score": 2,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 2,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 30,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Côte d'Ivoire",
+          "scorer": "Franck Kessié",
+          "assist": ""
+        },
+        {
+          "minute": 68,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Germany",
+          "scorer": "Deniz Undav",
+          "assist": "Nadiem Amiri"
+        },
+        {
+          "minute": 90,
+          "injury_time": 4,
+          "type": "REGULAR",
+          "team": "Germany",
+          "scorer": "Deniz Undav",
+          "assist": "Felix Kalu Nmecha"
+        }
+      ]
+    },
+    {
+      "id": "537354",
+      "date": "2026-06-21T00:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_E",
+      "matchday": 2,
+      "home": "Ecuador",
+      "away": "Curaçao",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 0,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537360",
+      "date": "2026-06-21T04:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_F",
+      "matchday": 2,
+      "home": "Tunisia",
+      "away": "Japan",
+      "home_score": 0,
+      "away_score": 4,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 0,
+          "away": 4
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 4,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Japan",
+          "scorer": "Daichi Kamada",
+          "assist": "Keito Nakamura"
+        },
+        {
+          "minute": 31,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Japan",
+          "scorer": "Ayase Ueda",
+          "assist": "Ko Itakura"
+        },
+        {
+          "minute": 69,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Japan",
+          "scorer": "Junya Ito",
+          "assist": "Ayase Ueda"
+        },
+        {
+          "minute": 83,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Japan",
+          "scorer": "Ayase Ueda",
+          "assist": "Kaishu Sano"
+        }
+      ]
+    },
+    {
+      "id": "537371",
+      "date": "2026-06-21T16:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_H",
+      "matchday": 2,
+      "home": "Spain",
+      "away": "Saudi Arabia",
+      "home_score": 4,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 4,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 10,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Spain",
+          "scorer": "Lamine Yamal",
+          "assist": "Mikel Oyarzabal"
+        },
+        {
+          "minute": 21,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Spain",
+          "scorer": "Mikel Oyarzabal",
+          "assist": "Aymeric Laporte"
+        },
+        {
+          "minute": 24,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Spain",
+          "scorer": "Mikel Oyarzabal",
+          "assist": "Dani Olmo"
+        },
+        {
+          "minute": 49,
+          "injury_time": null,
+          "type": "OWN",
+          "team": "Saudi Arabia",
+          "scorer": "Hassan Al Tambakti",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537365",
+      "date": "2026-06-21T19:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_G",
+      "matchday": 2,
+      "home": "Belgium",
+      "away": "IR Iran",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 0,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537372",
+      "date": "2026-06-21T22:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_H",
+      "matchday": 2,
+      "home": "Uruguay",
+      "away": "Cabo Verde",
+      "home_score": 2,
+      "away_score": 2,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 2,
+          "away": 2
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 21,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Cabo Verde",
+          "scorer": "Kevin Pina",
+          "assist": ""
+        },
+        {
+          "minute": 44,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Uruguay",
+          "scorer": "Maximiliano Araújo",
+          "assist": ""
+        },
+        {
+          "minute": 45,
+          "injury_time": 6,
+          "type": "REGULAR",
+          "team": "Uruguay",
+          "scorer": "Agustín Canobbio",
+          "assist": "Maximiliano Araújo"
+        },
+        {
+          "minute": 61,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Cabo Verde",
+          "scorer": "Hélio Varela",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537366",
+      "date": "2026-06-22T01:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_G",
+      "matchday": 2,
+      "home": "New Zealand",
+      "away": "Egypt",
+      "home_score": 1,
+      "away_score": 3,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 1,
+          "away": 3
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 15,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "New Zealand",
+          "scorer": "Finn Surman",
+          "assist": "Tim Payne"
+        },
+        {
+          "minute": 58,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Egypt",
+          "scorer": "Mostafa Ziko",
+          "assist": "Mohamed Hany"
+        },
+        {
+          "minute": 67,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Egypt",
+          "scorer": "Mohamed Salah",
+          "assist": "Mostafa Ziko"
+        },
+        {
+          "minute": 82,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Egypt",
+          "scorer": "Trezeguet",
+          "assist": "Mohamed Salah"
+        }
+      ]
+    },
+    {
+      "id": "537399",
+      "date": "2026-06-22T17:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_J",
+      "matchday": 2,
+      "home": "Argentina",
+      "away": "Austria",
+      "home_score": 2,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 2,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 39,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Argentina",
+          "scorer": "Lionel Messi",
+          "assist": "Facundo Medina"
+        },
+        {
+          "minute": 90,
+          "injury_time": 5,
+          "type": "REGULAR",
+          "team": "Argentina",
+          "scorer": "Lionel Messi",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537393",
+      "date": "2026-06-22T21:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_I",
+      "matchday": 2,
+      "home": "France",
+      "away": "Iraq",
+      "home_score": 3,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 3,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 14,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "France",
+          "scorer": "Kylian Mbappé",
+          "assist": "Michael Olise"
+        },
+        {
+          "minute": 54,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "France",
+          "scorer": "Kylian Mbappé",
+          "assist": "Ousmane Dembélé"
+        },
+        {
+          "minute": 66,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "France",
+          "scorer": "Ousmane Dembélé",
+          "assist": "Michael Olise"
+        }
+      ]
+    },
+    {
+      "id": "537394",
+      "date": "2026-06-23T00:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_I",
+      "matchday": 2,
+      "home": "Norway",
+      "away": "Senegal",
+      "home_score": 3,
+      "away_score": 2,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 3,
+          "away": 2
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 43,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Norway",
+          "scorer": "Marcus Pedersen",
+          "assist": ""
+        },
+        {
+          "minute": 48,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Norway",
+          "scorer": "Erling Haaland",
+          "assist": "Martin Ødegaard"
+        },
+        {
+          "minute": 53,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Senegal",
+          "scorer": "Ismaïla Sarr",
+          "assist": ""
+        },
+        {
+          "minute": 58,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Norway",
+          "scorer": "Erling Haaland",
+          "assist": "Patrick Berg"
+        },
+        {
+          "minute": 90,
+          "injury_time": 3,
+          "type": "REGULAR",
+          "team": "Senegal",
+          "scorer": "Ismaïla Sarr",
+          "assist": "Nicolas Jackson"
+        }
+      ]
+    },
+    {
+      "id": "537400",
+      "date": "2026-06-23T03:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_J",
+      "matchday": 2,
+      "home": "Jordan",
+      "away": "Algeria",
+      "home_score": 1,
+      "away_score": 2,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 1,
+          "away": 2
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 36,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Jordan",
+          "scorer": "Nizar Al Rashdan",
+          "assist": "Musa Al Taamari"
+        },
+        {
+          "minute": 69,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Algeria",
+          "scorer": "Nadhir Benbouali",
+          "assist": "Riyad Mahrez"
+        },
+        {
+          "minute": 82,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Algeria",
+          "scorer": "Amine Gouiri",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537405",
+      "date": "2026-06-23T17:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_K",
+      "matchday": 2,
+      "home": "Portugal",
+      "away": "Uzbekistan",
+      "home_score": 5,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 5,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 6,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Portugal",
+          "scorer": "Cristiano Ronaldo",
+          "assist": "João Cancelo"
+        },
+        {
+          "minute": 17,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Portugal",
+          "scorer": "Nuno Mendes",
+          "assist": ""
+        },
+        {
+          "minute": 39,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Portugal",
+          "scorer": "Cristiano Ronaldo",
+          "assist": "Bruno Fernandes"
+        },
+        {
+          "minute": 60,
+          "injury_time": null,
+          "type": "OWN",
+          "team": "Uzbekistan",
+          "scorer": "Abduvakhid Nematov",
+          "assist": ""
+        },
+        {
+          "minute": 87,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Portugal",
+          "scorer": "Rafael Leão",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537411",
+      "date": "2026-06-23T20:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_L",
+      "matchday": 2,
+      "home": "England",
+      "away": "Ghana",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 0,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537412",
+      "date": "2026-06-23T23:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_L",
+      "matchday": 2,
+      "home": "Panama",
+      "away": "Croatia",
+      "home_score": 0,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 0,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 54,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Croatia",
+          "scorer": "Ante Budimir",
+          "assist": "Josip Stanišić"
+        }
+      ]
+    },
+    {
+      "id": "537406",
+      "date": "2026-06-24T02:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_K",
+      "matchday": 2,
+      "home": "Colombia",
+      "away": "Congo DR",
+      "home_score": 1,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 1,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 76,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Colombia",
+          "scorer": "Daniel Muñoz",
+          "assist": "Juan Fernando Quintero"
+        }
+      ]
+    },
+    {
+      "id": "537337",
+      "date": "2026-06-24T19:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_B",
+      "matchday": 3,
+      "home": "Switzerland",
+      "away": "Canada",
+      "home_score": 2,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 2,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 46,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Switzerland",
+          "scorer": "Ruben Vargas",
+          "assist": "Johan Manzambi"
+        },
+        {
+          "minute": 57,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Switzerland",
+          "scorer": "Johan Manzambi",
+          "assist": "Breel Embolo"
+        },
+        {
+          "minute": 76,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Canada",
+          "scorer": "Promise Akinpelu",
+          "assist": "Nathan-Dylan Saliba"
+        }
+      ]
+    },
+    {
+      "id": "537338",
+      "date": "2026-06-24T19:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_B",
+      "matchday": 3,
+      "home": "Bosnia and Herzegovina",
+      "away": "Qatar",
+      "home_score": 3,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 3,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 29,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Bosnia and Herzegovina",
+          "scorer": "Kerim Alajbegović",
+          "assist": "Ivan Bašić"
+        },
+        {
+          "minute": 34,
+          "injury_time": null,
+          "type": "OWN",
+          "team": "Qatar",
+          "scorer": "Mahmoud Abunada",
+          "assist": ""
+        },
+        {
+          "minute": 42,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Qatar",
+          "scorer": "Hassan Al Haydos",
+          "assist": "Edmílson"
+        },
+        {
+          "minute": 80,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Bosnia and Herzegovina",
+          "scorer": "Ermin Mahmic",
+          "assist": "Dennis Hadžikadunić"
+        }
+      ]
+    },
+    {
+      "id": "537344",
+      "date": "2026-06-24T22:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_C",
+      "matchday": 3,
+      "home": "Morocco",
+      "away": "Haiti",
+      "home_score": 4,
+      "away_score": 2,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 4,
+          "away": 2
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 10,
+          "injury_time": null,
+          "type": "OWN",
+          "team": "Morocco",
+          "scorer": "Yassine Bounou",
+          "assist": ""
+        },
+        {
+          "minute": 39,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Morocco",
+          "scorer": "Achraf Hakimi",
+          "assist": ""
+        },
+        {
+          "minute": 43,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Haiti",
+          "scorer": "Wilson Isidor",
+          "assist": "Jean-Kevin Duverne"
+        },
+        {
+          "minute": 45,
+          "injury_time": 1,
+          "type": "REGULAR",
+          "team": "Morocco",
+          "scorer": "Ismael Saibari",
+          "assist": "Achraf Hakimi"
+        },
+        {
+          "minute": 78,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Morocco",
+          "scorer": "Soufiane Rahimi",
+          "assist": "Chadi Riad"
+        },
+        {
+          "minute": 89,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Morocco",
+          "scorer": "Gessime Yassine",
+          "assist": "Soufiane Rahimi"
+        }
+      ]
+    },
+    {
+      "id": "537343",
+      "date": "2026-06-24T22:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_C",
+      "matchday": 3,
+      "home": "Scotland",
+      "away": "Brazil",
+      "home_score": 0,
+      "away_score": 3,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 0,
+          "away": 3
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 7,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Brazil",
+          "scorer": "Vinicius Junior",
+          "assist": ""
+        },
+        {
+          "minute": 45,
+          "injury_time": 3,
+          "type": "REGULAR",
+          "team": "Brazil",
+          "scorer": "Vinicius Junior",
+          "assist": "Bruno Guimarães"
+        },
+        {
+          "minute": 60,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Brazil",
+          "scorer": "Matheus Cunha",
+          "assist": "Bruno Guimarães"
+        }
+      ]
+    },
+    {
+      "id": "537331",
+      "date": "2026-06-25T01:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_A",
+      "matchday": 3,
+      "home": "Czechia",
+      "away": "Mexico",
+      "home_score": 0,
+      "away_score": 3,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 0,
+          "away": 3
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 55,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Mexico",
+          "scorer": "Mateo Chávez",
+          "assist": "Luis Romo"
+        },
+        {
+          "minute": 61,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Mexico",
+          "scorer": "Julián Quiñones",
+          "assist": "Jorge Sánchez"
+        },
+        {
+          "minute": 90,
+          "injury_time": 4,
+          "type": "REGULAR",
+          "team": "Mexico",
+          "scorer": "Álvaro Fidalgo",
+          "assist": "Roberto Alvarado"
+        }
+      ]
+    },
+    {
+      "id": "537332",
+      "date": "2026-06-25T01:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_A",
+      "matchday": 3,
+      "home": "South Africa",
+      "away": "Korea Republic",
+      "home_score": 1,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 1,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 63,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "South Africa",
+          "scorer": "Thapelo Maseko",
+          "assist": "Tshepang Moremi"
+        }
+      ]
+    },
+    {
+      "id": "537355",
+      "date": "2026-06-25T20:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_E",
+      "matchday": 3,
+      "home": "Ecuador",
+      "away": "Germany",
+      "home_score": 2,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 2,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 2,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Germany",
+          "scorer": "Leroy Sané",
+          "assist": "Florian Wirtz"
+        },
+        {
+          "minute": 9,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Ecuador",
+          "scorer": "Nilson Angulo",
+          "assist": "Pedro Vite"
+        },
+        {
+          "minute": 78,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Ecuador",
+          "scorer": "Gonzalo Plata",
+          "assist": "Kevin Rodríguez"
+        }
+      ]
+    },
+    {
+      "id": "537356",
+      "date": "2026-06-25T20:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_E",
+      "matchday": 3,
+      "home": "Curaçao",
+      "away": "Côte d'Ivoire",
+      "home_score": 0,
+      "away_score": 2,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 0,
+          "away": 2
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 7,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Côte d'Ivoire",
+          "scorer": "Nicolas Pépé",
+          "assist": "Yan Diomandé"
+        },
+        {
+          "minute": 64,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Côte d'Ivoire",
+          "scorer": "Nicolas Pépé",
+          "assist": "Ibrahim Sangaré"
+        }
+      ]
+    },
+    {
+      "id": "537361",
+      "date": "2026-06-25T23:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_F",
+      "matchday": 3,
+      "home": "Tunisia",
+      "away": "Netherlands",
+      "home_score": 1,
+      "away_score": 3,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 1,
+          "away": 3
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 3,
+          "injury_time": null,
+          "type": "OWN",
+          "team": "Tunisia",
+          "scorer": "Ellyes Skhiri",
+          "assist": ""
+        },
+        {
+          "minute": 7,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Netherlands",
+          "scorer": "Brian Brobbey",
+          "assist": "Virgil van Dijk"
+        },
+        {
+          "minute": 54,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Tunisia",
+          "scorer": "Hazem Mastouri",
+          "assist": "Hannibal Mejbri"
+        },
+        {
+          "minute": 62,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Netherlands",
+          "scorer": "Jan Paul van Hecke",
+          "assist": "Tijjani Reijnders"
+        }
+      ]
+    },
+    {
+      "id": "537362",
+      "date": "2026-06-25T23:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_F",
+      "matchday": 3,
+      "home": "Japan",
+      "away": "Sweden",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 1,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 56,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Japan",
+          "scorer": "Daizen Maeda",
+          "assist": "Ritsu Doan"
+        },
+        {
+          "minute": 62,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Sweden",
+          "scorer": "Anthony Elanga",
+          "assist": "Viktor Gyökeres"
+        }
+      ]
+    },
+    {
+      "id": "537349",
+      "date": "2026-06-26T02:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_D",
+      "matchday": 3,
+      "home": "Türkiye",
+      "away": "USA",
+      "home_score": 3,
+      "away_score": 2,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 3,
+          "away": 2
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 3,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "USA",
+          "scorer": "Auston Trusty",
+          "assist": "Sebastian Berhalter"
+        },
+        {
+          "minute": 10,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Türkiye",
+          "scorer": "Arda Guler",
+          "assist": "Baris Yilmaz"
+        },
+        {
+          "minute": 31,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Türkiye",
+          "scorer": "Orkun Kökçü",
+          "assist": "Evren Eren Elmalı"
+        },
+        {
+          "minute": 49,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "USA",
+          "scorer": "Sebastian Berhalter",
+          "assist": ""
+        },
+        {
+          "minute": 90,
+          "injury_time": 8,
+          "type": "REGULAR",
+          "team": "Türkiye",
+          "scorer": "Kaan Ayhan",
+          "assist": "Can Uzun"
+        }
+      ]
+    },
+    {
+      "id": "537350",
+      "date": "2026-06-26T02:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_D",
+      "matchday": 3,
+      "home": "Paraguay",
+      "away": "Australia",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 0,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537395",
+      "date": "2026-06-26T19:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_I",
+      "matchday": 3,
+      "home": "Norway",
+      "away": "France",
+      "home_score": 1,
+      "away_score": 4,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 1,
+          "away": 4
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 7,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "France",
+          "scorer": "Ousmane Dembélé",
+          "assist": "Kylian Mbappé"
+        },
+        {
+          "minute": 20,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "France",
+          "scorer": "Ousmane Dembélé",
+          "assist": "Kylian Mbappé"
+        },
+        {
+          "minute": 21,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Norway",
+          "scorer": "Thelo Aasgaard",
+          "assist": "Andreas Schjelderup"
+        },
+        {
+          "minute": 32,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "France",
+          "scorer": "Ousmane Dembélé",
+          "assist": "Aurélien Tchouameni"
+        },
+        {
+          "minute": 90,
+          "injury_time": 4,
+          "type": "REGULAR",
+          "team": "France",
+          "scorer": "Desire Doue",
+          "assist": "Bradley Barcola"
+        }
+      ]
+    },
+    {
+      "id": "537396",
+      "date": "2026-06-26T19:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_I",
+      "matchday": 3,
+      "home": "Senegal",
+      "away": "Iraq",
+      "home_score": 5,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 5,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 4,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Senegal",
+          "scorer": "Habib Diarra",
+          "assist": "Abdoulaye Seck"
+        },
+        {
+          "minute": 56,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Senegal",
+          "scorer": "Ismaïla Sarr",
+          "assist": "Lamine Camara"
+        },
+        {
+          "minute": 59,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Senegal",
+          "scorer": "Pape Gueye",
+          "assist": "Ismaïla Sarr"
+        },
+        {
+          "minute": 71,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Senegal",
+          "scorer": "Pape Gueye",
+          "assist": "Iliman Ndiaye"
+        },
+        {
+          "minute": 82,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Senegal",
+          "scorer": "Iliman Ndiaye",
+          "assist": "Pape Gueye"
+        }
+      ]
+    },
+    {
+      "id": "537373",
+      "date": "2026-06-27T00:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_H",
+      "matchday": 3,
+      "home": "Uruguay",
+      "away": "Spain",
+      "home_score": 0,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 0,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 42,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Spain",
+          "scorer": "Álex Baena",
+          "assist": "Marcos Llorente"
+        }
+      ]
+    },
+    {
+      "id": "537374",
+      "date": "2026-06-27T00:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_H",
+      "matchday": 3,
+      "home": "Cabo Verde",
+      "away": "Saudi Arabia",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 0,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537367",
+      "date": "2026-06-27T03:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_G",
+      "matchday": 3,
+      "home": "New Zealand",
+      "away": "Belgium",
+      "home_score": 1,
+      "away_score": 5,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 1,
+          "away": 5
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 28,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Belgium",
+          "scorer": "Leandro Trossard",
+          "assist": ""
+        },
+        {
+          "minute": 50,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Belgium",
+          "scorer": "Leandro Trossard",
+          "assist": ""
+        },
+        {
+          "minute": 66,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Belgium",
+          "scorer": "Kevin De Bruyne",
+          "assist": ""
+        },
+        {
+          "minute": 84,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "New Zealand",
+          "scorer": "Elijah Just",
+          "assist": ""
+        },
+        {
+          "minute": 86,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Belgium",
+          "scorer": "Romelu Lukaku",
+          "assist": "Nicolas Raskin"
+        },
+        {
+          "minute": 90,
+          "injury_time": 4,
+          "type": "REGULAR",
+          "team": "Belgium",
+          "scorer": "Alexis Saelemaekers",
+          "assist": "Romelu Lukaku"
+        }
+      ]
+    },
+    {
+      "id": "537368",
+      "date": "2026-06-27T03:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_G",
+      "matchday": 3,
+      "home": "Egypt",
+      "away": "IR Iran",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 1,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 5,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Egypt",
+          "scorer": "Mahmoud Saber",
+          "assist": ""
+        },
+        {
+          "minute": 14,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "IR Iran",
+          "scorer": "Ramin Rezaeian",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537413",
+      "date": "2026-06-27T21:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_L",
+      "matchday": 3,
+      "home": "Panama",
+      "away": "England",
+      "home_score": 0,
+      "away_score": 2,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 0,
+          "away": 2
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 62,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "England",
+          "scorer": "Jude Bellingham",
+          "assist": "Bukayo Saka"
+        },
+        {
+          "minute": 67,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "England",
+          "scorer": "Harry Kane",
+          "assist": "Jude Bellingham"
+        }
+      ]
+    },
+    {
+      "id": "537414",
+      "date": "2026-06-27T21:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_L",
+      "matchday": 3,
+      "home": "Croatia",
+      "away": "Ghana",
+      "home_score": 2,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 2,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 31,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Croatia",
+          "scorer": "Petar Sucic",
+          "assist": "Mateo Kovačić"
+        },
+        {
+          "minute": 73,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Ghana",
+          "scorer": "Derrick Luckassen",
+          "assist": "Ernest Nuamah"
+        },
+        {
+          "minute": 83,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Croatia",
+          "scorer": "Nikola Vlašić",
+          "assist": "Luka Modrić"
+        }
+      ]
+    },
+    {
+      "id": "537407",
+      "date": "2026-06-27T23:30:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_K",
+      "matchday": 3,
+      "home": "Colombia",
+      "away": "Portugal",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 0,
+          "away": 0
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537408",
+      "date": "2026-06-27T23:30:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_K",
+      "matchday": 3,
+      "home": "Congo DR",
+      "away": "Uzbekistan",
+      "home_score": 3,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "HOME_TEAM",
+        "full_time": {
+          "home": 3,
+          "away": 1
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 10,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Uzbekistan",
+          "scorer": "Eldor Shomurodov",
+          "assist": "Akmal Mozgovoy"
+        },
+        {
+          "minute": 68,
+          "injury_time": null,
+          "type": "PENALTY",
+          "team": "Congo DR",
+          "scorer": "Yoane Wissa",
+          "assist": ""
+        },
+        {
+          "minute": 78,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Congo DR",
+          "scorer": "Fiston Mayele",
+          "assist": ""
+        },
+        {
+          "minute": 90,
+          "injury_time": 1,
+          "type": "REGULAR",
+          "team": "Congo DR",
+          "scorer": "Yoane Wissa",
+          "assist": "Meschack Elia"
+        }
+      ]
+    },
+    {
+      "id": "537401",
+      "date": "2026-06-28T02:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_J",
+      "matchday": 3,
+      "home": "Jordan",
+      "away": "Argentina",
+      "home_score": 1,
+      "away_score": 3,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "AWAY_TEAM",
+        "full_time": {
+          "home": 1,
+          "away": 3
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 19,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Argentina",
+          "scorer": "Giovani Lo Celso",
+          "assist": ""
+        },
+        {
+          "minute": 31,
+          "injury_time": null,
+          "type": "PENALTY",
+          "team": "Argentina",
+          "scorer": "Lautaro Martínez",
+          "assist": ""
+        },
+        {
+          "minute": 55,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Jordan",
+          "scorer": "Musa Al Taamari",
+          "assist": "Ehsan Haddad"
+        },
+        {
+          "minute": 80,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Argentina",
+          "scorer": "Lionel Messi",
+          "assist": ""
+        }
+      ]
+    },
+    {
+      "id": "537402",
+      "date": "2026-06-28T02:00:00Z",
+      "stage": "Group Stage",
+      "group": "GROUP_J",
+      "matchday": 3,
+      "home": "Algeria",
+      "away": "Austria",
+      "home_score": 3,
+      "away_score": 3,
+      "status": "Finished",
+      "minute": 90,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": "DRAW",
+        "full_time": {
+          "home": 3,
+          "away": 3
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 28,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Austria",
+          "scorer": "Marko Arnautovic",
+          "assist": "David Alaba"
+        },
+        {
+          "minute": 45,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Algeria",
+          "scorer": "Rafik Belghali",
+          "assist": "Riyad Mahrez"
+        },
+        {
+          "minute": 55,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Austria",
+          "scorer": "Marcel Sabitzer",
+          "assist": "Konrad Laimer"
+        },
+        {
+          "minute": 60,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Algeria",
+          "scorer": "Riyad Mahrez",
+          "assist": "Houssem Aouar"
+        },
+        {
+          "minute": 90,
+          "injury_time": 3,
+          "type": "REGULAR",
+          "team": "Algeria",
+          "scorer": "Riyad Mahrez",
+          "assist": ""
+        },
+        {
+          "minute": 90,
+          "injury_time": 6,
+          "type": "REGULAR",
+          "team": "Austria",
+          "scorer": "Saša Kalajdžić",
+          "assist": "Michael Gregoritsch"
+        }
+      ]
+    },
+    {
+      "id": "537417",
+      "date": "2026-06-28T19:00:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "South Africa",
+      "away": "Canada",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537423",
+      "date": "2026-06-29T17:00:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "Brazil",
+      "away": "Japan",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537415",
+      "date": "2026-06-29T20:30:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "Germany",
+      "away": "Paraguay",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537418",
+      "date": "2026-06-30T01:00:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "Netherlands",
+      "away": "Morocco",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537424",
+      "date": "2026-06-30T17:00:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "Côte d'Ivoire",
+      "away": "Norway",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537416",
+      "date": "2026-06-30T21:00:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "France",
+      "away": "Sweden",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537425",
+      "date": "2026-07-01T01:00:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "Mexico",
+      "away": "Ecuador",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537426",
+      "date": "2026-07-01T16:00:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "England",
+      "away": "Congo DR",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537422",
+      "date": "2026-07-01T20:00:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "Belgium",
+      "away": "Senegal",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537421",
+      "date": "2026-07-02T00:00:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "USA",
+      "away": "Bosnia and Herzegovina",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537420",
+      "date": "2026-07-02T19:00:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "Spain",
+      "away": "Austria",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537419",
+      "date": "2026-07-02T23:00:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "Portugal",
+      "away": "Croatia",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537429",
+      "date": "2026-07-03T03:00:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "Switzerland",
+      "away": "Algeria",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537428",
+      "date": "2026-07-03T18:00:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "Australia",
+      "away": "Egypt",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537427",
+      "date": "2026-07-03T22:00:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "Argentina",
+      "away": "Cabo Verde",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537430",
+      "date": "2026-07-04T01:30:00Z",
+      "stage": "Last 32",
+      "group": null,
+      "matchday": null,
+      "home": "Colombia",
+      "away": "Ghana",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    }
+  ],
+  "player_stats": {
+    "Lamine Yamal (Spain)": {
+      "goals": 1,
+      "assists": 0,
+      "group_goals": 1,
+      "group_assists": 0
+    },
+    "Kylian Mbappe (France)": {
+      "goals": 4,
+      "assists": 2,
+      "group_goals": 4,
+      "group_assists": 2
+    },
+    "Harry Kane (England)": {
+      "goals": 3,
+      "assists": 0,
+      "group_goals": 3,
+      "group_assists": 0
+    },
+    "Ousmane Dembele (France)": {
+      "goals": 4,
+      "assists": 1,
+      "group_goals": 4,
+      "group_assists": 1
+    },
+    "Michael Olise (France)": {
+      "goals": 0,
+      "assists": 3,
+      "group_goals": 0,
+      "group_assists": 3
+    },
+    "Erling Haaland (Norway)": {
+      "goals": 4,
+      "assists": 0,
+      "group_goals": 4,
+      "group_assists": 0
+    },
+    "Vinicius Junior (Brazil)": {
+      "goals": 4,
+      "assists": 1,
+      "group_goals": 4,
+      "group_assists": 1
+    },
+    "Julian Alvarez (Argentina)": {
+      "goals": 0,
+      "assists": 0,
+      "group_goals": 0,
+      "group_assists": 0
+    },
+    "Raphinha (Brazil)": {
+      "goals": 0,
+      "assists": 0,
+      "group_goals": 0,
+      "group_assists": 0
+    },
+    "Lionel Messi (Argentina)": {
+      "goals": 6,
+      "assists": 0,
+      "group_goals": 6,
+      "group_assists": 0
+    },
+    "Luis Diaz (Colombia)": {
+      "goals": 1,
+      "assists": 1,
+      "group_goals": 1,
+      "group_assists": 1
+    },
+    "Antoine Semenyo (Ghana)": {
+      "goals": 0,
+      "assists": 0,
+      "group_goals": 0,
+      "group_assists": 0
+    },
+    "Lautaro Martinez (Argentina)": {
+      "goals": 1,
+      "assists": 0,
+      "group_goals": 1,
+      "group_assists": 0
+    },
+    "Bukayo Saka (England)": {
+      "goals": 0,
+      "assists": 2,
+      "group_goals": 0,
+      "group_assists": 2
+    },
+    "Desire Doue (France)": {
+      "goals": 1,
+      "assists": 0,
+      "group_goals": 1,
+      "group_assists": 0
+    },
+    "Jeremy Doku (Belgium)": {
+      "goals": 0,
+      "assists": 0,
+      "group_goals": 0,
+      "group_assists": 0
+    },
+    "Cristiano Ronaldo (Portugal)": {
+      "goals": 2,
+      "assists": 0,
+      "group_goals": 2,
+      "group_assists": 0
+    },
+    "Neymar Jr. (Brazil)": {
+      "goals": 0,
+      "assists": 0,
+      "group_goals": 0,
+      "group_assists": 0
+    },
+    "Sadio Mane (Senegal)": {
+      "goals": 0,
+      "assists": 0,
+      "group_goals": 0,
+      "group_assists": 0
+    },
+    "Nico Williams (Spain)": {
+      "goals": 0,
+      "assists": 0,
+      "group_goals": 0,
+      "group_assists": 0
+    },
+    "Mohamed Salah (Egypt)": {
+      "goals": 1,
+      "assists": 2,
+      "group_goals": 1,
+      "group_assists": 2
+    },
+    "Omar Marmoush (Egypt)": {
+      "goals": 0,
+      "assists": 0,
+      "group_goals": 0,
+      "group_assists": 0
+    },
+    "Patrick Schick (Czechia)": {
+      "goals": 0,
+      "assists": 0,
+      "group_goals": 0,
+      "group_assists": 0
+    },
+    "Victor Gyokeres (Sweden)": {
+      "goals": 1,
+      "assists": 2,
+      "group_goals": 1,
+      "group_assists": 2
+    },
+    "Arda Guler (Türkiye)": {
+      "goals": 1,
+      "assists": 0,
+      "group_goals": 1,
+      "group_assists": 0
+    }
+  },
+  "advancement": {
+    "Canada": "Round of 32",
+    "Mexico": "Round of 32",
+    "USA": "Round of 32",
+    "Australia": "Round of 32",
+    "Iraq": "Group Stage",
+    "IR Iran": "Group Stage",
+    "Japan": "Round of 32",
+    "Jordan": "Group Stage",
+    "Korea Republic": "Group Stage",
+    "Qatar": "Group Stage",
+    "Saudi Arabia": "Group Stage",
+    "Uzbekistan": "Group Stage",
+    "Algeria": "Round of 32",
+    "Cabo Verde": "Round of 32",
+    "Congo DR": "Round of 32",
+    "Côte d'Ivoire": "Round of 32",
+    "Egypt": "Round of 32",
+    "Ghana": "Round of 32",
+    "Morocco": "Round of 32",
+    "Senegal": "Round of 32",
+    "South Africa": "Round of 32",
+    "Tunisia": "Group Stage",
+    "Curaçao": "Group Stage",
+    "Haiti": "Group Stage",
+    "Panama": "Group Stage",
+    "Argentina": "Round of 32",
+    "Brazil": "Round of 32",
+    "Colombia": "Round of 32",
+    "Ecuador": "Round of 32",
+    "Paraguay": "Round of 32",
+    "Uruguay": "Group Stage",
+    "New Zealand": "Group Stage",
+    "Austria": "Round of 32",
+    "Belgium": "Round of 32",
+    "Bosnia and Herzegovina": "Round of 32",
+    "Croatia": "Round of 32",
+    "Czechia": "Group Stage",
+    "England": "Round of 32",
+    "France": "Round of 32",
+    "Germany": "Round of 32",
+    "Netherlands": "Round of 32",
+    "Norway": "Round of 32",
+    "Portugal": "Round of 32",
+    "Scotland": "Group Stage",
+    "Spain": "Round of 32",
+    "Sweden": "Round of 32",
+    "Switzerland": "Round of 32",
+    "Türkiye": "Group Stage"
+  },
+  "last_score_refresh_at": 1782661221,
+  "last_score_refresh_attempt_at": 1782661219,
+  "last_api_error": "",
+  "draft_enabled": true,
+  "current_pick_started_at": 1781199192,
+  "last_friendly_api_error": "",
+  "official_rosters": {
+    "Benji": {
+      "national_teams": [
+        "Spain",
+        "Ecuador",
+        "Côte d'Ivoire",
+        "Egypt",
+        "Panama",
+        "Congo DR"
+      ],
+      "star_players": [
+        "Desire Doue (France)",
+        "Julian Alvarez (Argentina)"
+      ]
+    },
+    "Jeff": {
+      "national_teams": [
+        "France",
+        "Türkiye",
+        "Canada",
+        "Austria",
+        "Uzbekistan",
+        "Qatar"
+      ],
+      "star_players": [
+        "Vinicius Junior (Brazil)",
+        "Lionel Messi (Argentina)"
+      ]
+    },
+    "Peter": {
+      "national_teams": [
+        "England",
+        "Morocco",
+        "Sweden",
+        "Korea Republic",
+        "Tunisia",
+        "New Zealand"
+      ],
+      "star_players": [
+        "Michael Olise (France)",
+        "Raphinha (Brazil)"
+      ]
+    },
+    "Chad": {
+      "national_teams": [
+        "Portugal",
+        "USA",
+        "Senegal",
+        "Paraguay",
+        "Bosnia and Herzegovina",
+        "Cabo Verde"
+      ],
+      "star_players": [
+        "Harry Kane (England)",
+        "Cristiano Ronaldo (Portugal)"
+      ]
+    },
+    "Lamp": {
+      "national_teams": [
+        "Brazil",
+        "Belgium",
+        "Uruguay",
+        "IR Iran",
+        "Ghana",
+        "Haiti"
+      ],
+      "star_players": [
+        "Erling Haaland (Norway)",
+        "Bukayo Saka (England)"
+      ]
+    },
+    "Herb": {
+      "national_teams": [
+        "Germany",
+        "Colombia",
+        "Croatia",
+        "Czechia",
+        "South Africa",
+        "Iraq"
+      ],
+      "star_players": [
+        "Ousmane Dembele (France)",
+        "Lautaro Martinez (Argentina)"
+      ]
+    },
+    "Jayme": {
+      "national_teams": [
+        "Mexico",
+        "Norway",
+        "Japan",
+        "Scotland",
+        "Saudi Arabia",
+        "Curaçao"
+      ],
+      "star_players": [
+        "Lamine Yamal (Spain)",
+        "Luis Diaz (Colombia)"
+      ]
+    },
+    "Spencer": {
+      "national_teams": [
+        "Argentina",
+        "Netherlands",
+        "Switzerland",
+        "Australia",
+        "Algeria",
+        "Jordan"
+      ],
+      "star_players": [
+        "Kylian Mbappe (France)",
+        "Neymar Jr. (Brazil)"
+      ]
+    }
+  },
+  "manual_player_stats_override": false,
+  "payments": {
+    "Benji": true,
+    "Jeff": true,
+    "Peter": true,
+    "Chad": true,
+    "Lamp": true,
+    "Herb": true,
+    "Jayme": true,
+    "Spencer": true
+  },
+  "goalie_challenge": {
+    "rounds": {
+      "r32": {
+        "active": true,
+        "order": [
+          "Benji",
+          "Peter",
+          "Jayme",
+          "Lamp",
+          "Herb",
+          "Chad",
+          "Spencer",
+          "Jeff"
+        ],
+        "picks": [
+          {
+            "pick": 1,
+            "round": 1,
+            "coach": "Benji",
+            "team": "Argentina",
+            "picked_at": "2026-06-28T07:02:04.184565-04:00"
+          },
+          {
+            "pick": 2,
+            "round": 1,
+            "coach": "Peter",
+            "team": "Spain",
+            "picked_at": "2026-06-28T07:16:30.981560-04:00"
+          },
+          {
+            "pick": 3,
+            "round": 1,
+            "coach": "Jayme",
+            "team": "England",
+            "picked_at": "2026-06-28T07:30:27.472827-04:00"
+          },
+          {
+            "pick": 4,
+            "round": 1,
+            "coach": "Lamp",
+            "team": "Brazil",
+            "picked_at": "2026-06-28T08:05:35.796003-04:00"
+          },
+          {
+            "pick": 5,
+            "round": 1,
+            "coach": "Herb",
+            "team": "Mexico",
+            "picked_at": "2026-06-28T11:03:05.867955-04:00"
+          },
+          {
+            "pick": 6,
+            "round": 1,
+            "coach": "Chad",
+            "team": "Canada",
+            "picked_at": "2026-06-28T11:07:27.686446-04:00"
+          }
+        ],
+        "current_pick_started_at": 1782659247
+      },
+      "r16": {
+        "active": false,
+        "order": [],
+        "picks": [],
+        "current_pick_started_at": 1782613138
+      },
+      "r8": {
+        "active": false,
+        "order": [],
+        "picks": [],
+        "current_pick_started_at": 1782613138
+      }
+    }
+  },
+  "goalie_payments": {
+    "Benji": true,
+    "Jeff": false,
+    "Peter": false,
+    "Chad": false,
+    "Lamp": false,
+    "Herb": true,
+    "Jayme": true,
+    "Spencer": true
+  }
+}
