@@ -6030,9 +6030,24 @@
               "team_id": 1533
             },
             "picked_at": "2026-06-28T16:27:49.812835-04:00"
+          },
+          {
+            "pick": 31,
+            "round": 4,
+            "coach": "Peter",
+            "team": "Congo DR",
+            "api_team_id": 1508,
+            "goalie": {
+              "id": 24012,
+              "name": "L. Mpasi",
+              "photo": "https://media.api-sports.io/football/players/24012.png",
+              "team": "Congo DR",
+              "team_id": 1508
+            },
+            "picked_at": "2026-06-28T16:45:25.250502-04:00"
           }
         ],
-        "current_pick_started_at": 1782678469
+        "current_pick_started_at": 1782679525
       },
       "r16": {
         "active": false,
