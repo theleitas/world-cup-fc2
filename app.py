@@ -2871,7 +2871,7 @@ def render_payout_descriptions():
 National teams earn +3 for a win, +1 for a draw, +1 for each goal scored, and +1 for a clean sheet. Star players earn +4 for each goal and +3 for each assist. Advancement bonuses are added automatically only after the prior stage is fully final and the next round is officially populated: Round of 32 +5, Round of 16 +8, Quarterfinals +12, Semifinals +15, Final +20, and Champion +25. These advancement bonuses are total bonuses for the team's deepest confirmed finish, not added together round by round. During live matches, points are shown based on the current state of the match. For example, a team leading 2-0 live would currently show +3 for the win, +2 for goals, and +1 for the clean sheet.</div>
 
 <div class='payout-desc'><b>Goalie Challenge - $25 Side Bet</b><br>
-Goalie Challenge is completely separate from the main World Cup FC2 standings and never changes the overall Gold, Silver, or Bronze totals. Coaches draft the primary listed goalkeeper for a team before the Round of 32, Round of 16, and Round of 8, but the pick scores as that team's playing goalkeeper slot for that round. That protects a coach if the listed goalkeeper is injured, benched, or replaced. Each coach drafts 4 goalie slots for the Round of 32, 2 goalie slots for the Round of 16, and 1 goalie slot for the Round of 8. The Round of 32 draft order is reverse group-stage rank after the group stage is final. Later goalie draft orders are reverse main standings before that goalie round starts, not including any Goalie Challenge points. Each goalie draft snakes each round. The score is API-Football saves plus shootout stops, minus total goals allowed. Highest score wins Goalie Challenge Gold ($125), second highest wins Silver ($50), and third highest wins Bronze ($25). If coaches tie, the first tiebreaker is fewest total goals allowed across all drafted goalie slots. Draft sections unlock only after every game from the previous stage is complete and the full next round is officially populated, then close at the first kickoff of that round.</div>
+Goalie Challenge is completely separate from the main World Cup FC2 standings and never changes the overall Gold, Silver, or Bronze totals. Coaches draft the primary listed goalkeeper for a team before the Round of 32, Round of 16, and Round of 8, but the pick scores as that team's playing goalkeeper slot for that round. That protects a coach if the listed goalkeeper is injured, benched, or replaced. Each coach drafts 4 goalie slots for the Round of 32, 2 goalie slots for the Round of 16, and 1 goalie slot for the Round of 8. The Round of 32 draft order is reverse group-stage rank after the group stage is final. Later goalie draft orders are reverse main standings before that goalie round starts, not including any Goalie Challenge points. Each goalie draft snakes each round. The score is API-Football saves plus shootout stops, minus total goals allowed. Highest score wins Goalie Challenge Gold ($125), second highest wins Silver ($50), and third highest wins Bronze ($25). If coaches tie, the first tiebreaker is fewest total goals allowed across all drafted goalie slots. Draft sections unlock only after every game from the previous stage is complete and the full next round is officially populated. A goalie draft stays open until every goalie slot is drafted, even if that round's games have already kicked off, and drafted goalie slots begin accumulating points as soon as match data is available.</div>
 
 <div class='payout-desc'><b>How Goalie Saves Are Counted</b><br>
 Regular-match goalkeeper saves come directly from API-Football's per-player fixture statistic at <code>goals.saves</code>, updated during live matches by API-Football. Goals allowed come from the playing goalkeeper's <code>goals.conceded</code> plus any opponent penalty-shootout goals. API-Football's public event feed marks shootout attempts as <code>Penalty</code> or <code>Missed Penalty</code> with <code>Penalty Shootout</code> comments; it does not publicly distinguish a saved shootout penalty from a miss wide or off the post. For this app, every opponent shootout <code>Missed Penalty</code> is counted as a shootout stop worth +1, and every opponent shootout <code>Penalty</code> is a goal allowed worth -1.</div>
@@ -2880,7 +2880,7 @@ Regular-match goalkeeper saves come directly from API-Football's per-player fixt
 "Group" means Group Stage Winner points only: group-stage drafted team points plus group-stage drafted player points. It excludes advancement bonuses, knockout matches, Empire Builder, Cinderella, and Goalie Challenge. "Empire" means Empire Builder, shown as teams advanced to the Round of 16 or later and then goals scored by those advanced teams for the tiebreaker. "Cinderella" means the coach's best single-team overperformance against the locked FIFA ranking baseline. "Goalie Challenge Points" means saves plus shootout stops minus goals allowed in the separate goalie side bet; higher is better and those points do not affect the main total. "GA TB" means total goals allowed and is the first Goalie Challenge tiebreaker; lower is better. Live Matches appears only for matches currently live and shows the active match score plus live team and player points from that match. Power Rating is the preseason roster strength estimate shown at the bottom of each card.</div>
 
 <div class='payout-desc'><b>Goalie Challenge Draft Timing</b><br>
-The Round of 32 goalie draft begins only after every group-stage match is final and the full Round of 32 field and fixtures are official, then ends before the first Round of 32 kickoff. The Round of 16 goalie draft begins only after every Round of 32 match is final and official Round of 16 fixtures are populated, then ends before the first Round of 16 kickoff. The Round of 8 goalie draft begins only after every Round of 16 match is final and quarterfinal fixtures are populated, then ends before the first quarterfinal kickoff.</div>
+The Round of 32 goalie draft begins only after every group-stage match is final and the full Round of 32 field and fixtures are official. The Round of 16 goalie draft begins only after every Round of 32 match is final and official Round of 16 fixtures are populated. The Round of 8 goalie draft begins only after every Round of 16 match is final and quarterfinal fixtures are populated. Each goalie draft remains open until all slots for that round are filled. Scoring does not wait for the full draft to be complete; any drafted goalie slot can earn saves, shootout saves, and goals-allowed tiebreaker totals once its match data appears.</div>
 
 <div class='payout-desc'><b>Gold - $300</b><br>
 Awarded to the coach who finishes first overall in total fantasy points. Total fantasy points are the sum of every drafted national team's match points, advancement bonuses, and drafted star-player points.</div>
@@ -3229,13 +3229,8 @@ def goalie_round_is_populated(state, round_key):
     return len(goalie_round_available_teams(state, round_key)) >= goalie_round_required_team_count(round_key)
 
 
-def goalie_round_is_closed(state, round_key):
-    kickoff = goalie_round_first_kickoff(state, round_key)
-    return bool(kickoff and datetime.now(ZoneInfo("UTC")) >= kickoff)
-
-
 def goalie_round_can_start(state, round_key):
-    return goalie_previous_stage_complete(state, round_key) and goalie_round_is_populated(state, round_key) and not goalie_round_is_closed(state, round_key)
+    return goalie_previous_stage_complete(state, round_key) and goalie_round_is_populated(state, round_key)
 
 
 def goalie_round_window_text(state, round_key):
@@ -3252,9 +3247,9 @@ def goalie_round_window_text(state, round_key):
         open_text = f"{info['previous']} is final; waiting for official {info['stage']} fixtures"
     if goalie_previous_stage_complete(state, round_key) and len(available) >= goalie_round_required_team_count(round_key):
         open_text = f"Open after {info['previous']} is finalized"
-    close_text = "Closes at the first kickoff for this round"
+    close_text = "Stays open until every goalie slot is drafted"
     if kickoff:
-        close_text = f"Closes {kickoff.astimezone(ZoneInfo('America/New_York')).strftime('%b %d, %I:%M %p ET')}"
+        close_text = f"First kickoff {kickoff.astimezone(ZoneInfo('America/New_York')).strftime('%b %d, %I:%M %p ET')}; draft still stays open until filled"
     return f"{open_text}. {close_text}."
 
 
@@ -3350,8 +3345,6 @@ def render_goalie_round_status(state, round_key, sequence, picks):
     round_state = goalie_round_state(state, round_key)
     if goalie_round_complete(state, round_key):
         status = "Complete"
-    elif goalie_round_is_closed(state, round_key):
-        status = "Closed"
     elif not goalie_previous_stage_complete(state, round_key):
         status = f"Waiting for {GOALIE_ROUNDS[round_key]['previous']} to finish"
     elif not goalie_round_is_populated(state, round_key):
@@ -3475,7 +3468,7 @@ def render_goalie_available_teams(state, round_key):
 """,
                             unsafe_allow_html=True,
                         )
-                    pressed = st.button(label, key=button_key, width="stretch", disabled=(goalie_round_is_closed(state, round_key) or saving))
+                    pressed = st.button(label, key=button_key, width="stretch", disabled=saving)
                     if pressed:
                         st.session_state[saving_key] = True
                         st.toast("Saving goalie pick...")
@@ -3483,7 +3476,7 @@ def render_goalie_available_teams(state, round_key):
                         st.session_state[saving_key] = False
                         if ok:
                             st.rerun()
-                        st.warning(f"Could not save {label}. It may already be drafted, paused, or closed.")
+                        st.warning(f"Could not save {label}. It may already be drafted or unavailable.")
 
 
 def render_goalie_draft_round_body(state, scores, round_key):
@@ -5745,8 +5738,7 @@ if FOOTBALL_DATA_TOKEN and (not draft_in_progress) and int(time.time()) - int(st
     if refreshed_state:
         state = normalize_state(refreshed_state)
         state = reconcile_player_stats_with_matches(state)
-goalie_draft_open = goalie_draft_is_open(state)
-scores = calculate_scores(state, include_goalie_live_scores=not goalie_draft_open)
+scores = calculate_scores(state, include_goalie_live_scores=True)
 
 render_header(state)
 render_current_goalie_draft_room(state, scores)
