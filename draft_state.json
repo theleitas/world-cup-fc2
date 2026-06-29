@@ -4784,16 +4784,16 @@
       "matchday": null,
       "home": "Brazil",
       "away": "Japan",
-      "home_score": 1,
+      "home_score": 2,
       "away_score": 1,
-      "status": "In_Play",
-      "minute": 81,
+      "status": "Finished",
+      "minute": 90,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": "DRAW",
+        "winner": "HOME_TEAM",
         "full_time": {
-          "home": 1,
+          "home": 2,
           "away": 1
         },
         "regular_time": {
@@ -4821,6 +4821,14 @@
           "team": "Brazil",
           "scorer": "Casemiro",
           "assist": "Gabriel Magalhães"
+        },
+        {
+          "minute": 90,
+          "injury_time": 6,
+          "type": "REGULAR",
+          "team": "Brazil",
+          "scorer": "Martinelli",
+          "assist": "Bruno Guimarães"
         }
       ]
     },
@@ -5461,8 +5469,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1782758591,
-  "last_score_refresh_attempt_at": 1782758589,
+  "last_score_refresh_at": 1782760475,
+  "last_score_refresh_attempt_at": 1782760474,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
