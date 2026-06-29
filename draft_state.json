@@ -6089,7 +6089,7 @@
   },
   "goalie_payments": {
     "Benji": true,
-    "Jeff": false,
+    "Jeff": true,
     "Peter": false,
     "Chad": true,
     "Lamp": true,
