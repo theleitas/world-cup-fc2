@@ -4785,16 +4785,16 @@
       "home": "Brazil",
       "away": "Japan",
       "home_score": 0,
-      "away_score": 0,
+      "away_score": 1,
       "status": "In_Play",
-      "minute": 26,
+      "minute": 30,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": "DRAW",
+        "winner": "AWAY_TEAM",
         "full_time": {
           "home": 0,
-          "away": 0
+          "away": 1
         },
         "regular_time": {
           "home": null,
@@ -4805,7 +4805,16 @@
           "away": null
         }
       },
-      "goals": []
+      "goals": [
+        {
+          "minute": 29,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Japan",
+          "scorer": "Kaishu Sano",
+          "assist": ""
+        }
+      ]
     },
     {
       "id": "537415",
@@ -5444,8 +5453,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1782754030,
-  "last_score_refresh_attempt_at": 1782754029,
+  "last_score_refresh_at": 1782754318,
+  "last_score_refresh_attempt_at": 1782754317,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
