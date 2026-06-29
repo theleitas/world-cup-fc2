@@ -4840,16 +4840,16 @@
       "matchday": null,
       "home": "Germany",
       "away": "Paraguay",
-      "home_score": 0,
+      "home_score": 1,
       "away_score": 1,
       "status": "In_Play",
-      "minute": 52,
+      "minute": 69,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": "AWAY_TEAM",
+        "winner": "DRAW",
         "full_time": {
-          "home": 0,
+          "home": 1,
           "away": 1
         },
         "regular_time": {
@@ -4868,7 +4868,15 @@
           "type": "REGULAR",
           "team": "Paraguay",
           "scorer": "Julio Enciso",
-          "assist": ""
+          "assist": "Matías Galarza"
+        },
+        {
+          "minute": 54,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Germany",
+          "scorer": "Kai Havertz",
+          "assist": "Florian Wirtz"
         }
       ]
     },
@@ -5478,8 +5486,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1782769452,
-  "last_score_refresh_attempt_at": 1782769451,
+  "last_score_refresh_at": 1782770503,
+  "last_score_refresh_attempt_at": 1782770502,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
