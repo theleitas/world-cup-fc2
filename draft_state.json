@@ -5382,6 +5382,37 @@
       "goals": []
     },
     {
+      "id": "537375",
+      "date": "2026-07-04T21:00:00Z",
+      "stage": "Last 16",
+      "group": null,
+      "matchday": null,
+      "home": "Paraguay",
+      "away": "France",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
       "id": "537377",
       "date": "2026-07-05T20:00:00Z",
       "stage": "Last 16",
@@ -5595,7 +5626,7 @@
     "Brazil": "Round of 16",
     "Colombia": "Round of 32",
     "Ecuador": "Round of 32",
-    "Paraguay": "Round of 32",
+    "Paraguay": "Round of 16",
     "Uruguay": "Group Stage",
     "New Zealand": "Group Stage",
     "Austria": "Round of 32",
@@ -5604,7 +5635,7 @@
     "Croatia": "Round of 32",
     "Czechia": "Group Stage",
     "England": "Round of 32",
-    "France": "Round of 32",
+    "France": "Round of 16",
     "Germany": "Round of 32",
     "Netherlands": "Round of 32",
     "Norway": "Round of 16",
@@ -5615,8 +5646,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1782860191,
-  "last_score_refresh_attempt_at": 1782860190,
+  "last_score_refresh_at": 1782860533,
+  "last_score_refresh_attempt_at": 1782860532,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
