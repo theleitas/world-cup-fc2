@@ -279,6 +279,11 @@ div[class*="st-key-points-journal-text"] textarea:disabled {
 .match-score { color:#ffd54a; }
 .match-player-line { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:5px; }
 .match-player-chip, .match-goalie-chip { display:inline-flex; align-items:center; border:1px solid var(--coach-color); border-radius:6px; background:color-mix(in srgb, var(--coach-color) 13%, #0d0d0d); color:var(--coach-color); box-shadow:0 0 7px color-mix(in srgb, var(--coach-color) 35%, transparent); padding:2px 6px; font-size:.76rem; font-weight:900; line-height:1.15; }
+.match-goalie-chip-live { background:color-mix(in srgb, var(--coach-color) 20%, #0d0d0d); box-shadow:0 0 0 1px color-mix(in srgb, var(--coach-color) 38%, transparent), 0 0 14px color-mix(in srgb, var(--coach-color) 70%, transparent), inset 0 0 9px color-mix(in srgb, var(--coach-color) 18%, transparent); animation:goalie-live-glow 1.6s ease-in-out infinite; }
+@keyframes goalie-live-glow {
+    0%, 100% { filter:brightness(1); }
+    50% { filter:brightness(1.28); box-shadow:0 0 0 1px color-mix(in srgb, var(--coach-color) 60%, transparent), 0 0 20px color-mix(in srgb, var(--coach-color) 88%, transparent), inset 0 0 12px color-mix(in srgb, var(--coach-color) 28%, transparent); }
+}
 .match-player-bullet { color:var(--coach-color); margin:0 4px; font-size:.78em; line-height:1; display:inline-flex; align-items:center; transform:translateY(-.01em); }
 .chip-icon { font-size:.78em; line-height:1; margin-right:3px; display:inline-flex; align-items:center; }
 .matches-grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px; }
@@ -4873,9 +4878,10 @@ def match_goalie_line_html(state, match):
     if not rows:
         return ""
     chips = []
+    live_class = " match-goalie-chip-live" if match_is_live(match) else ""
     for coach, color, team, goalie_name in rows:
         chips.append(
-            f"<span class='match-goalie-chip' style='--coach-color:{html.escape(color)}'><span class='chip-icon'>🧤</span>{html.escape(team_code(team))}<span class='match-player-bullet'>•</span>{html.escape(goalie_last_name(goalie_name) or goalie_name)}<span class='match-player-bullet'>•</span>{html.escape(coach)}</span>"
+            f"<span class='match-goalie-chip{live_class}' style='--coach-color:{html.escape(color)}'><span class='chip-icon'>🧤</span>{html.escape(team_code(team))}<span class='match-player-bullet'>•</span>{html.escape(goalie_last_name(goalie_name) or goalie_name)}<span class='match-player-bullet'>•</span>{html.escape(coach)}</span>"
         )
     return "".join(chips)
 
