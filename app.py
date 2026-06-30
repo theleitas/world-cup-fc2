@@ -1919,15 +1919,69 @@ def drafted_players(state):
     return {pick["player"] for pick in state.get("player_picks", [])}
 
 
+def score_node_int(match, bucket, side):
+    score_node = match.get("score_node") if isinstance(match.get("score_node"), dict) else {}
+    values = score_node.get(bucket) if isinstance(score_node.get(bucket), dict) else {}
+    return none_or_int(values.get(side))
+
+
+def match_penalty_shootout_scores(match):
+    home_penalties = score_node_int(match, "penalties", "home")
+    away_penalties = score_node_int(match, "penalties", "away")
+    if home_penalties is None and away_penalties is None:
+        return None, None
+    return home_penalties or 0, away_penalties or 0
+
+
+def match_fantasy_goal_scores(match):
+    home_score = score_node_int(match, "full_time", "home")
+    away_score = score_node_int(match, "full_time", "away")
+    if home_score is None:
+        home_score = none_or_int(match.get("home_score"))
+    if away_score is None:
+        away_score = none_or_int(match.get("away_score"))
+    if home_score is None or away_score is None:
+        return None, None
+
+    home_penalties, away_penalties = match_penalty_shootout_scores(match)
+    if home_penalties is None and away_penalties is None:
+        return home_score, away_score
+
+    adjusted_home = home_score - home_penalties
+    adjusted_away = away_score - away_penalties
+    regular_home = score_node_int(match, "regular_time", "home")
+    regular_away = score_node_int(match, "regular_time", "away")
+    if (
+        adjusted_home >= 0
+        and adjusted_away >= 0
+        and (regular_home is None or adjusted_home >= regular_home)
+        and (regular_away is None or adjusted_away >= regular_away)
+    ):
+        return adjusted_home, adjusted_away
+    return home_score, away_score
+
+
+def match_result_points_for_team(match, team_name, goals_for, goals_against):
+    winner = match_winner_team(match)
+    team_name = canonical_team_name(team_name)
+    if winner:
+        return 3 if winner == team_name else 0
+    if goals_for > goals_against:
+        return 3
+    if goals_for == goals_against:
+        return 1
+    return 0
+
+
 def score_match_for_team(match, team_name):
     if "friendly" in str(match.get("stage") or "").lower():
         return 0
+    team_name = canonical_team_name(team_name)
     home = canonical_team_name(match.get("home"))
     away = canonical_team_name(match.get("away"))
     if team_name not in [home, away]:
         return 0
-    home_score = match.get("home_score")
-    away_score = match.get("away_score")
+    home_score, away_score = match_fantasy_goal_scores(match)
     if home_score is None or away_score is None:
         return 0
     status = str(match.get("status", "")).lower()
@@ -1935,7 +1989,7 @@ def score_match_for_team(match, team_name):
         return 0
     goals_for = home_score if team_name == home else away_score
     goals_against = away_score if team_name == home else home_score
-    result_points = 3 if goals_for > goals_against else 1 if goals_for == goals_against else 0
+    result_points = match_result_points_for_team(match, team_name, goals_for, goals_against)
     clean_sheet = 1 if goals_against == 0 else 0
     return result_points + goals_for + clean_sheet
 
@@ -2435,10 +2489,11 @@ def team_goals_in_matches(matches, team_name):
     for match in matches:
         if "friendly" in str(match.get("stage") or "").lower():
             continue
-        if match.get("home") == team_name and match.get("home_score") is not None:
-            goals += int(match.get("home_score") or 0)
-        if match.get("away") == team_name and match.get("away_score") is not None:
-            goals += int(match.get("away_score") or 0)
+        home_score, away_score = match_fantasy_goal_scores(match)
+        if match.get("home") == team_name and home_score is not None:
+            goals += int(home_score or 0)
+        if match.get("away") == team_name and away_score is not None:
+            goals += int(away_score or 0)
     return goals
 
 
@@ -2762,8 +2817,7 @@ def match_winner_team(match):
         return canonical_team_name(match.get("home"))
     if winner == "AWAY_TEAM":
         return canonical_team_name(match.get("away"))
-    home_score = match.get("home_score")
-    away_score = match.get("away_score")
+    home_score, away_score = match_fantasy_goal_scores(match)
     if home_score is None or away_score is None:
         return ""
     if home_score > away_score:
@@ -2912,7 +2966,7 @@ def render_payout_descriptions():
         st.markdown(
             f"""
 <div class='payout-desc'><b>How Points Are Scored</b><br>
-National teams earn +3 for a win, +1 for a draw, +1 for each goal scored, and +1 for a clean sheet. Star players earn +4 for each goal and +3 for each assist. Advancement bonuses are added automatically only after the prior stage is fully final and the next round is officially populated: Round of 32 +5, Round of 16 +8, Quarterfinals +12, Semifinals +15, Final +20, and Champion +25. These advancement bonuses are total bonuses for the team's deepest confirmed finish, not added together round by round. During live matches, points are shown based on the current state of the match. For example, a team leading 2-0 live would currently show +3 for the win, +2 for goals, and +1 for the clean sheet.</div>
+National teams earn +3 for a win, +1 for a draw, +1 for each regular-time or extra-time goal scored, and +1 for a clean sheet. Penalty kicks in a shootout do not count as team goal points and do not affect clean-sheet points; the shootout winner still counts as the match winner. Star players earn +4 for each goal and +3 for each assist. Advancement bonuses are added automatically only after the prior stage is fully final and the next round is officially populated: Round of 32 +5, Round of 16 +8, Quarterfinals +12, Semifinals +15, Final +20, and Champion +25. These advancement bonuses are total bonuses for the team's deepest confirmed finish, not added together round by round. During live matches, points are shown based on the current state of the match. For example, a team leading 2-0 live would currently show +3 for the win, +2 for goals, and +1 for the clean sheet.</div>
 
 <div class='payout-desc'><b>Goalie Challenge - $25 Side Bet</b><br>
 Goalie Challenge is completely separate from the main World Cup FC2 standings and never changes the overall Gold, Silver, or Bronze totals. Coaches draft the primary listed goalkeeper for a team before the Round of 32, Round of 16, and Round of 8, but the pick scores as that team's playing goalkeeper slot for that round. That protects a coach if the listed goalkeeper is injured, benched, or replaced. Each coach drafts 4 goalie slots for the Round of 32, 2 goalie slots for the Round of 16, and 1 goalie slot for the Round of 8. The Round of 32 draft order is reverse group-stage rank after the group stage is final. Later goalie draft orders are reverse main standings before that goalie round starts, not including any Goalie Challenge points. Each goalie draft snakes each round. Highest score wins Goalie Challenge Gold ($125), second highest wins Silver ($50), and third highest wins Bronze ($25). If coaches tie, the first tiebreaker is fewest counted goals allowed across all drafted goalie slots. Draft sections unlock only after every game from the previous stage is complete and the full next round is officially populated. A goalie draft stays open until every goalie slot is drafted, even if that round's games have already kicked off, and drafted goalie slots begin accumulating points as soon as match data is available.</div>
@@ -3961,14 +4015,16 @@ def team_record_and_result_points(state, team_name):
         away = canonical_team_name(match.get("away"))
         if team_name not in [home, away] or not match_is_completed(match):
             continue
-        home_score = int(match.get("home_score") or 0)
-        away_score = int(match.get("away_score") or 0)
+        home_score, away_score = match_fantasy_goal_scores(match)
+        if home_score is None or away_score is None:
+            continue
         goals_for = home_score if team_name == home else away_score
         goals_against = away_score if team_name == home else home_score
-        if goals_for > goals_against:
+        result_points_for_match = match_result_points_for_team(match, team_name, goals_for, goals_against)
+        if result_points_for_match == 3:
             wins += 1
             result_points += 3
-        elif goals_for == goals_against:
+        elif result_points_for_match == 1:
             draws += 1
             result_points += 1
         else:
@@ -4699,9 +4755,14 @@ def match_player_line_html(state, match):
 
 
 def match_score_text(match):
-    if match.get("home_score") is None or match.get("away_score") is None:
+    home_score, away_score = match_fantasy_goal_scores(match)
+    if home_score is None or away_score is None:
         return "vs"
-    return f"{match['home_score']} - {match['away_score']}"
+    score_text = f"{home_score} - {away_score}"
+    home_penalties, away_penalties = match_penalty_shootout_scores(match)
+    if home_penalties is not None or away_penalties is not None:
+        score_text += f" | PK {home_penalties or 0} - {away_penalties or 0}"
+    return score_text
 
 
 def goal_minute_text(goal):
@@ -4767,15 +4828,17 @@ def team_match_journal_lines(match, team_name):
     away = canonical_team_name(match.get("away"))
     if team_name not in [home, away]:
         return []
-    home_score = int(match.get("home_score") or 0)
-    away_score = int(match.get("away_score") or 0)
+    home_score, away_score = match_fantasy_goal_scores(match)
+    if home_score is None or away_score is None:
+        return []
     goals_for = home_score if team_name == home else away_score
     goals_against = away_score if team_name == home else home_score
 
     lines = []
-    if goals_for > goals_against:
+    result_points = match_result_points_for_team(match, team_name, goals_for, goals_against)
+    if result_points == 3:
         lines.append((f"{team_name} Win", 3))
-    elif goals_for == goals_against:
+    elif result_points == 1:
         lines.append((f"{team_name} Draw", 1))
     if goals_against == 0:
         lines.append((f"{team_name} Clean Sheet", 1))
