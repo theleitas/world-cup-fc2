@@ -279,7 +279,7 @@ div[class*="st-key-points-journal-text"] textarea:disabled {
 .match-score { color:#ffd54a; }
 .match-player-line { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:5px; }
 .match-player-chip, .match-goalie-chip { display:inline-flex; align-items:center; border:1px solid var(--coach-color); border-radius:6px; background:color-mix(in srgb, var(--coach-color) 13%, #0d0d0d); color:var(--coach-color); box-shadow:0 0 7px color-mix(in srgb, var(--coach-color) 35%, transparent); padding:2px 6px; font-size:.76rem; font-weight:900; line-height:1.15; }
-.match-goalie-chip-live { background:color-mix(in srgb, var(--coach-color) 20%, #0d0d0d); box-shadow:0 0 0 1px color-mix(in srgb, var(--coach-color) 38%, transparent), 0 0 14px color-mix(in srgb, var(--coach-color) 70%, transparent), inset 0 0 9px color-mix(in srgb, var(--coach-color) 18%, transparent); animation:goalie-live-glow 1.6s ease-in-out infinite; }
+.goalie-slot-live { background:color-mix(in srgb, var(--coach-color) 20%, #0d0d0d); box-shadow:0 0 0 1px color-mix(in srgb, var(--coach-color) 38%, transparent), 0 0 14px color-mix(in srgb, var(--coach-color) 70%, transparent), inset 0 0 9px color-mix(in srgb, var(--coach-color) 18%, transparent); animation:goalie-live-glow 1.6s ease-in-out infinite; }
 @keyframes goalie-live-glow {
     0%, 100% { filter:brightness(1); }
     50% { filter:brightness(1.28); box-shadow:0 0 0 1px color-mix(in srgb, var(--coach-color) 60%, transparent), 0 0 20px color-mix(in srgb, var(--coach-color) 88%, transparent), inset 0 0 12px color-mix(in srgb, var(--coach-color) 28%, transparent); }
@@ -461,6 +461,7 @@ API_FOOTBALL_WORLD_CUP_LEAGUE_ID = 1
 API_FOOTBALL_WORLD_CUP_SEASON = 2026
 API_FOOTBALL_SKIP_DETAIL_STATUS_SHORTS = {"NS", "TBD", "PST", "CANC", "ABD", "AWD", "WO"}
 API_FOOTBALL_SKIP_DETAIL_STATUS_WORDS = ("not started", "time to be defined", "postponed", "cancelled", "canceled", "abandoned", "walkover")
+API_FOOTBALL_LIVE_STATUS_SHORTS = {"1H", "HT", "2H", "ET", "BT", "P", "LIVE"}
 GOALIE_ROUNDS = {
     "r32": {"label": "Round of 32", "stage": "Round of 32", "slots": 4, "previous": "Group Stage", "previous_stage": "Group Stage", "previous_required_matches": 72},
     "r16": {"label": "Round of 16", "stage": "Round of 16", "slots": 2, "previous": "Round of 32", "previous_stage": "Round of 32", "previous_required_matches": 16},
@@ -2115,6 +2116,39 @@ def goalie_round_api_fixtures(state, round_key):
     ]
 
 
+def goalie_fixture_is_live(fixture):
+    status_short = str(fixture.get("status_short") or "").strip().upper()
+    if status_short in API_FOOTBALL_LIVE_STATUS_SHORTS:
+        return True
+    status_key = re.sub(r"[^a-z]+", "_", str(fixture.get("status") or "").strip().lower()).strip("_")
+    return status_key in {
+        "live",
+        "in_play",
+        "in_progress",
+        "paused",
+        "halftime",
+        "half_time",
+        "first_half",
+        "second_half",
+        "extra_time",
+        "break_time",
+        "penalty_shootout",
+    }
+
+
+def goalie_live_slot_keys(state):
+    live_keys = set()
+    for round_key in GOALIE_ROUND_ORDER:
+        for fixture in goalie_round_api_fixtures(state, round_key):
+            if not goalie_fixture_is_live(fixture):
+                continue
+            for side in ["home", "away"]:
+                team = canonical_team_name(fixture.get(side))
+                if team:
+                    live_keys.add((round_key, team))
+    return live_keys
+
+
 def goalie_round_available_goalies(state, round_key):
     team_map = api_football_team_map()
     goalies = []
@@ -3520,7 +3554,8 @@ def render_current_goalie_draft_room(state, scores):
     render_goalie_draft_round_body(state, scores, round_key)
 
 
-def goalie_slot_cells_html(slots):
+def goalie_slot_cells_html(slots, live_slot_keys=None):
+    live_slot_keys = live_slot_keys or set()
     rows = []
     for round_key in GOALIE_ROUND_ORDER:
         round_slots = sorted([slot for slot in slots if slot.get("round_key") == round_key], key=lambda item: item.get("pick", 0))
@@ -3536,9 +3571,10 @@ def goalie_slot_cells_html(slots):
                 "name": slot.get("actual_goalie_name") or slot.get("goalie_name") or f"{display_team(team)} goalie",
                 "photo": slot.get("actual_goalie_photo") or slot.get("goalie_photo") or "",
             }
+            live_class = " goalie-slot-live" if (round_key, team) in live_slot_keys else ""
             bubbles.append(
                 f"""
-<div class='goalie-slot'>
+<div class='goalie-slot{live_class}'>
   {goalie_icon_html(goalie, team)}
   <div class='goalie-slot-name'>{html.escape(goalie["name"])}</div>
   <div class='goalie-slot-team'>{display_team_html(team, include_info=False)}</div>
@@ -3568,6 +3604,7 @@ def render_goalie_challenge_standings(state, scores):
         ),
     )
     rank_by_coach = {item["coach"]: index + 1 for index, item in enumerate(ranked)}
+    live_slot_keys = goalie_live_slot_keys(state)
     cards = ["<div class='standings-grid goalie-card-grid'>"]
     for item in ranked:
         coach = item["coach"]
@@ -3586,7 +3623,7 @@ def render_goalie_challenge_standings(state, scores):
     <div class='score-badge'>{int(item.get("goalie_challenge_points", 0))}</div>
   </div>
   <div class='goalie-tb-pill'>Saves:<b>{int(item.get("goalie_challenge_saves", 0))}</b> | Penalty Saves:<b>{int(item.get("goalie_challenge_penalty_saves", 0))}</b><span class='goalie-tb-line'>Goals Allowed Tiebreaker:<b>{int(item.get("goalie_challenge_goals_allowed", 0))}</b></span></div>
-  <div class='goalie-slot-grid'>{goalie_slot_cells_html(item.get("goalie_challenge_slots", []))}</div>
+  <div class='goalie-slot-grid'>{goalie_slot_cells_html(item.get("goalie_challenge_slots", []), live_slot_keys)}</div>
 </div>
 """
         )
@@ -4878,10 +4915,9 @@ def match_goalie_line_html(state, match):
     if not rows:
         return ""
     chips = []
-    live_class = " match-goalie-chip-live" if match_is_live(match) else ""
     for coach, color, team, goalie_name in rows:
         chips.append(
-            f"<span class='match-goalie-chip{live_class}' style='--coach-color:{html.escape(color)}'><span class='chip-icon'>🧤</span>{html.escape(team_code(team))}<span class='match-player-bullet'>•</span>{html.escape(goalie_last_name(goalie_name) or goalie_name)}<span class='match-player-bullet'>•</span>{html.escape(coach)}</span>"
+            f"<span class='match-goalie-chip' style='--coach-color:{html.escape(color)}'><span class='chip-icon'>🧤</span>{html.escape(team_code(team))}<span class='match-player-bullet'>•</span>{html.escape(goalie_last_name(goalie_name) or goalie_name)}<span class='match-player-bullet'>•</span>{html.escape(coach)}</span>"
         )
     return "".join(chips)
 
