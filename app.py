@@ -279,7 +279,7 @@ div[class*="st-key-points-journal-text"] textarea:disabled {
 .match-score { color:#ffd54a; }
 .match-player-line { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:5px; }
 .match-player-chip, .match-goalie-chip { display:inline-flex; align-items:center; border:1px solid var(--coach-color); border-radius:6px; background:color-mix(in srgb, var(--coach-color) 13%, #0d0d0d); color:var(--coach-color); box-shadow:0 0 7px color-mix(in srgb, var(--coach-color) 35%, transparent); padding:2px 6px; font-size:.76rem; font-weight:900; line-height:1.15; }
-.goalie-slot-live { background:color-mix(in srgb, var(--coach-color) 20%, #0d0d0d); box-shadow:0 0 0 1px color-mix(in srgb, var(--coach-color) 38%, transparent), 0 0 14px color-mix(in srgb, var(--coach-color) 70%, transparent), inset 0 0 9px color-mix(in srgb, var(--coach-color) 18%, transparent); animation:goalie-live-glow 1.6s ease-in-out infinite; }
+.goalie-slot-live, .roster-cell-live { background:color-mix(in srgb, var(--coach-color) 20%, #0d0d0d); box-shadow:0 0 0 1px color-mix(in srgb, var(--coach-color) 38%, transparent), 0 0 14px color-mix(in srgb, var(--coach-color) 70%, transparent), inset 0 0 9px color-mix(in srgb, var(--coach-color) 18%, transparent); animation:goalie-live-glow 1.6s ease-in-out infinite; }
 @keyframes goalie-live-glow {
     0%, 100% { filter:brightness(1); }
     50% { filter:brightness(1.28); box-shadow:0 0 0 1px color-mix(in srgb, var(--coach-color) 60%, transparent), 0 0 20px color-mix(in srgb, var(--coach-color) 88%, transparent), inset 0 0 12px color-mix(in srgb, var(--coach-color) 28%, transparent); }
@@ -962,10 +962,14 @@ def asset_score_badge_html(points):
     return f"<div class='asset-score-badge'>{int(points or 0)}</div>"
 
 
-def roster_grid_cell_html(flag_html="", label="", points=None, eliminated=False):
+def roster_grid_cell_html(flag_html="", label="", points=None, eliminated=False, live=False):
     if not label:
         return "<div class='roster-cell roster-cell-empty'></div>"
-    extra_class = " roster-cell-eliminated" if eliminated else ""
+    extra_class = ""
+    if eliminated:
+        extra_class += " roster-cell-eliminated"
+    if live:
+        extra_class += " roster-cell-live"
     return f"""
 <div class='roster-cell team-roster-cell{extra_class}'>
   {asset_score_badge_html(points)}
@@ -975,12 +979,13 @@ def roster_grid_cell_html(flag_html="", label="", points=None, eliminated=False)
 """
 
 
-def player_roster_grid_cell_html(player, country, points=None):
+def player_roster_grid_cell_html(player, country, points=None, live=False):
     if not player:
         return "<div class='roster-cell roster-cell-empty'></div>"
     team = canonical_team_name(country)
+    live_class = " roster-cell-live" if live else ""
     return f"""
-<div class='roster-cell player-roster-cell'>
+<div class='roster-cell player-roster-cell{live_class}'>
   {asset_score_badge_html(points)}
   {player_thumb_html(player)}
   <div class='player-roster-text'>
@@ -992,17 +997,30 @@ def player_roster_grid_cell_html(player, country, points=None):
 """
 
 
-def standings_roster_grid_html(items, kind, points_by_item=None, state=None):
+def live_match_teams(state):
+    teams = set()
+    for match in state.get("matches", []):
+        if "friendly" in str(match.get("stage") or "").lower() or not match_is_live(match):
+            continue
+        for side in ["home", "away"]:
+            team = canonical_team_name(match.get(side))
+            if team:
+                teams.add(team)
+    return teams
+
+
+def standings_roster_grid_html(items, kind, points_by_item=None, state=None, live_teams=None):
     points_by_item = points_by_item or {}
+    live_teams = live_teams or set()
     target_count = 6 if kind == "team" else 2
     cells = []
     for item in list(items or [])[:target_count]:
         if kind == "team":
             team = canonical_team_name(item)
-            cells.append(roster_grid_cell_html(team_flag_html(team), team, points_by_item.get(team, 0), eliminated=team_is_eliminated(state, team)))
+            cells.append(roster_grid_cell_html(team_flag_html(team), team, points_by_item.get(team, 0), eliminated=team_is_eliminated(state, team), live=team in live_teams))
         else:
             country = player_country(item)
-            cells.append(player_roster_grid_cell_html(item, country, points_by_item.get(item, 0)))
+            cells.append(player_roster_grid_cell_html(item, country, points_by_item.get(item, 0), live=country in live_teams))
     while len(cells) < target_count:
         cells.append(roster_grid_cell_html())
 
@@ -2946,6 +2964,7 @@ def render_standings(state, scores, show_title=True):
         st.markdown("<div class='section-title'>Standings</div>", unsafe_allow_html=True)
     leaders = award_leaders(scores)
     rank_by_coach = {item["coach"]: index + 1 for index, item in enumerate(ordered_scores(scores))}
+    live_teams = live_match_teams(state)
     cards = ["<div class='standings-grid'>"]
     for item in ordered_scores(scores):
         coach = item["coach"]
@@ -2953,8 +2972,8 @@ def render_standings(state, scores, show_title=True):
         coach_state = state["teams"][coach]
         team_points_by_item = {team: points for team, points, _baseline, _cinderella in item.get("team_breakdown", [])}
         player_points_by_item = {player: points for player, points in item.get("player_breakdown", [])}
-        teams = standings_roster_grid_html(coach_state.get("national_teams", []), "team", team_points_by_item, state=state)
-        players = standings_roster_grid_html(coach_state.get("star_players", []), "player", player_points_by_item, state=state)
+        teams = standings_roster_grid_html(coach_state.get("national_teams", []), "team", team_points_by_item, state=state, live_teams=live_teams)
+        players = standings_roster_grid_html(coach_state.get("star_players", []), "player", player_points_by_item, state=state, live_teams=live_teams)
         power_rating = format_power_rating(state, coach)
         cinderella_text = "None"
         if item["cinderella_team"]:
