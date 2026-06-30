@@ -126,14 +126,13 @@ div[class*="st-key-points-journal-text"] textarea:disabled {
 .payment-panel + .payment-panel { margin-top:10px; }
 .goalie-card-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); margin-top:8px; margin-bottom:8px; }
 .goalie-card .coach-head { margin-bottom:7px; }
-.goalie-slot-grid { display:flex; flex-direction:column; gap:6px; }
-.goalie-round-row { display:grid; grid-template-columns:42px minmax(0, 1fr); align-items:stretch; gap:5px; }
-.goalie-round-label { border:1px solid rgba(185,194,201,.22); border-radius:999px; background:rgba(255,255,255,.035); color:#b9c2c9; display:flex; align-items:center; justify-content:center; text-align:center; font-size:.62rem; line-height:1; font-weight:1000; }
+.goalie-slot-grid { display:flex; flex-direction:column; gap:5px; }
+.goalie-round-row { display:block; }
 .goalie-round-bubbles { display:grid; gap:4px; }
 .goalie-round-bubbles-r32 { grid-template-columns:repeat(4, minmax(0, 1fr)); }
 .goalie-round-bubbles-r16 { grid-template-columns:repeat(2, minmax(0, 1fr)); }
 .goalie-round-bubbles-r8 { grid-template-columns:minmax(0, 1fr); }
-.goalie-slot { min-height:56px; border:1px solid color-mix(in srgb, var(--coach-color) 48%, rgba(255,255,255,.16)); border-radius:999px; background:rgba(255,255,255,.045); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; padding:5px 4px; text-align:center; overflow:hidden; box-shadow:inset 0 0 8px rgba(255,255,255,.035), 0 0 7px color-mix(in srgb, var(--coach-color) 20%, transparent); }
+.goalie-slot { min-height:52px; border:1px solid color-mix(in srgb, var(--coach-color) 48%, rgba(255,255,255,.16)); border-radius:7px; background:rgba(255,255,255,.045); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; padding:4px 4px; text-align:center; overflow:hidden; box-shadow:inset 0 0 8px rgba(255,255,255,.035), 0 0 7px color-mix(in srgb, var(--coach-color) 20%, transparent); }
 .goalie-slot-empty { color:#6f777d; font-size:.68rem; font-weight:900; }
 .goalie-slot-flag { font-size:1.3rem; line-height:1; }
 .goalie-slot-flag .flag-icon { margin:0; width:1.05em; height:1.05em; vertical-align:0; }
@@ -141,8 +140,8 @@ div[class*="st-key-points-journal-text"] textarea:disabled {
 .goalie-icon-fallback { width:30px; height:30px; border-radius:50%; display:grid; place-items:center; border:1px solid rgba(255,255,255,.25); background:#151515; font-size:1.05rem; }
 .goalie-slot-name { color:#fff; font-size:.68rem; line-height:.96; font-weight:850; overflow-wrap:anywhere; }
 .goalie-slot-team { color:#b9c2c9; font-size:.6rem; line-height:.9; font-weight:900; overflow-wrap:anywhere; }
-.goalie-slot-ga { color:var(--coach-color); font-size:.7rem; line-height:1; font-weight:1000; text-shadow:0 0 7px var(--coach-color); }
-.goalie-slot-tb { color:#b9c2c9; font-size:.62rem; line-height:1; font-weight:900; }
+.goalie-slot-ga { color:var(--coach-color); font-size:.68rem; line-height:1; font-weight:1000; text-shadow:0 0 7px var(--coach-color); }
+.goalie-slot-tb { color:#b9c2c9; font-size:.6rem; line-height:1; font-weight:900; }
 .goalie-tb-pill { border:1px solid rgba(185,194,201,.24); border-radius:6px; background:rgba(255,255,255,.045); color:#b9c2c9; font-size:.72rem; font-weight:950; line-height:1.15; text-align:center; padding:4px 6px; margin:0 0 7px; }
 .goalie-tb-pill b { color:var(--coach-color); margin-left:4px; text-shadow:0 0 7px var(--coach-color); }
 .goalie-tb-line { display:block; margin-top:2px; font-style:italic; }
@@ -279,8 +278,9 @@ div[class*="st-key-points-journal-text"] textarea:disabled {
 .match-line { display:flex; flex-wrap:wrap; align-items:center; gap:8px; font-weight:1000; }
 .match-score { color:#ffd54a; }
 .match-player-line { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:5px; }
-.match-player-chip { display:inline-flex; align-items:center; border:1px solid var(--coach-color); border-radius:6px; background:color-mix(in srgb, var(--coach-color) 13%, #0d0d0d); color:var(--coach-color); box-shadow:0 0 7px color-mix(in srgb, var(--coach-color) 35%, transparent); padding:2px 6px; font-size:.76rem; font-weight:900; line-height:1.15; }
+.match-player-chip, .match-goalie-chip { display:inline-flex; align-items:center; border:1px solid var(--coach-color); border-radius:6px; background:color-mix(in srgb, var(--coach-color) 13%, #0d0d0d); color:var(--coach-color); box-shadow:0 0 7px color-mix(in srgb, var(--coach-color) 35%, transparent); padding:2px 6px; font-size:.76rem; font-weight:900; line-height:1.15; }
 .match-player-bullet { color:var(--coach-color); margin:0 4px; font-size:.78em; line-height:1; display:inline-flex; align-items:center; transform:translateY(-.01em); }
+.chip-icon { font-size:.78em; line-height:1; margin-right:3px; display:inline-flex; align-items:center; }
 .matches-grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px; }
 .match-stage-title { color:#ffd54a; font-weight:1000; font-size:1rem; }
 .match-day-title { color:#ffd54a; font-weight:1000; font-size:.95rem; margin:.7rem 0 .35rem; padding-left:10px; border-left:3px solid #ffd54a; }
@@ -373,7 +373,6 @@ div[class*="st-key-btn-match-timeline"] div[data-testid="stButton"] > button:hov
     .payment-grid { grid-template-columns:1fr 1fr; gap:5px; }
     .payment-row { font-size:.78rem; padding:5px 6px; }
     .standings-grid { grid-template-columns:1fr; }
-    .goalie-round-row { grid-template-columns:38px minmax(0, 1fr); gap:4px; }
     .goalie-round-bubbles-r32 { grid-template-columns:repeat(2, minmax(0, 1fr)); }
     .coach-card { min-height:auto; }
     .coach-face, .coach-face-placeholder { width:60px; height:60px; }
@@ -2184,12 +2183,10 @@ def goalie_fixture_team_side(fixture, team_name, api_team_id=None):
     return ""
 
 
-def goalie_shootout_stats_for_fixture(fixture, side):
-    score = fixture.get("score") if isinstance(fixture.get("score"), dict) else {}
-    penalties = score.get("penalty") if isinstance(score.get("penalty"), dict) else {}
+def goalie_penalty_event_stats_for_fixture(fixture, side):
     opponent = "away" if side == "home" else "home"
-    goals_allowed = none_or_int(penalties.get(opponent))
-    shootout_stops = 0
+    shootout_penalty_saves = 0
+    in_match_penalty_goals_allowed = 0
     fixture_id = none_or_int(fixture.get("api_fixture_id"))
     if fixture_id:
         try:
@@ -2198,28 +2195,34 @@ def goalie_shootout_stats_for_fixture(fixture, side):
             own_team = canonical_team_name(fixture.get(side))
             opponent_team = canonical_team_name(fixture.get(opponent))
             for event in fetch_api_football_fixture_events(API_FOOTBALL_TOKEN, fixture_id):
-                if str(event.get("comments") or "").lower() != "penalty shootout":
-                    continue
                 detail = str(event.get("detail") or "").lower()
+                if "penalty" not in detail:
+                    continue
+                is_shootout = str(event.get("comments") or "").lower() == "penalty shootout"
                 team = event.get("team") if isinstance(event.get("team"), dict) else {}
                 event_team_id = none_or_int(team.get("id"))
                 event_team = canonical_team_name(team.get("name"))
                 is_opponent = (opponent_team_id and event_team_id == opponent_team_id) or (opponent_team and event_team == opponent_team)
                 is_own = (own_team_id and event_team_id == own_team_id) or (own_team and event_team == own_team)
-                if is_opponent and detail == "missed penalty":
-                    shootout_stops += 1
+                if is_opponent and is_shootout and detail == "missed penalty":
+                    shootout_penalty_saves += 1
+                elif is_opponent and not is_shootout and detail == "penalty":
+                    in_match_penalty_goals_allowed += 1
                 elif is_own:
                     continue
         except Exception:
             pass
-    return shootout_stops, goals_allowed or 0
+    return {
+        "shootout_penalty_saves": shootout_penalty_saves,
+        "in_match_penalty_goals_allowed": in_match_penalty_goals_allowed,
+    }
 
 
 def goalie_score_for_pick(state, round_key, pick):
     team = canonical_team_name(pick.get("team"))
     api_team_id = none_or_int(pick.get("api_team_id") or (pick.get("goalie") or {}).get("team_id"))
     saves = 0
-    shootout_stops = 0
+    penalty_saves = 0
     goals_allowed = 0
     counted_matches = 0
     played_goalies = []
@@ -2229,6 +2232,7 @@ def goalie_score_for_pick(state, round_key, pick):
         if not side or not fixture_id or not api_football_fixture_can_have_details(fixture):
             continue
         match_saves = 0
+        match_penalty_saves = 0
         match_goals_allowed = 0
         match_had_goalie_stats = False
         try:
@@ -2245,16 +2249,19 @@ def goalie_score_for_pick(state, round_key, pick):
                     stats = (player.get("statistics") or [{}])[0]
                     games = stats.get("games") if isinstance(stats.get("games"), dict) else {}
                     goals = stats.get("goals") if isinstance(stats.get("goals"), dict) else {}
+                    penalty = stats.get("penalty") if isinstance(stats.get("penalty"), dict) else {}
                     position = str(games.get("position") or "").upper()
                     minutes = none_or_int(games.get("minutes")) or 0
                     player_saves = none_or_int(goals.get("saves")) or 0
                     player_conceded = none_or_int(goals.get("conceded")) or 0
-                    if position not in ["G", "GOALKEEPER"] and not (minutes and (player_saves or player_conceded)):
+                    player_penalty_saves = none_or_int(penalty.get("saved")) or 0
+                    if position not in ["G", "GOALKEEPER"] and not (minutes and (player_saves or player_conceded or player_penalty_saves)):
                         continue
-                    if minutes <= 0 and player_saves == 0 and player_conceded == 0:
+                    if minutes <= 0 and player_saves == 0 and player_conceded == 0 and player_penalty_saves == 0:
                         continue
                     match_had_goalie_stats = True
-                    match_saves += player_saves
+                    match_saves += max(player_saves - player_penalty_saves, 0)
+                    match_penalty_saves += player_penalty_saves
                     match_goals_allowed += player_conceded
                     played_goalies.append(
                         {
@@ -2266,19 +2273,21 @@ def goalie_score_for_pick(state, round_key, pick):
                     )
         except Exception:
             pass
-        match_shootout_stops, match_shootout_ga = goalie_shootout_stats_for_fixture(fixture, side)
-        if match_had_goalie_stats or match_shootout_stops or match_shootout_ga:
+        penalty_events = goalie_penalty_event_stats_for_fixture(fixture, side)
+        match_penalty_saves += int(penalty_events.get("shootout_penalty_saves", 0))
+        match_goals_allowed = max(match_goals_allowed - int(penalty_events.get("in_match_penalty_goals_allowed", 0)), 0)
+        if match_had_goalie_stats or match_penalty_saves or match_goals_allowed:
             counted_matches += 1
         saves += match_saves
-        shootout_stops += match_shootout_stops
-        goals_allowed += match_goals_allowed + match_shootout_ga
+        penalty_saves += match_penalty_saves
+        goals_allowed += match_goals_allowed
     starter = sorted(played_goalies, key=lambda item: item.get("minutes") or 0, reverse=True)[0] if played_goalies else {}
     drafted_name = pick_goalie_name(pick)
     drafted_photo = pick_goalie_photo(pick)
     return {
-        "points": saves + shootout_stops - goals_allowed,
+        "points": saves + (penalty_saves * 2) - goals_allowed,
         "saves": saves,
-        "shootout_stops": shootout_stops,
+        "penalty_saves": penalty_saves,
         "goals_allowed": goals_allowed,
         "counted_matches": counted_matches,
         "actual_goalie_name": starter.get("name") or drafted_name,
@@ -2288,7 +2297,7 @@ def goalie_score_for_pick(state, round_key, pick):
 
 def goalie_challenge_scores(state, live_scoring=True):
     live_scoring = bool(live_scoring and API_FOOTBALL_TOKEN)
-    scores = {coach: {"points": 0, "saves": 0, "shootout_stops": 0, "goals_allowed": 0, "counted_matches": 0, "slots": []} for coach in COACHES}
+    scores = {coach: {"points": 0, "saves": 0, "penalty_saves": 0, "goals_allowed": 0, "counted_matches": 0, "slots": []} for coach in COACHES}
     challenge = state.get("goalie_challenge", {})
     rounds = challenge.get("rounds", {}) if isinstance(challenge, dict) else {}
     for round_key in GOALIE_ROUND_ORDER:
@@ -2302,7 +2311,7 @@ def goalie_challenge_scores(state, live_scoring=True):
             score = goalie_score_for_pick(state, round_key, pick) if live_scoring else {
                 "points": 0,
                 "saves": 0,
-                "shootout_stops": 0,
+                "penalty_saves": 0,
                 "goals_allowed": 0,
                 "counted_matches": 0,
                 "actual_goalie_name": "",
@@ -2310,7 +2319,7 @@ def goalie_challenge_scores(state, live_scoring=True):
             }
             scores[coach]["points"] += int(score.get("points", 0))
             scores[coach]["saves"] += int(score.get("saves", 0))
-            scores[coach]["shootout_stops"] += int(score.get("shootout_stops", 0))
+            scores[coach]["penalty_saves"] += int(score.get("penalty_saves", 0))
             scores[coach]["goals_allowed"] += int(score.get("goals_allowed", 0))
             scores[coach]["counted_matches"] += int(score.get("counted_matches", 0))
             scores[coach]["slots"].append(
@@ -2325,7 +2334,7 @@ def goalie_challenge_scores(state, live_scoring=True):
                     "actual_goalie_photo": score.get("actual_goalie_photo") or "",
                     "points": int(score.get("points", 0)),
                     "saves": int(score.get("saves", 0)),
-                    "shootout_stops": int(score.get("shootout_stops", 0)),
+                    "penalty_saves": int(score.get("penalty_saves", 0)),
                     "goals_allowed": int(score.get("goals_allowed", 0)),
                     "counted": int(score.get("counted_matches", 0)),
                 }
@@ -2488,7 +2497,7 @@ def calculate_scores(state, include_goalie_live_scores=True):
             player_breakdown.append((player, points))
 
         total_points = team_points + player_points
-        goalie_score = goalie_scores.get(coach, {"points": 0, "saves": 0, "shootout_stops": 0, "goals_allowed": 0, "counted_matches": 0, "slots": []})
+        goalie_score = goalie_scores.get(coach, {"points": 0, "saves": 0, "penalty_saves": 0, "goals_allowed": 0, "counted_matches": 0, "slots": []})
         scores[coach] = {
             "coach": coach,
             "color": data["color"],
@@ -2498,7 +2507,7 @@ def calculate_scores(state, include_goalie_live_scores=True):
             "total_points": total_points,
             "goalie_challenge_points": int(goalie_score.get("points", 0)),
             "goalie_challenge_saves": int(goalie_score.get("saves", 0)),
-            "goalie_challenge_shootout_stops": int(goalie_score.get("shootout_stops", 0)),
+            "goalie_challenge_penalty_saves": int(goalie_score.get("penalty_saves", 0)),
             "goalie_challenge_goals_allowed": int(goalie_score.get("goals_allowed", 0)),
             "goalie_challenge_counted": int(goalie_score.get("counted_matches", 0)),
             "goalie_challenge_slots": goalie_score.get("slots", []),
@@ -2827,6 +2836,7 @@ def render_payment_panel(state, payment_key="payments", title="Time to Pay Up", 
 
 def render_payments_section(state):
     with st.expander("Payments", expanded=False):
+        render_goalie_payment_panel(state)
         render_payment_panel(state)
 
 
@@ -2848,16 +2858,16 @@ def render_payout_descriptions():
 National teams earn +3 for a win, +1 for a draw, +1 for each goal scored, and +1 for a clean sheet. Star players earn +4 for each goal and +3 for each assist. Advancement bonuses are added automatically only after the prior stage is fully final and the next round is officially populated: Round of 32 +5, Round of 16 +8, Quarterfinals +12, Semifinals +15, Final +20, and Champion +25. These advancement bonuses are total bonuses for the team's deepest confirmed finish, not added together round by round. During live matches, points are shown based on the current state of the match. For example, a team leading 2-0 live would currently show +3 for the win, +2 for goals, and +1 for the clean sheet.</div>
 
 <div class='payout-desc'><b>Goalie Challenge - $25 Side Bet</b><br>
-Goalie Challenge is completely separate from the main World Cup FC2 standings and never changes the overall Gold, Silver, or Bronze totals. Coaches draft the primary listed goalkeeper for a team before the Round of 32, Round of 16, and Round of 8, but the pick scores as that team's playing goalkeeper slot for that round. That protects a coach if the listed goalkeeper is injured, benched, or replaced. Each coach drafts 4 goalie slots for the Round of 32, 2 goalie slots for the Round of 16, and 1 goalie slot for the Round of 8. The Round of 32 draft order is reverse group-stage rank after the group stage is final. Later goalie draft orders are reverse main standings before that goalie round starts, not including any Goalie Challenge points. Each goalie draft snakes each round. The score is API-Football saves plus shootout stops, minus total goals allowed. Highest score wins Goalie Challenge Gold ($125), second highest wins Silver ($50), and third highest wins Bronze ($25). If coaches tie, the first tiebreaker is fewest total goals allowed across all drafted goalie slots. Draft sections unlock only after every game from the previous stage is complete and the full next round is officially populated. A goalie draft stays open until every goalie slot is drafted, even if that round's games have already kicked off, and drafted goalie slots begin accumulating points as soon as match data is available.</div>
+Goalie Challenge is completely separate from the main World Cup FC2 standings and never changes the overall Gold, Silver, or Bronze totals. Coaches draft the primary listed goalkeeper for a team before the Round of 32, Round of 16, and Round of 8, but the pick scores as that team's playing goalkeeper slot for that round. That protects a coach if the listed goalkeeper is injured, benched, or replaced. Each coach drafts 4 goalie slots for the Round of 32, 2 goalie slots for the Round of 16, and 1 goalie slot for the Round of 8. The Round of 32 draft order is reverse group-stage rank after the group stage is final. Later goalie draft orders are reverse main standings before that goalie round starts, not including any Goalie Challenge points. Each goalie draft snakes each round. Highest score wins Goalie Challenge Gold ($125), second highest wins Silver ($50), and third highest wins Bronze ($25). If coaches tie, the first tiebreaker is fewest counted goals allowed across all drafted goalie slots. Draft sections unlock only after every game from the previous stage is complete and the full next round is officially populated. A goalie draft stays open until every goalie slot is drafted, even if that round's games have already kicked off, and drafted goalie slots begin accumulating points as soon as match data is available.</div>
 
 <div class='payout-desc'><b>How Goalie Saves Are Counted</b><br>
-Regular-match goalkeeper saves come directly from API-Football's per-player fixture statistic at <code>goals.saves</code>, updated during live matches by API-Football. Goals allowed come from the playing goalkeeper's <code>goals.conceded</code> plus any opponent penalty-shootout goals. API-Football's public event feed marks shootout attempts as <code>Penalty</code> or <code>Missed Penalty</code> with <code>Penalty Shootout</code> comments; it does not publicly distinguish a saved shootout penalty from a miss wide or off the post. For this app, every opponent shootout <code>Missed Penalty</code> is counted as a shootout stop worth +1, and every opponent shootout <code>Penalty</code> is a goal allowed worth -1.</div>
+Goalie Challenge scoring is: regular-time and extra-time non-penalty saves are +1 each; penalty-kick saves are +2 each during regular time, extra time, and shootouts; counted goals allowed are -1 each. Counted goals allowed means regular-time and extra-time goals allowed that were not penalty kicks. Penalty-kick goals allowed are not -1 in any situation: not regular time, not extra time, and not shootouts. API-Football regular/extra goalkeeper saves come from <code>goals.saves</code>, in-match penalty saves come from <code>penalty.saved</code> when API-Football provides it, and in-match penalty goals are removed from <code>goals.conceded</code> using the event feed. API-Football's shootout event feed marks attempts as <code>Penalty</code> or <code>Missed Penalty</code> with <code>Penalty Shootout</code> comments, but it does not reliably distinguish a saved shootout penalty from a miss wide or off the post. For shootouts, the app counts every opponent shootout <code>Missed Penalty</code> as a penalty save worth +2 and does not subtract anything for opponent shootout <code>Penalty</code> goals.</div>
 
 <div class='payout-desc'><b>Standings Card Abbreviations</b><br>
-"Group" means Group Stage Winner points only: group-stage drafted team points plus group-stage drafted player points. It excludes advancement bonuses, knockout matches, Empire Builder, Cinderella, and Goalie Challenge. "Empire" means Empire Builder, shown as teams advanced to the Round of 16 or later and then goals scored by those advanced teams for the tiebreaker. "Cinderella" means the coach's best single-team overperformance against the locked FIFA ranking baseline. "Goalie Challenge Points" means saves plus shootout stops minus goals allowed in the separate goalie side bet; higher is better and those points do not affect the main total. "GA TB" means total goals allowed and is the first Goalie Challenge tiebreaker; lower is better. Live Matches appears only for matches currently live and shows the active match score plus live team and player points from that match. Power Rating is the preseason roster strength estimate shown at the bottom of each card.</div>
+"Group" means Group Stage Winner points only: group-stage drafted team points plus group-stage drafted player points. It excludes advancement bonuses, knockout matches, Empire Builder, Cinderella, and Goalie Challenge. "Empire" means Empire Builder, shown as teams advanced to the Round of 16 or later and then goals scored by those advanced teams for the tiebreaker. "Cinderella" means the coach's best single-team overperformance against the locked FIFA ranking baseline. "Goalie Challenge Points" means regular/extra saves plus 2 times penalty saves, minus counted goals allowed, in the separate goalie side bet; higher is better and those points do not affect the main total. "GATB" means counted goals allowed tiebreaker and is the first Goalie Challenge tiebreaker; lower is better. Live Matches appears only for matches currently live and shows the active match score plus live team and player points from that match. Power Rating is the preseason roster strength estimate shown at the bottom of each card.</div>
 
 <div class='payout-desc'><b>Goalie Challenge Draft Timing</b><br>
-The Round of 32 goalie draft begins only after every group-stage match is final and the full Round of 32 field and fixtures are official. The Round of 16 goalie draft begins only after every Round of 32 match is final and official Round of 16 fixtures are populated. The Round of 8 goalie draft begins only after every Round of 16 match is final and quarterfinal fixtures are populated. Each goalie draft remains open until all slots for that round are filled. Scoring does not wait for the full draft to be complete; any drafted goalie slot can earn saves, shootout saves, and goals-allowed tiebreaker totals once its match data appears.</div>
+The Round of 32 goalie draft begins only after every group-stage match is final and the full Round of 32 field and fixtures are official. The Round of 16 goalie draft begins only after every Round of 32 match is final and official Round of 16 fixtures are populated. The Round of 8 goalie draft begins only after every Round of 16 match is final and quarterfinal fixtures are populated. Each goalie draft remains open until all slots for that round are filled. Scoring does not wait for the full draft to be complete; any drafted goalie slot can earn saves, penalty saves, and counted goals-allowed tiebreaker totals once its match data appears.</div>
 
 <div class='payout-desc'><b>Gold - $300</b><br>
 Awarded to the coach who finishes first overall in total fantasy points. Total fantasy points are the sum of every drafted national team's match points, advancement bonuses, and drafted star-player points.</div>
@@ -2939,7 +2949,7 @@ def render_standings(state, scores, show_title=True):
     <div class='side-bet-pill'><span>Empire</span><b>{int(item["empire_count"])} teams<br>{int(item["empire_goals"])} goals</b></div>
     <div class='side-bet-pill'><span>Cinderella</span><b>{html.escape(cinderella_text)}</b></div>
   </div>
-  <div class='goalie-main-pill'><span>Saves</span><b>{int(item.get("goalie_challenge_points", 0))}</b></div>
+  <div class='goalie-main-pill'><span>Goalie Pts</span><b>{int(item.get("goalie_challenge_points", 0))}</b></div>
   {teams}
   {players}
   {live_html}
@@ -3527,7 +3537,7 @@ def goalie_slot_cells_html(slots):
   {goalie_icon_html(goalie, team)}
   <div class='goalie-slot-name'>{html.escape(goalie["name"])}</div>
   <div class='goalie-slot-team'>{display_team_html(team, include_info=False)}</div>
-  <div class='goalie-slot-ga'>Saves {int(slot.get("saves", 0))}</div>
+  <div class='goalie-slot-ga'>Saves {int(slot.get("saves", 0))} | PK {int(slot.get("penalty_saves", 0))}</div>
   <div class='goalie-slot-tb'>GATB {int(slot.get("goals_allowed", 0))}</div>
 </div>
 """
@@ -3535,7 +3545,6 @@ def goalie_slot_cells_html(slots):
         rows.append(
             f"""
 <div class='goalie-round-row goalie-round-row-{round_key}'>
-  <div class='goalie-round-label'>{html.escape(GOALIE_ROUNDS[round_key]["label"].replace("Round of ", "R"))}</div>
   <div class='goalie-round-bubbles goalie-round-bubbles-{round_key}'>{''.join(bubbles)}</div>
 </div>
 """
@@ -3571,7 +3580,7 @@ def render_goalie_challenge_standings(state, scores):
     </div>
     <div class='score-badge'>{int(item.get("goalie_challenge_points", 0))}</div>
   </div>
-  <div class='goalie-tb-pill'>Saves:<b>{int(item.get("goalie_challenge_saves", 0))}</b> | Shootout Saves:<b>{int(item.get("goalie_challenge_shootout_stops", 0))}</b><span class='goalie-tb-line'>Goals Allowed Tiebreaker:<b>{int(item.get("goalie_challenge_goals_allowed", 0))}</b></span></div>
+  <div class='goalie-tb-pill'>Saves:<b>{int(item.get("goalie_challenge_saves", 0))}</b> | Penalty Saves:<b>{int(item.get("goalie_challenge_penalty_saves", 0))}</b><span class='goalie-tb-line'>Goals Allowed Tiebreaker:<b>{int(item.get("goalie_challenge_goals_allowed", 0))}</b></span></div>
   <div class='goalie-slot-grid'>{goalie_slot_cells_html(item.get("goalie_challenge_slots", []))}</div>
 </div>
 """
@@ -3585,7 +3594,7 @@ def render_goalie_challenge(state, scores):
         st.markdown("<div class='section-title'>Standings</div>", unsafe_allow_html=True)
         render_goalie_challenge_standings(state, scores)
         st.markdown(
-            "<div class='goalie-rules-note'>Highest Goalie Challenge score wins this $25 side bet. Score = API-Football goalkeeper saves plus shootout stops, minus goals allowed. If coaches tie, the first tiebreaker is fewest total goals allowed across their drafted goalie slots.</div>",
+            "<div class='goalie-rules-note'>Highest Goalie Challenge score wins this $25 side bet. Score = regular/extra-time goalkeeper saves, plus 2 points for penalty saves, minus non-penalty goals allowed. If coaches tie, the first tiebreaker is fewest counted goals allowed across their drafted goalie slots.</div>",
             unsafe_allow_html=True,
         )
 
@@ -4623,7 +4632,7 @@ def match_player_line_html(state, match):
         points = match_points_for_player(state, match, player)
         team = team_code(player_country(player))
         chips.append(
-            f"<span class='match-player-chip' style='--coach-color:{html.escape(color)}'>{html.escape(team)}<span class='match-player-bullet'>•</span>{html.escape(player_last_name(player))}<span class='match-player-bullet'>•</span>{html.escape(coach)} +{points}</span>"
+            f"<span class='match-player-chip' style='--coach-color:{html.escape(color)}'><span class='chip-icon'>👟</span>{html.escape(team)}<span class='match-player-bullet'>•</span>{html.escape(player_last_name(player))}<span class='match-player-bullet'>•</span>{html.escape(coach)} +{points}</span>"
         )
     return "".join(chips)
 
@@ -4833,6 +4842,44 @@ def match_owned_teams_by_coach(state, match):
     return owned
 
 
+def goalie_round_key_for_match(match):
+    match_stage = stage_to_advancement(match.get("stage"))
+    for round_key, info in GOALIE_ROUNDS.items():
+        if match_stage == info.get("stage"):
+            return round_key
+    return ""
+
+
+def owned_goalies_in_match(state, match):
+    round_key = goalie_round_key_for_match(match)
+    if not round_key:
+        return []
+    teams_in_match = {canonical_team_name(match.get("home")), canonical_team_name(match.get("away"))}
+    rows = []
+    picks = goalie_round_state(state, round_key).get("picks", [])
+    for pick in picks:
+        team = canonical_team_name(pick.get("team"))
+        coach = pick.get("coach")
+        if team not in teams_in_match or coach not in state.get("teams", {}):
+            continue
+        color = state["teams"][coach].get("color") or "#FFD54A"
+        goalie_name = pick_goalie_name(pick) or f"{display_team(team)} goalie"
+        rows.append((coach, color, team, goalie_name))
+    return sorted(rows, key=lambda item: (COACHES.index(item[0]) if item[0] in COACHES else 999, clean_key(item[2])))
+
+
+def match_goalie_line_html(state, match):
+    rows = owned_goalies_in_match(state, match)
+    if not rows:
+        return ""
+    chips = []
+    for coach, color, team, goalie_name in rows:
+        chips.append(
+            f"<span class='match-goalie-chip' style='--coach-color:{html.escape(color)}'><span class='chip-icon'>🧤</span>{html.escape(team_code(team))}<span class='match-player-bullet'>•</span>{html.escape(goalie_last_name(goalie_name) or goalie_name)}<span class='match-player-bullet'>•</span>{html.escape(coach)}</span>"
+        )
+    return "".join(chips)
+
+
 def match_player_points_by_team_and_coach(state, match):
     teams_in_match = {canonical_team_name(match.get("home")), canonical_team_name(match.get("away"))}
     points_by_team = {}
@@ -4905,7 +4952,7 @@ def match_point_chips_html(state, match, only_coach=None, include_teams=False):
         if include_teams and owned_teams.get(coach):
             team_suffix = " · " + ", ".join(team_code(team_name) for team_name in owned_teams[coach])
         chips.append(
-            f"<span class='drafted-chip' style='--coach-color:{html.escape(color)}'>{html.escape(coach)} +{points}{html.escape(team_suffix)}</span>"
+            f"<span class='drafted-chip' style='--coach-color:{html.escape(color)}'><span class='chip-icon'>⚽</span>{html.escape(coach)} +{points}{html.escape(team_suffix)}</span>"
         )
     return "".join(chips)
 
@@ -4929,7 +4976,7 @@ def match_team_ordered_chips_html(state, match):
             if coach == team_owner:
                 points += score_match_for_team(match, team_name)
             chips.append(
-                f"<span class='drafted-chip' style='--coach-color:{html.escape(color)}'>{html.escape(team_code(team_name))}<span class='drafted-chip-bullet'>•</span>{html.escape(coach)} +{points}</span>"
+                f"<span class='drafted-chip' style='--coach-color:{html.escape(color)}'><span class='chip-icon'>⚽</span>{html.escape(team_code(team_name))}<span class='drafted-chip-bullet'>•</span>{html.escape(coach)} +{points}</span>"
             )
     return "".join(chips)
 
@@ -4939,7 +4986,9 @@ def coach_has_live_asset(state, coach, match):
     teams_in_match = {canonical_team_name(match.get("home")), canonical_team_name(match.get("away"))}
     if any(canonical_team_name(team) in teams_in_match for team in coach_state.get("national_teams", [])):
         return True
-    return any(player_country(player) in teams_in_match for player in coach_state.get("star_players", []))
+    if any(player_country(player) in teams_in_match for player in coach_state.get("star_players", [])):
+        return True
+    return any(row[0] == coach for row in owned_goalies_in_match(state, match))
 
 
 def coach_live_players_html(state, coach, match):
@@ -4981,6 +5030,8 @@ def coach_live_matches_html(state, coach):
         away = display_team_html(canonical_team_name(match.get("away")), include_info=False)
         chips = match_point_chips_html(state, match, include_teams=True) or "<span class='subtle'>No points yet.</span>"
         players = match_player_line_html(state, match)
+        goalies = match_goalie_line_html(state, match)
+        goalie_line = f"<div class='match-player-line'>{goalies}</div>" if goalies else ""
         match_blocks.append(
             f"<div class='coach-live-match'>"
             f"<div class='coach-live-line'><span>{home}</span><span class='match-score'>{html.escape(match_score_text(match))}</span><span>{away}</span></div>"
@@ -4988,6 +5039,7 @@ def coach_live_matches_html(state, coach):
             f"<div class='coach-live-meta'>LIVE | {html.escape(match_clock_text(match))}</div>"
             f"<div>{chips}</div>"
             f"<div class='match-player-line'>{players}</div>"
+            f"{goalie_line}"
             f"</div>"
         )
     return (
@@ -5015,6 +5067,8 @@ def render_match_cards(state, matches, show_group=False):
                 stage = f"Group {group}"
         detail_parts = [stage, match_status_label(match), date_text]
         detail_text = " | ".join(html.escape(part) for part in detail_parts if part)
+        goalies = match_goalie_line_html(state, match)
+        goalie_line = f"<div class='match-player-line'>{goalies}</div>" if goalies else ""
         cards.append(
             f"""
 <div class='match-card'>
@@ -5026,6 +5080,7 @@ def render_match_cards(state, matches, show_group=False):
   <div class='subtle'>{detail_text}</div>
   <div>{match_point_chips_html(state, match, include_teams=True) or "<span class='subtle'>No coach points in this match yet.</span>"}</div>
   <div class='match-player-line'>{match_player_line_html(state, match)}</div>
+  {goalie_line}
 </div>
 """
         )
@@ -5715,7 +5770,6 @@ scores = calculate_scores(state, include_goalie_live_scores=True)
 
 render_header(state)
 render_current_goalie_draft_room(state, scores)
-render_goalie_payment_panel(state)
 draft_visible = state.get("draft_enabled") and not full_draft_complete(state)
 if draft_visible:
     render_drafts(state)
