@@ -4992,16 +4992,16 @@
       "matchday": null,
       "home": "France",
       "away": "Sweden",
-      "home_score": 2,
+      "home_score": 3,
       "away_score": 0,
       "status": "In_Play",
-      "minute": 73,
+      "minute": 80,
       "elapsed": null,
       "clock": "",
       "score_node": {
         "winner": "HOME_TEAM",
         "full_time": {
-          "home": 2,
+          "home": 3,
           "away": 0
         },
         "regular_time": {
@@ -5028,6 +5028,14 @@
           "type": "REGULAR",
           "team": "France",
           "scorer": "Bradley Barcola",
+          "assist": "Michael Olise"
+        },
+        {
+          "minute": 74,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "France",
+          "scorer": "Kylian Mbappé",
           "assist": "Michael Olise"
         }
       ]
@@ -5413,7 +5421,7 @@
       "group_assists": 0
     },
     "Kylian Mbappe (France)": {
-      "goals": 5,
+      "goals": 6,
       "assists": 2,
       "group_goals": 4,
       "group_assists": 2
@@ -5432,7 +5440,7 @@
     },
     "Michael Olise (France)": {
       "goals": 0,
-      "assists": 4,
+      "assists": 5,
       "group_goals": 0,
       "group_assists": 3
     },
@@ -5607,8 +5615,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1782858797,
-  "last_score_refresh_attempt_at": 1782858795,
+  "last_score_refresh_at": 1782859215,
+  "last_score_refresh_attempt_at": 1782859212,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
