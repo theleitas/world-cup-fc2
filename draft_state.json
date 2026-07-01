@@ -4936,17 +4936,17 @@
       "matchday": null,
       "home": "Ivory Coast",
       "away": "Norway",
-      "home_score": null,
-      "away_score": null,
-      "status": "Timed",
-      "minute": null,
+      "home_score": 1,
+      "away_score": 2,
+      "status": "Finished",
+      "minute": 90,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": null,
+        "winner": "AWAY_TEAM",
         "full_time": {
-          "home": null,
-          "away": null
+          "home": 1,
+          "away": 2
         },
         "regular_time": {
           "home": null,
@@ -4957,7 +4957,32 @@
           "away": null
         }
       },
-      "goals": []
+      "goals": [
+        {
+          "minute": 39,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Norway",
+          "scorer": "Antonio Nusa",
+          "assist": "Martin Ødegaard"
+        },
+        {
+          "minute": 74,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Ivory Coast",
+          "scorer": "Amad Diallo",
+          "assist": "Nicolas Pépé"
+        },
+        {
+          "minute": 86,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Norway",
+          "scorer": "Erling Haaland",
+          "assist": "Patrick Berg"
+        }
+      ]
     },
     {
       "id": "537416",
@@ -4967,17 +4992,17 @@
       "matchday": null,
       "home": "France",
       "away": "Sweden",
-      "home_score": null,
-      "away_score": null,
-      "status": "Timed",
-      "minute": null,
+      "home_score": 3,
+      "away_score": 0,
+      "status": "Finished",
+      "minute": 90,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": null,
+        "winner": "HOME_TEAM",
         "full_time": {
-          "home": null,
-          "away": null
+          "home": 3,
+          "away": 0
         },
         "regular_time": {
           "home": null,
@@ -4988,7 +5013,32 @@
           "away": null
         }
       },
-      "goals": []
+      "goals": [
+        {
+          "minute": 45,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "France",
+          "scorer": "Kylian Mbappé",
+          "assist": "Ousmane Dembélé"
+        },
+        {
+          "minute": 53,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "France",
+          "scorer": "Bradley Barcola",
+          "assist": "Michael Olise"
+        },
+        {
+          "minute": 74,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "France",
+          "scorer": "Kylian Mbappé",
+          "assist": "Michael Olise"
+        }
+      ]
     },
     {
       "id": "537425",
@@ -4998,17 +5048,17 @@
       "matchday": null,
       "home": "Mexico",
       "away": "Ecuador",
-      "home_score": null,
-      "away_score": null,
-      "status": "Timed",
-      "minute": null,
+      "home_score": 2,
+      "away_score": 0,
+      "status": "In_Play",
+      "minute": 42,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": null,
+        "winner": "HOME_TEAM",
         "full_time": {
-          "home": null,
-          "away": null
+          "home": 2,
+          "away": 0
         },
         "regular_time": {
           "home": null,
@@ -5019,7 +5069,24 @@
           "away": null
         }
       },
-      "goals": []
+      "goals": [
+        {
+          "minute": 22,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Mexico",
+          "scorer": "Julián Quiñones",
+          "assist": "Roberto Alvarado"
+        },
+        {
+          "minute": 31,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Mexico",
+          "scorer": "Raúl Jiménez",
+          "assist": "Julián Quiñones"
+        }
+      ]
     },
     {
       "id": "537426",
@@ -5330,6 +5397,68 @@
         }
       },
       "goals": []
+    },
+    {
+      "id": "537375",
+      "date": "2026-07-04T21:00:00Z",
+      "stage": "Last 16",
+      "group": null,
+      "matchday": null,
+      "home": "Paraguay",
+      "away": "France",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537377",
+      "date": "2026-07-05T20:00:00Z",
+      "stage": "Last 16",
+      "group": null,
+      "matchday": null,
+      "home": "Brazil",
+      "away": "Norway",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
     }
   ],
   "player_stats": {
@@ -5340,7 +5469,7 @@
       "group_assists": 0
     },
     "Kylian Mbappe (France)": {
-      "goals": 4,
+      "goals": 6,
       "assists": 2,
       "group_goals": 4,
       "group_assists": 2
@@ -5353,18 +5482,18 @@
     },
     "Ousmane Dembele (France)": {
       "goals": 4,
-      "assists": 1,
+      "assists": 2,
       "group_goals": 4,
       "group_assists": 1
     },
     "Michael Olise (France)": {
       "goals": 0,
-      "assists": 3,
+      "assists": 5,
       "group_goals": 0,
       "group_assists": 3
     },
     "Erling Haaland (Norway)": {
-      "goals": 4,
+      "goals": 5,
       "assists": 0,
       "group_goals": 4,
       "group_assists": 0
@@ -5511,10 +5640,10 @@
     "Haiti": "Group Stage",
     "Panama": "Group Stage",
     "Argentina": "Round of 32",
-    "Brazil": "Round of 32",
+    "Brazil": "Round of 16",
     "Colombia": "Round of 32",
     "Ecuador": "Round of 32",
-    "Paraguay": "Round of 32",
+    "Paraguay": "Round of 16",
     "Uruguay": "Group Stage",
     "New Zealand": "Group Stage",
     "Austria": "Round of 32",
@@ -5523,10 +5652,10 @@
     "Croatia": "Round of 32",
     "Czechia": "Group Stage",
     "England": "Round of 32",
-    "France": "Round of 32",
+    "France": "Round of 16",
     "Germany": "Round of 32",
     "Netherlands": "Round of 32",
-    "Norway": "Round of 32",
+    "Norway": "Round of 16",
     "Portugal": "Round of 32",
     "Scotland": "Group Stage",
     "Spain": "Round of 32",
@@ -5534,8 +5663,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1782873511,
-  "last_score_refresh_attempt_at": 1782873511,
+  "last_score_refresh_at": 1782873859,
+  "last_score_refresh_attempt_at": 1782873857,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
