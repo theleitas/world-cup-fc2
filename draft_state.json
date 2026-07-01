@@ -5096,16 +5096,16 @@
       "matchday": null,
       "home": "England",
       "away": "Congo DR",
-      "home_score": 1,
+      "home_score": 2,
       "away_score": 1,
-      "status": "In_Play",
-      "minute": 84,
+      "status": "Finished",
+      "minute": 90,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": "DRAW",
+        "winner": "HOME_TEAM",
         "full_time": {
-          "home": 1,
+          "home": 2,
           "away": 1
         },
         "regular_time": {
@@ -5128,6 +5128,14 @@
         },
         {
           "minute": 75,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "England",
+          "scorer": "Harry Kane",
+          "assist": "Anthony Gordon"
+        },
+        {
+          "minute": 86,
           "injury_time": null,
           "type": "REGULAR",
           "team": "England",
@@ -5492,7 +5500,7 @@
       "group_assists": 2
     },
     "Harry Kane (England)": {
-      "goals": 4,
+      "goals": 5,
       "assists": 0,
       "group_goals": 3,
       "group_assists": 0
@@ -5680,8 +5688,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1782928095,
-  "last_score_refresh_attempt_at": 1782928095,
+  "last_score_refresh_at": 1782929603,
+  "last_score_refresh_attempt_at": 1782929602,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
