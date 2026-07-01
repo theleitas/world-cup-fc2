@@ -5152,16 +5152,16 @@
       "matchday": null,
       "home": "Belgium",
       "away": "Senegal",
-      "home_score": 2,
+      "home_score": 3,
       "away_score": 2,
       "status": "In_Play",
       "minute": 120,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": "DRAW",
+        "winner": "HOME_TEAM",
         "full_time": {
-          "home": 2,
+          "home": 3,
           "away": 2
         },
         "regular_time": {
@@ -5205,6 +5205,14 @@
           "team": "Belgium",
           "scorer": "Youri Tielemans",
           "assist": "Leandro Trossard"
+        },
+        {
+          "minute": 120,
+          "injury_time": 5,
+          "type": "PENALTY",
+          "team": "Belgium",
+          "scorer": "Youri Tielemans",
+          "assist": ""
         }
       ]
     },
@@ -5721,8 +5729,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1782945585,
-  "last_score_refresh_attempt_at": 1782945584,
+  "last_score_refresh_at": 1782945891,
+  "last_score_refresh_attempt_at": 1782945889,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
