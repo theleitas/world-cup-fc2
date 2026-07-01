@@ -2521,27 +2521,33 @@ def advancement_stage_populated(state, stage_level, required_teams):
     return len(teams) >= required_teams
 
 
+def advancement_bonus_level_unlocked(state, level):
+    if level == "Group Stage":
+        return True
+    if level == "Round of 32":
+        return goalie_previous_stage_complete(state, "r32") and goalie_round_is_populated(state, "r32")
+    if level == "Round of 16":
+        return goalie_previous_stage_complete(state, "r16") and goalie_round_is_populated(state, "r16")
+    if level == "Quarterfinals":
+        return goalie_previous_stage_complete(state, "r8") and goalie_round_is_populated(state, "r8")
+    if level == "Semifinals":
+        return advancement_stage_complete(state, "Quarterfinals", 4) and advancement_stage_populated(state, "Semifinals", 4)
+    if level == "Final":
+        return advancement_stage_complete(state, "Semifinals", 2) and advancement_stage_populated(state, "Final", 2)
+    if level == "Champion":
+        return advancement_stage_complete(state, "Final", 1)
+    return False
+
+
 def advancement_bonus_for_team(state, team_name):
     team_name = canonical_team_name(team_name)
     advancement = state.get("advancement", {}).get(team_name, "Group Stage")
-    bonus_round_key = {
-        "Round of 32": "r32",
-        "Round of 16": "r16",
-        "Quarterfinals": "r8",
-    }.get(advancement)
-    if bonus_round_key and not (goalie_previous_stage_complete(state, bonus_round_key) and goalie_round_is_populated(state, bonus_round_key)):
-        return 0
-    if advancement == "Semifinals" and not (
-        advancement_stage_complete(state, "Quarterfinals", 4)
-        and advancement_stage_populated(state, "Semifinals", 4)
-    ):
-        return 0
-    if advancement == "Final" and not (
-        advancement_stage_complete(state, "Semifinals", 2)
-        and advancement_stage_populated(state, "Final", 2)
-    ):
-        return 0
-    return int(ADVANCEMENT_BONUSES.get(advancement, 0))
+    max_rank = advancement_rank(advancement)
+    best_bonus = 0
+    for level in ADVANCEMENT_LEVELS:
+        if advancement_rank(level) <= max_rank and advancement_bonus_level_unlocked(state, level):
+            best_bonus = max(best_bonus, int(ADVANCEMENT_BONUSES.get(level, 0)))
+    return best_bonus
 
 
 def team_fantasy_points(state, team_name):
@@ -2966,7 +2972,7 @@ def render_payout_descriptions():
         st.markdown(
             f"""
 <div class='payout-desc'><b>How Points Are Scored</b><br>
-National teams earn +3 for a win, +1 for a draw, +1 for each regular-time or extra-time goal scored, and +1 for a clean sheet. Penalty kicks in a shootout do not count as team goal points and do not affect clean-sheet points; the shootout winner still counts as the match winner. Star players earn +4 for each goal and +3 for each assist. Advancement bonuses are added automatically only after the prior stage is fully final and the next round is officially populated: Round of 32 +5, Round of 16 +8, Quarterfinals +12, Semifinals +15, Final +20, and Champion +25. These advancement bonuses are total bonuses for the team's deepest confirmed finish, not added together round by round. During live matches, points are shown based on the current state of the match. For example, a team leading 2-0 live would currently show +3 for the win, +2 for goals, and +1 for the clean sheet.</div>
+National teams earn +3 for a win, +1 for a draw, +1 for each regular-time or extra-time goal scored, and +1 for a clean sheet. Penalty kicks in a shootout do not count as team goal points and do not affect clean-sheet points; the shootout winner still counts as the match winner. Star players earn +4 for each goal and +3 for each assist. Advancement bonuses are added automatically only after the prior stage is fully final and the next round is officially populated: Round of 32 +5, Round of 16 +8, Quarterfinals +12, Semifinals +15, Final +20, and Champion +25. These advancement bonuses are total bonuses for the team's deepest confirmed finish, not added together round by round. If a team has advanced farther than the latest fully unlocked bonus stage, it keeps the highest already-unlocked advancement bonus until the next bonus stage unlocks. During live matches, points are shown based on the current state of the match. For example, a team leading 2-0 live would currently show +3 for the win, +2 for goals, and +1 for the clean sheet.</div>
 
 <div class='payout-desc'><b>Goalie Challenge - $25 Side Bet</b><br>
 Goalie Challenge is completely separate from the main World Cup FC2 standings and never changes the overall Gold, Silver, or Bronze totals. Coaches draft the primary listed goalkeeper for a team before the Round of 32, Round of 16, and Round of 8, but the pick scores as that team's playing goalkeeper slot for that round. That protects a coach if the listed goalkeeper is injured, benched, or replaced. Each coach drafts 4 goalie slots for the Round of 32, 2 goalie slots for the Round of 16, and 1 goalie slot for the Round of 8. The Round of 32 draft order is reverse group-stage rank after the group stage is final. Later goalie draft orders are reverse main standings before that goalie round starts, not including any Goalie Challenge points. Each goalie draft snakes each round. Highest score wins Goalie Challenge Gold ($125), second highest wins Silver ($50), and third highest wins Bronze ($25). If coaches tie, the first tiebreaker is fewest counted goals allowed across all drafted goalie slots. Draft sections unlock only after every game from the previous stage is complete and the full next round is officially populated. A goalie draft stays open until every goalie slot is drafted, even if that round's games have already kicked off, and drafted goalie slots begin accumulating points as soon as match data is available.</div>
