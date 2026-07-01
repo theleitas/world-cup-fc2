@@ -5096,16 +5096,16 @@
       "matchday": null,
       "home": "England",
       "away": "Congo DR",
-      "home_score": 0,
+      "home_score": 1,
       "away_score": 1,
       "status": "In_Play",
-      "minute": 73,
+      "minute": 78,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": "AWAY_TEAM",
+        "winner": "DRAW",
         "full_time": {
-          "home": 0,
+          "home": 1,
           "away": 1
         },
         "regular_time": {
@@ -5125,6 +5125,14 @@
           "team": "Congo DR",
           "scorer": "Brian Cipenga",
           "assist": "Chancel Mbemba"
+        },
+        {
+          "minute": 75,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "England",
+          "scorer": "Harry Kane",
+          "assist": "Anthony Gordon"
         }
       ]
     },
@@ -5484,7 +5492,7 @@
       "group_assists": 2
     },
     "Harry Kane (England)": {
-      "goals": 3,
+      "goals": 4,
       "assists": 0,
       "group_goals": 3,
       "group_assists": 0
@@ -5672,8 +5680,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1782927370,
-  "last_score_refresh_attempt_at": 1782927367,
+  "last_score_refresh_at": 1782927705,
+  "last_score_refresh_attempt_at": 1782927703,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
