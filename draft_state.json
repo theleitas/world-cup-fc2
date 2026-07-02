@@ -5042,7 +5042,7 @@
     },
     {
       "id": "537425",
-      "date": "2026-07-01T01:00:00Z",
+      "date": "2026-07-01T02:00:00Z",
       "stage": "Last 32",
       "group": null,
       "matchday": null,
@@ -5573,6 +5573,37 @@
         }
       },
       "goals": []
+    },
+    {
+      "id": "537380",
+      "date": "2026-07-07T00:00:00Z",
+      "stage": "Last 16",
+      "group": null,
+      "matchday": null,
+      "home": "USA",
+      "away": "Belgium",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
     }
   ],
   "player_stats": {
@@ -5730,7 +5761,7 @@
   "advancement": {
     "Canada": "Round of 16",
     "Mexico": "Round of 16",
-    "USA": "Round of 32",
+    "USA": "Round of 16",
     "Australia": "Round of 32",
     "Iraq": "Group Stage",
     "IR Iran": "Group Stage",
@@ -5761,7 +5792,7 @@
     "Uruguay": "Group Stage",
     "New Zealand": "Group Stage",
     "Austria": "Round of 32",
-    "Belgium": "Round of 32",
+    "Belgium": "Round of 16",
     "Bosnia and Herzegovina": "Round of 32",
     "Croatia": "Round of 32",
     "Czechia": "Group Stage",
@@ -5777,8 +5808,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1782962269,
-  "last_score_refresh_attempt_at": 1782962268,
+  "last_score_refresh_at": 1782962629,
+  "last_score_refresh_attempt_at": 1782962628,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
