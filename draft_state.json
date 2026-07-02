@@ -5224,16 +5224,16 @@
       "matchday": null,
       "home": "USA",
       "away": "Bosnia and Herzegovina",
-      "home_score": 0,
+      "home_score": 1,
       "away_score": 0,
       "status": "In_Play",
-      "minute": 41,
+      "minute": 45,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": "DRAW",
+        "winner": "HOME_TEAM",
         "full_time": {
-          "home": 0,
+          "home": 1,
           "away": 0
         },
         "regular_time": {
@@ -5245,7 +5245,16 @@
           "away": null
         }
       },
-      "goals": []
+      "goals": [
+        {
+          "minute": 45,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "USA",
+          "scorer": "Folarin Balogun",
+          "assist": ""
+        }
+      ]
     },
     {
       "id": "537420",
@@ -5760,8 +5769,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1782953084,
-  "last_score_refresh_attempt_at": 1782953082,
+  "last_score_refresh_at": 1782953383,
+  "last_score_refresh_attempt_at": 1782953382,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
