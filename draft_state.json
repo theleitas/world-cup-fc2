@@ -5432,16 +5432,16 @@
       "matchday": null,
       "home": "Australia",
       "away": "Egypt",
-      "home_score": 0,
+      "home_score": 1,
       "away_score": 1,
       "status": "In_Play",
-      "minute": 54,
+      "minute": 60,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": "AWAY_TEAM",
+        "winner": "DRAW",
         "full_time": {
-          "home": 0,
+          "home": 1,
           "away": 1
         },
         "regular_time": {
@@ -5461,6 +5461,14 @@
           "team": "Egypt",
           "scorer": "Emam Ashour",
           "assist": "Karim Hafez"
+        },
+        {
+          "minute": 55,
+          "injury_time": null,
+          "type": "OWN",
+          "team": "Egypt",
+          "scorer": "Mohamed Hany",
+          "assist": ""
         }
       ]
     },
@@ -5915,8 +5923,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1783106173,
-  "last_score_refresh_attempt_at": 1783106173,
+  "last_score_refresh_at": 1783106514,
+  "last_score_refresh_attempt_at": 1783106513,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
