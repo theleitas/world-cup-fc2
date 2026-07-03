@@ -6038,6 +6038,16 @@
     "Spencer": true
   },
   "goalie_challenge": {
+    "stat_overrides": [
+      {
+        "fixture_id": 1565176,
+        "team": "Paraguay",
+        "round_key": "r32",
+        "goalie_name": "Orlando Gill",
+        "shootout_penalty_saves": 2,
+        "note": "API-Football omitted shootout attempt events for Germany vs Paraguay on 2026-06-29; Orlando Gill made two verified shootout saves."
+      }
+    ],
     "rounds": {
       "r32": {
         "active": true,

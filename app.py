@@ -1299,6 +1299,7 @@ def empty_official_rosters():
 
 def empty_goalie_challenge():
     return {
+        "stat_overrides": [],
         "rounds": {
             round_key: {
                 "active": False,
@@ -1517,6 +1518,7 @@ def normalize_goalie_challenge(raw):
     raw = raw if isinstance(raw, dict) else {}
     raw_rounds = raw.get("rounds") if isinstance(raw.get("rounds"), dict) else {}
     normalized = empty_goalie_challenge()
+    normalized["stat_overrides"] = normalize_goalie_stat_overrides(raw.get("stat_overrides", []))
     for round_key in GOALIE_ROUND_ORDER:
         round_info = GOALIE_ROUNDS[round_key]
         prior = raw_rounds.get(round_key) if isinstance(raw_rounds.get(round_key), dict) else {}
@@ -1529,6 +1531,36 @@ def normalize_goalie_challenge(raw):
             "current_pick_started_at": none_or_int(prior.get("current_pick_started_at")) or int(time.time()),
         }
     return normalized
+
+
+def normalize_goalie_stat_overrides(raw_overrides):
+    overrides = []
+    seen = set()
+    for raw in raw_overrides or []:
+        if not isinstance(raw, dict):
+            continue
+        fixture_id = none_or_int(raw.get("fixture_id"))
+        team = canonical_team_name(raw.get("team"))
+        if not fixture_id or not team:
+            continue
+        round_key = str(raw.get("round_key") or "").strip()
+        if round_key not in GOALIE_ROUNDS:
+            round_key = ""
+        key = (fixture_id, team, round_key)
+        if key in seen:
+            continue
+        seen.add(key)
+        overrides.append(
+            {
+                "fixture_id": fixture_id,
+                "team": team,
+                "round_key": round_key,
+                "goalie_name": str(raw.get("goalie_name") or "").strip(),
+                "shootout_penalty_saves": none_or_int(raw.get("shootout_penalty_saves")) or 0,
+                "note": str(raw.get("note") or "").strip(),
+            }
+        )
+    return overrides
 
 
 def normalize_pick_list(raw_picks, sequence, field):
@@ -2329,6 +2361,23 @@ def goalie_penalty_event_stats_for_fixture(fixture, side):
     }
 
 
+def goalie_stat_override_for_fixture(state, round_key, fixture, team):
+    fixture_id = none_or_int(fixture.get("api_fixture_id"))
+    team = canonical_team_name(team)
+    if not fixture_id or not team:
+        return {}
+    for override in state.get("goalie_challenge", {}).get("stat_overrides", []):
+        if none_or_int(override.get("fixture_id")) != fixture_id:
+            continue
+        if canonical_team_name(override.get("team")) != team:
+            continue
+        override_round = str(override.get("round_key") or "").strip()
+        if override_round and override_round != round_key:
+            continue
+        return override
+    return {}
+
+
 def goalie_score_for_pick(state, round_key, pick):
     team = canonical_team_name(pick.get("team"))
     api_team_id = none_or_int(pick.get("api_team_id") or (pick.get("goalie") or {}).get("team_id"))
@@ -2385,7 +2434,11 @@ def goalie_score_for_pick(state, round_key, pick):
         except Exception:
             pass
         penalty_events = goalie_penalty_event_stats_for_fixture(fixture, side)
-        match_penalty_saves += int(penalty_events.get("shootout_penalty_saves", 0))
+        shootout_penalty_saves = int(penalty_events.get("shootout_penalty_saves", 0))
+        override = goalie_stat_override_for_fixture(state, round_key, fixture, team)
+        if override:
+            shootout_penalty_saves = max(shootout_penalty_saves, int(override.get("shootout_penalty_saves", 0)))
+        match_penalty_saves += shootout_penalty_saves
         match_goals_allowed = max(match_goals_allowed - int(penalty_events.get("in_match_penalty_goals_allowed", 0)), 0)
         if match_had_goalie_stats or match_penalty_saves or match_goals_allowed:
             counted_matches += 1
@@ -2978,7 +3031,7 @@ National teams earn +3 for a win, +1 for a draw, +1 for each regular-time or ext
 Goalie Challenge is completely separate from the main World Cup FC2 standings and never changes the overall Gold, Silver, or Bronze totals. Coaches draft the primary listed goalkeeper for a team before the Round of 32, Round of 16, and Round of 8, but the pick scores as that team's playing goalkeeper slot for that round. That protects a coach if the listed goalkeeper is injured, benched, or replaced. Each coach drafts 4 goalie slots for the Round of 32, 2 goalie slots for the Round of 16, and 1 goalie slot for the Round of 8. The Round of 32 draft order is reverse group-stage rank after the group stage is final. Later goalie draft orders are reverse main standings before that goalie round starts, not including any Goalie Challenge points. Each goalie draft snakes each round. Highest score wins Goalie Challenge Gold ($125), second highest wins Silver ($50), and third highest wins Bronze ($25). If coaches tie, the first tiebreaker is fewest counted goals allowed across all drafted goalie slots. Draft sections unlock only after every game from the previous stage is complete and the full next round is officially populated. A goalie draft stays open until every goalie slot is drafted, even if that round's games have already kicked off, and drafted goalie slots begin accumulating points as soon as match data is available.</div>
 
 <div class='payout-desc'><b>How Goalie Saves Are Counted</b><br>
-Goalie Challenge scoring is: regular-time and extra-time non-penalty saves are +1 each; penalty-kick saves are +2 each during regular time, extra time, and shootouts; counted goals allowed are -1 each. Counted goals allowed means regular-time and extra-time goals allowed that were not penalty kicks. Penalty-kick goals allowed are not -1 in any situation: not regular time, not extra time, and not shootouts. API-Football regular/extra goalkeeper saves come from <code>goals.saves</code>, in-match penalty saves come from <code>penalty.saved</code> when API-Football provides it, and in-match penalty goals are removed from <code>goals.conceded</code> using the event feed. API-Football's shootout event feed marks attempts as <code>Penalty</code> or <code>Missed Penalty</code> with <code>Penalty Shootout</code> comments, but it does not reliably distinguish a saved shootout penalty from a miss wide or off the post. For shootouts, the app counts every opponent shootout <code>Missed Penalty</code> as a penalty save worth +2 and does not subtract anything for opponent shootout <code>Penalty</code> goals.</div>
+Goalie Challenge scoring is: regular-time and extra-time non-penalty saves are +1 each; penalty-kick saves are +2 each during regular time, extra time, and shootouts; counted goals allowed are -1 each. Counted goals allowed means regular-time and extra-time goals allowed that were not penalty kicks. Penalty-kick goals allowed are not -1 in any situation: not regular time, not extra time, and not shootouts. API-Football regular/extra goalkeeper saves come from <code>goals.saves</code>, in-match penalty saves come from <code>penalty.saved</code> when API-Football provides it, and in-match penalty goals are removed from <code>goals.conceded</code> using the event feed. API-Football's shootout event feed can be incomplete and does not always distinguish a saved shootout penalty from a miss wide or off the post. For shootouts, the app counts opponent shootout <code>Missed Penalty</code> events as penalty saves when API-Football provides those events, and uses verified manual overrides when the event feed omits known shootout saves. Opponent shootout <code>Penalty</code> goals are never subtracted.</div>
 
 <div class='payout-desc'><b>Standings Card Abbreviations</b><br>
 "Group" means Group Stage Winner points only: group-stage drafted team points plus group-stage drafted player points. It excludes advancement bonuses, knockout matches, Empire Builder, Cinderella, and Goalie Challenge. "Empire" means Empire Builder, shown as teams advanced to the Round of 16 or later and then goals scored by those advanced teams for the tiebreaker. "Cinderella" means the coach's best single-team overperformance against the locked FIFA ranking baseline. "Goalie Challenge Points" means regular/extra saves plus 2 times penalty saves, minus counted goals allowed, in the separate goalie side bet; higher is better and those points do not affect the main total. "GATB" means counted goals allowed tiebreaker and is the first Goalie Challenge tiebreaker; lower is better. Live Matches appears only for matches currently live and shows the active match score plus live team and player points from that match. Power Rating is the preseason roster strength estimate shown at the bottom of each card.</div>
