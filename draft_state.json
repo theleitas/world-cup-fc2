@@ -5384,16 +5384,16 @@
       "matchday": null,
       "home": "Switzerland",
       "away": "Algeria",
-      "home_score": 1,
+      "home_score": 2,
       "away_score": 0,
-      "status": "Paused",
-      "minute": 45,
+      "status": "In_Play",
+      "minute": 49,
       "elapsed": null,
       "clock": "",
       "score_node": {
         "winner": "HOME_TEAM",
         "full_time": {
-          "home": 1,
+          "home": 2,
           "away": 0
         },
         "regular_time": {
@@ -5413,6 +5413,14 @@
           "team": "Switzerland",
           "scorer": "Breel Embolo",
           "assist": "Johan Manzambi"
+        },
+        {
+          "minute": 46,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Switzerland",
+          "scorer": "Dan Ndoye",
+          "assist": ""
         }
       ]
     },
@@ -5867,8 +5875,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1783051486,
-  "last_score_refresh_attempt_at": 1783051484,
+  "last_score_refresh_at": 1783051786,
+  "last_score_refresh_attempt_at": 1783051784,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
