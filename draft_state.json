@@ -5482,8 +5482,8 @@
       "away": "Cabo Verde",
       "home_score": 1,
       "away_score": 0,
-      "status": "Paused",
-      "minute": 45,
+      "status": "In_Play",
+      "minute": 47,
       "elapsed": null,
       "clock": "",
       "score_node": {
@@ -5932,8 +5932,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1783119712,
-  "last_score_refresh_attempt_at": 1783119710,
+  "last_score_refresh_at": 1783120043,
+  "last_score_refresh_attempt_at": 1783120042,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
