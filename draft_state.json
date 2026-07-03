@@ -6046,6 +6046,22 @@
         "goalie_name": "Orlando Gill",
         "shootout_penalty_saves": 2,
         "note": "API-Football omitted shootout attempt events for Germany vs Paraguay on 2026-06-29; Orlando Gill made two verified shootout saves."
+      },
+      {
+        "fixture_id": 1565176,
+        "team": "Germany",
+        "round_key": "r32",
+        "goalie_name": "Manuel Neuer",
+        "shootout_penalty_saves": 1,
+        "note": "Verified shootout save by Manuel Neuer on Fabian Balbuena's attempt in Germany vs Paraguay on 2026-06-29; API-Football penalty.saved remained zero."
+      },
+      {
+        "fixture_id": 1562345,
+        "team": "Morocco",
+        "round_key": "r32",
+        "goalie_name": "Yassine Bounou",
+        "shootout_penalty_saves": 1,
+        "note": "Verified shootout save by Yassine Bounou on Crysencio Summerville's attempt in Netherlands vs Morocco on 2026-06-29; API-Football penalty.saved remained zero."
       }
     ],
     "rounds": {
