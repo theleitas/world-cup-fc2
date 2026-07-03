@@ -5434,7 +5434,7 @@
       "away": "Egypt",
       "home_score": 1,
       "away_score": 1,
-      "status": "Paused",
+      "status": "In_Play",
       "minute": 120,
       "elapsed": null,
       "clock": "",
@@ -5449,8 +5449,8 @@
           "away": 1
         },
         "penalties": {
-          "home": null,
-          "away": null
+          "home": 0,
+          "away": 0
         }
       },
       "goals": [
@@ -5923,8 +5923,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1783111338,
-  "last_score_refresh_attempt_at": 1783111336,
+  "last_score_refresh_at": 1783111697,
+  "last_score_refresh_attempt_at": 1783111696,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
