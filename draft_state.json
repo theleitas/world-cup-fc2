@@ -5328,16 +5328,16 @@
       "matchday": null,
       "home": "Portugal",
       "away": "Croatia",
-      "home_score": 0,
+      "home_score": 1,
       "away_score": 1,
       "status": "In_Play",
-      "minute": 66,
+      "minute": 71,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": "AWAY_TEAM",
+        "winner": "DRAW",
         "full_time": {
-          "home": 0,
+          "home": 1,
           "away": 1
         },
         "regular_time": {
@@ -5357,6 +5357,14 @@
           "team": "Croatia",
           "scorer": "Ivan Perišić",
           "assist": "Josip Stanišić"
+        },
+        {
+          "minute": 68,
+          "injury_time": null,
+          "type": "PENALTY",
+          "team": "Portugal",
+          "scorer": "Cristiano Ronaldo",
+          "assist": "Renato Veiga"
         }
       ]
     },
@@ -5738,7 +5746,7 @@
       "group_assists": 0
     },
     "Cristiano Ronaldo (Portugal)": {
-      "goals": 2,
+      "goals": 3,
       "assists": 0,
       "group_goals": 2,
       "group_assists": 0
@@ -5842,8 +5850,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1783038369,
-  "last_score_refresh_attempt_at": 1783038367,
+  "last_score_refresh_at": 1783038668,
+  "last_score_refresh_attempt_at": 1783038667,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
