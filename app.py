@@ -132,7 +132,7 @@ div[class*="st-key-points-journal-text"] textarea:disabled {
 .goalie-round-bubbles-r32 { grid-template-columns:repeat(4, minmax(0, 1fr)); }
 .goalie-round-bubbles-r16 { grid-template-columns:repeat(2, minmax(0, 1fr)); }
 .goalie-round-bubbles-r8 { grid-template-columns:minmax(0, 1fr); }
-.goalie-slot { min-height:52px; border:1px solid color-mix(in srgb, var(--coach-color) 48%, rgba(255,255,255,.16)); border-radius:7px; background:rgba(255,255,255,.045); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; padding:4px 4px; text-align:center; overflow:hidden; box-shadow:inset 0 0 8px rgba(255,255,255,.035), 0 0 7px color-mix(in srgb, var(--coach-color) 20%, transparent); }
+.goalie-slot { min-height:60px; border:1px solid color-mix(in srgb, var(--coach-color) 48%, rgba(255,255,255,.16)); border-radius:7px; background:rgba(255,255,255,.045); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; padding:4px 4px; text-align:center; overflow:hidden; box-shadow:inset 0 0 8px rgba(255,255,255,.035), 0 0 7px color-mix(in srgb, var(--coach-color) 20%, transparent); }
 .goalie-slot-empty { color:#6f777d; font-size:.68rem; font-weight:900; }
 .goalie-slot-flag { font-size:1.3rem; line-height:1; }
 .goalie-slot-flag .flag-icon { margin:0; width:1.05em; height:1.05em; vertical-align:0; }
@@ -142,8 +142,11 @@ div[class*="st-key-points-journal-text"] textarea:disabled {
 .goalie-slot-team { color:#b9c2c9; font-size:.6rem; line-height:.9; font-weight:900; overflow-wrap:anywhere; }
 .goalie-slot-ga { color:var(--coach-color); font-size:.68rem; line-height:1; font-weight:1000; text-shadow:0 0 7px var(--coach-color); }
 .goalie-slot-tb { color:#b9c2c9; font-size:.6rem; line-height:1; font-weight:900; }
+.goalie-slot-total { margin-top:2px; padding:2px 5px; border-radius:5px; background:color-mix(in srgb, var(--coach-color) 28%, rgba(255,255,255,.08)); color:#fff; font-size:.62rem; line-height:1; font-weight:1000; box-shadow:0 0 8px color-mix(in srgb, var(--coach-color) 36%, transparent); }
 .goalie-tb-pill { border:1px solid rgba(185,194,201,.24); border-radius:6px; background:rgba(255,255,255,.045); color:#b9c2c9; font-size:.72rem; font-weight:950; line-height:1.15; text-align:center; padding:4px 6px; margin:0 0 7px; }
 .goalie-tb-pill b { color:var(--coach-color); margin-left:4px; text-shadow:0 0 7px var(--coach-color); }
+.goalie-total-score-line { display:block; margin-top:4px; padding:4px 7px; border-radius:6px; background:color-mix(in srgb, var(--coach-color) 30%, rgba(255,255,255,.08)); color:#fff; font-size:.76rem; font-weight:1000; box-shadow:0 0 10px color-mix(in srgb, var(--coach-color) 42%, transparent); }
+.goalie-total-score-line b { color:#fff; text-shadow:0 0 8px var(--coach-color); }
 .goalie-tb-line { display:block; margin-top:2px; font-style:italic; }
 .coach-live-impact { border-top:1px solid rgba(185,194,201,.28); margin-top:6px; padding-top:6px; }
 .live-impact-title { display:flex; align-items:center; justify-content:center; gap:6px; color:#ffd54a; font-size:.78rem; font-weight:1000; text-transform:uppercase; }
@@ -2376,6 +2379,21 @@ def goalie_stat_override_for_fixture(state, round_key, fixture, team):
     return {}
 
 
+def api_fixture_penalty_shootout_scores(fixture):
+    score = fixture.get("score") if isinstance(fixture.get("score"), dict) else {}
+    penalties = score.get("penalty") if isinstance(score.get("penalty"), dict) else {}
+    home_penalties = none_or_int(penalties.get("home"))
+    away_penalties = none_or_int(penalties.get("away"))
+    if home_penalties is None and away_penalties is None:
+        return None, None
+    return home_penalties or 0, away_penalties or 0
+
+
+def api_fixture_has_penalty_shootout(fixture):
+    home_penalties, away_penalties = api_fixture_penalty_shootout_scores(fixture)
+    return home_penalties is not None or away_penalties is not None
+
+
 def goalie_score_for_pick(state, round_key, pick):
     team = canonical_team_name(pick.get("team"))
     api_team_id = none_or_int(pick.get("api_team_id") or (pick.get("goalie") or {}).get("team_id"))
@@ -3710,6 +3728,7 @@ def goalie_slot_cells_html(slots, live_slot_keys=None):
   <div class='goalie-slot-team'>{display_team_html(team, include_info=False)}</div>
   <div class='goalie-slot-ga'>Saves {int(slot.get("saves", 0))} | PK {int(slot.get("penalty_saves", 0))}</div>
   <div class='goalie-slot-tb'>GATB {int(slot.get("goals_allowed", 0))}</div>
+  <div class='goalie-slot-total'>Total Score = {int(slot.get("points", 0))}</div>
 </div>
 """
             )
@@ -3752,7 +3771,7 @@ def render_goalie_challenge_standings(state, scores):
     </div>
     <div class='score-badge'>{int(item.get("goalie_challenge_points", 0))}</div>
   </div>
-  <div class='goalie-tb-pill'>Saves:<b>{int(item.get("goalie_challenge_saves", 0))}</b> | Penalty Saves:<b>{int(item.get("goalie_challenge_penalty_saves", 0))}</b><span class='goalie-tb-line'>Goals Allowed Tiebreaker:<b>{int(item.get("goalie_challenge_goals_allowed", 0))}</b></span></div>
+  <div class='goalie-tb-pill'>Saves:<b>{int(item.get("goalie_challenge_saves", 0))}</b> | Penalty Saves:<b>{int(item.get("goalie_challenge_penalty_saves", 0))}</b><span class='goalie-tb-line'>Goals Allowed Tiebreaker:<b>{int(item.get("goalie_challenge_goals_allowed", 0))}</b></span><span class='goalie-total-score-line'>Total Score = <b>{int(item.get("goalie_challenge_points", 0))}</b></span></div>
   <div class='goalie-slot-grid'>{goalie_slot_cells_html(item.get("goalie_challenge_slots", []), live_slot_keys)}</div>
 </div>
 """
@@ -5591,6 +5610,151 @@ def goalie_challenge_admin_rows(state):
     return rows
 
 
+def goalie_pick_for_round_team(state, round_key, team):
+    team = canonical_team_name(team)
+    for pick in goalie_round_state(state, round_key).get("picks", []):
+        if canonical_team_name(pick.get("team")) == team:
+            return pick
+    return {}
+
+
+def goalie_shootout_override_key(row):
+    return (
+        none_or_int(row.get("fixture_id") or row.get("Fixture ID")),
+        canonical_team_name(row.get("team") or row.get("Team")),
+        str(row.get("round_key") or row.get("_round_key") or "").strip(),
+    )
+
+
+def goalie_shootout_override_admin_rows(state):
+    rows = []
+    seen = set()
+    overrides = state.get("goalie_challenge", {}).get("stat_overrides", [])
+    override_by_key = {
+        goalie_shootout_override_key(override): override
+        for override in overrides
+    }
+    for round_key in GOALIE_ROUND_ORDER:
+        round_label = GOALIE_ROUNDS[round_key]["label"]
+        for fixture in goalie_round_api_fixtures(state, round_key):
+            if not api_fixture_has_penalty_shootout(fixture):
+                continue
+            fixture_id = none_or_int(fixture.get("api_fixture_id"))
+            if not fixture_id:
+                continue
+            home = canonical_team_name(fixture.get("home"))
+            away = canonical_team_name(fixture.get("away"))
+            home_penalties, away_penalties = api_fixture_penalty_shootout_scores(fixture)
+            match_label = (
+                f"{display_team(home)} {fixture.get('home_score')}-{fixture.get('away_score')} "
+                f"{display_team(away)} | PK {home_penalties}-{away_penalties}"
+            )
+            for team in [home, away]:
+                key = (fixture_id, team, round_key)
+                override = override_by_key.get(key, {})
+                pick = goalie_pick_for_round_team(state, round_key, team)
+                rows.append(
+                    {
+                        "_round_key": round_key,
+                        "Round": round_label,
+                        "Fixture ID": fixture_id,
+                        "Match": match_label,
+                        "Team": team,
+                        "Goalkeeper": override.get("goalie_name") or pick_goalie_name(pick),
+                        "Shootout Saves": int(override.get("shootout_penalty_saves") or 0),
+                        "Note": override.get("note") or "",
+                    }
+                )
+                seen.add(key)
+
+    for override in overrides:
+        key = goalie_shootout_override_key(override)
+        if key in seen:
+            continue
+        fixture_id, team, round_key = key
+        if not fixture_id or not team:
+            continue
+        round_label = GOALIE_ROUNDS.get(round_key, {}).get("label", round_key or "Any Round")
+        rows.append(
+            {
+                "_round_key": round_key,
+                "Round": round_label,
+                "Fixture ID": fixture_id,
+                "Match": "Existing verified override",
+                "Team": team,
+                "Goalkeeper": override.get("goalie_name") or "",
+                "Shootout Saves": int(override.get("shootout_penalty_saves") or 0),
+                "Note": override.get("note") or "",
+            }
+        )
+    return rows
+
+
+def render_goalie_shootout_override_editor(state):
+    st.markdown("**Verified Shootout Save Overrides**")
+    st.caption("API-Football does not reliably separate saved shootout penalties from misses off target or off the post. Use this table for verified shootout saves only; regular and extra-time saves stay automatic.")
+    rows = goalie_shootout_override_admin_rows(state)
+    if not rows:
+        st.caption("No knockout penalty shootouts are available from API-Football yet.")
+        return
+    visible_columns = ["Round", "Fixture ID", "Match", "Team", "Goalkeeper", "Shootout Saves", "Note"]
+    edited = st.data_editor(
+        pd.DataFrame(rows, columns=["_round_key"] + visible_columns),
+        hide_index=True,
+        width="stretch",
+        num_rows="fixed",
+        column_order=visible_columns,
+        disabled=["Round", "Fixture ID", "Match", "Team"],
+        column_config={
+            "Shootout Saves": st.column_config.NumberColumn(min_value=0, step=1, format="%d"),
+            "Note": st.column_config.TextColumn(width="large"),
+        },
+        key="goalie-shootout-overrides-editor",
+    )
+    if st.button("Save Verified Shootout Saves", key="save-goalie-shootout-overrides", width="stretch"):
+        editable_keys = {
+            goalie_shootout_override_key(row)
+            for row in rows
+        }
+
+        def mutator(fresh):
+            fresh = normalize_state(fresh)
+            label_to_key = {info["label"]: key for key, info in GOALIE_ROUNDS.items()}
+            existing = [
+                override
+                for override in fresh["goalie_challenge"].get("stat_overrides", [])
+                if goalie_shootout_override_key(override) not in editable_keys
+            ]
+            replacements = []
+            for _, row in edited.iterrows():
+                fixture_id = none_or_int(row.get("Fixture ID"))
+                team = canonical_team_name(row.get("Team"))
+                round_key = str(row.get("_round_key") or label_to_key.get(str(row.get("Round") or ""), "")).strip()
+                saves = none_or_int(row.get("Shootout Saves")) or 0
+                goalie_name = str(row.get("Goalkeeper") or "").strip()
+                note = str(row.get("Note") or "").strip()
+                if not fixture_id or not team or round_key not in GOALIE_ROUNDS:
+                    continue
+                if saves <= 0 and not goalie_name and not note:
+                    continue
+                replacements.append(
+                    {
+                        "fixture_id": fixture_id,
+                        "team": team,
+                        "round_key": round_key,
+                        "goalie_name": goalie_name,
+                        "shootout_penalty_saves": max(saves, 0),
+                        "note": note,
+                    }
+                )
+            fresh["goalie_challenge"]["stat_overrides"] = normalize_goalie_stat_overrides(existing + replacements)
+            return True
+
+        ok, _ = mutate_shared_state(mutator, "Update verified goalie shootout saves")
+        if ok:
+            st.rerun()
+
+
 def render_goalie_challenge_admin_editor(state):
     st.markdown("<div class='admin-box'>", unsafe_allow_html=True)
     st.subheader("Goalie Challenge Editor")
@@ -5649,6 +5813,8 @@ def render_goalie_challenge_admin_editor(state):
                 st.rerun()
     else:
         st.caption("No Goalie Challenge picks have been made yet.")
+
+    render_goalie_shootout_override_editor(state)
 
     st.markdown("**Protected Goalie Reset**")
     reset_confirmed = st.checkbox("I understand this clears only Goalie Challenge picks and draft status.", key="reset-goalie-confirm-checkbox")
