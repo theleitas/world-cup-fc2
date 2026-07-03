@@ -4939,14 +4939,64 @@ def player_match_journal_lines(state, match, player):
     return lines
 
 
+def signed_points(value):
+    value = int(value or 0)
+    return f"+{value}" if value >= 0 else str(value)
+
+
+def goalie_challenge_journal_lines(score):
+    slots = score.get("goalie_challenge_slots", []) if isinstance(score, dict) else []
+    scoring_slots = [
+        slot
+        for slot in slots
+        if canonical_team_name(slot.get("team"))
+        and (
+            int(slot.get("counted", 0)) > 0
+            or int(slot.get("points", 0)) != 0
+            or int(slot.get("saves", 0)) != 0
+            or int(slot.get("penalty_saves", 0)) != 0
+            or int(slot.get("goals_allowed", 0)) != 0
+        )
+    ]
+    if not scoring_slots and int(score.get("goalie_challenge_points", 0) or 0) == 0:
+        return []
+
+    lines = ["Goalie Challenge", "-" * len("Goalie Challenge")]
+    if scoring_slots:
+        for slot in scoring_slots:
+            team = canonical_team_name(slot.get("team"))
+            goalie_name = str(slot.get("actual_goalie_name") or slot.get("goalie_name") or f"{display_team(team)} goalie").strip()
+            round_label = str(slot.get("round_label") or GOALIE_ROUNDS.get(slot.get("round_key"), {}).get("label") or "Goalie Pick")
+            saves = int(slot.get("saves", 0))
+            penalty_saves = int(slot.get("penalty_saves", 0))
+            goals_allowed = int(slot.get("goals_allowed", 0))
+            points = int(slot.get("points", 0))
+            pieces = [
+                f"Saves {saves} ({signed_points(saves)})",
+                f"Penalty Saves {penalty_saves} ({signed_points(penalty_saves * 2)})",
+                f"GATB {goals_allowed} ({signed_points(-goals_allowed)})",
+            ]
+            lines.append(f"{round_label}: {goalie_name}, {team}")
+            lines.append(f"  {', '.join(pieces)}")
+            lines.append(f"  Total {signed_points(points)}")
+    else:
+        lines.append("No goalie points yet")
+
+    lines.append(f"Goalie Challenge Total: {signed_points(score.get('goalie_challenge_points', 0))}")
+    return lines
+
+
 def build_points_journal_text(state, scores, coach):
     coach_state = state["teams"].get(coach, {})
-    score_total = int(scores.get(coach, {}).get("total_points", 0))
+    coach_score = scores.get(coach, {})
+    score_total = int(coach_score.get("total_points", 0))
+    goalie_total = int(coach_score.get("goalie_challenge_points", 0))
     generated = datetime.now(ZoneInfo("America/New_York")).strftime("%B %-d, %I:%M %p ET") if os.name != "nt" else datetime.now(ZoneInfo("America/New_York")).strftime("%B %#d, %I:%M %p ET")
     lines = [
         f"{coach} Points Journal",
         "=" * (len(coach) + 15),
-        f"Current Total: {score_total}",
+        f"Current Main Total: {score_total}",
+        f"Goalie Challenge Total: {goalie_total}",
         f"Updated: {generated}",
         "",
     ]
@@ -5007,9 +5057,14 @@ def build_points_journal_text(state, scores, coach):
         lines.append("No points logged yet.")
         lines.append("")
 
-    lines.append(f"Journal Total: {running_total}")
+    goalie_lines = goalie_challenge_journal_lines(coach_score)
+    if goalie_lines:
+        lines.extend(goalie_lines)
+        lines.append("")
+
+    lines.append(f"Main Journal Total: {running_total}")
     if running_total != score_total:
-        lines.append(f"Scoreboard Total: {score_total}")
+        lines.append(f"Main Scoreboard Total: {score_total}")
     return "\n".join(lines).rstrip() + "\n"
 
 
