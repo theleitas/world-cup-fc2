@@ -6732,9 +6732,24 @@
               "team_id": 9
             },
             "picked_at": "2026-07-04T07:59:52.999292-04:00"
+          },
+          {
+            "pick": 3,
+            "round": 1,
+            "coach": "Jayme",
+            "team": "Norway",
+            "api_team_id": 1090,
+            "goalie": {
+              "id": 19172,
+              "name": "Ø. Nyland",
+              "photo": "https://media.api-sports.io/football/players/19172.png",
+              "team": "Norway",
+              "team_id": 1090
+            },
+            "picked_at": "2026-07-04T08:01:47.694579-04:00"
           }
         ],
-        "current_pick_started_at": 1783166392
+        "current_pick_started_at": 1783166507
       },
       "r8": {
         "active": false,
