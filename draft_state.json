@@ -6747,9 +6747,24 @@
               "team_id": 1090
             },
             "picked_at": "2026-07-04T08:01:47.694579-04:00"
+          },
+          {
+            "pick": 4,
+            "round": 1,
+            "coach": "Lamp",
+            "team": "Switzerland",
+            "api_team_id": 15,
+            "goalie": {
+              "id": 25282,
+              "name": "G. Kobel",
+              "photo": "https://media.api-sports.io/football/players/25282.png",
+              "team": "Switzerland",
+              "team_id": 15
+            },
+            "picked_at": "2026-07-04T08:36:10.814788-04:00"
           }
         ],
-        "current_pick_started_at": 1783166507
+        "current_pick_started_at": 1783168570
       },
       "r8": {
         "active": false,
