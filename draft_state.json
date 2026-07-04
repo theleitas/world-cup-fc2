@@ -6867,9 +6867,24 @@
               "team_id": 2384
             },
             "picked_at": "2026-07-04T11:32:11.337956-04:00"
+          },
+          {
+            "pick": 12,
+            "round": 2,
+            "coach": "Herb",
+            "team": "Brazil",
+            "api_team_id": 6,
+            "goalie": {
+              "id": 280,
+              "name": "Alisson Becker",
+              "photo": "https://media.api-sports.io/football/players/280.png",
+              "team": "Brazil",
+              "team_id": 6
+            },
+            "picked_at": "2026-07-04T11:34:56.516748-04:00"
           }
         ],
-        "current_pick_started_at": 1783179131
+        "current_pick_started_at": 1783179296
       },
       "r8": {
         "active": false,
