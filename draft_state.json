@@ -5769,6 +5769,68 @@
         }
       },
       "goals": []
+    },
+    {
+      "id": "537381",
+      "date": "2026-07-07T16:00:00Z",
+      "stage": "Last 16",
+      "group": null,
+      "matchday": null,
+      "home": "Argentina",
+      "away": "Egypt",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537382",
+      "date": "2026-07-07T20:00:00Z",
+      "stage": "Last 16",
+      "group": null,
+      "matchday": null,
+      "home": "Switzerland",
+      "away": "Colombia",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
     }
   ],
   "player_stats": {
@@ -5940,7 +6002,7 @@
     "Cabo Verde": "Round of 32",
     "Congo DR": "Round of 32",
     "Ivory Coast": "Round of 32",
-    "Egypt": "Round of 32",
+    "Egypt": "Round of 16",
     "Ghana": "Round of 32",
     "Morocco": "Round of 16",
     "Senegal": "Round of 32",
@@ -5949,9 +6011,9 @@
     "Curaçao": "Group Stage",
     "Haiti": "Group Stage",
     "Panama": "Group Stage",
-    "Argentina": "Round of 32",
+    "Argentina": "Round of 16",
     "Brazil": "Round of 16",
-    "Colombia": "Round of 32",
+    "Colombia": "Round of 16",
     "Ecuador": "Round of 32",
     "Paraguay": "Round of 16",
     "Uruguay": "Group Stage",
@@ -5970,11 +6032,11 @@
     "Scotland": "Group Stage",
     "Spain": "Round of 16",
     "Sweden": "Round of 32",
-    "Switzerland": "Round of 32",
+    "Switzerland": "Round of 16",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1783143809,
-  "last_score_refresh_attempt_at": 1783143808,
+  "last_score_refresh_at": 1783144168,
+  "last_score_refresh_attempt_at": 1783144167,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
