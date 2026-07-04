@@ -6897,9 +6897,24 @@
               "team_id": 16
             },
             "picked_at": "2026-07-04T12:50:30.676565-04:00"
+          },
+          {
+            "pick": 14,
+            "round": 2,
+            "coach": "Jayme",
+            "team": "Colombia",
+            "api_team_id": 8,
+            "goalie": {
+              "id": 313,
+              "name": "D. Ospina",
+              "photo": "https://media.api-sports.io/football/players/313.png",
+              "team": "Colombia",
+              "team_id": 8
+            },
+            "picked_at": "2026-07-04T13:05:17.831662-04:00"
           }
         ],
-        "current_pick_started_at": 1783183830
+        "current_pick_started_at": 1783184717
       },
       "r8": {
         "active": false,
