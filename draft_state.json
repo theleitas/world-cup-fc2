@@ -6762,9 +6762,24 @@
               "team_id": 15
             },
             "picked_at": "2026-07-04T08:36:10.814788-04:00"
+          },
+          {
+            "pick": 5,
+            "round": 1,
+            "coach": "Herb",
+            "team": "Canada",
+            "api_team_id": 5529,
+            "goalie": {
+              "id": 51148,
+              "name": "D. St. Clair",
+              "photo": "https://media.api-sports.io/football/players/51148.png",
+              "team": "Canada",
+              "team_id": 5529
+            },
+            "picked_at": "2026-07-04T09:19:06.343407-04:00"
           }
         ],
-        "current_pick_started_at": 1783168570
+        "current_pick_started_at": 1783171146
       },
       "r8": {
         "active": false,
