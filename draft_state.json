@@ -6691,10 +6691,35 @@
         "current_pick_started_at": 1782682219
       },
       "r16": {
-        "active": false,
-        "order": [],
-        "picks": [],
-        "current_pick_started_at": 1782664830
+        "active": true,
+        "order": [
+          "Peter",
+          "Benji",
+          "Jayme",
+          "Lamp",
+          "Herb",
+          "Jeff",
+          "Spencer",
+          "Chad"
+        ],
+        "picks": [
+          {
+            "pick": 1,
+            "round": 1,
+            "coach": "Peter",
+            "team": "Argentina",
+            "api_team_id": 26,
+            "goalie": {
+              "id": 2465,
+              "name": "J. Musso",
+              "photo": "https://media.api-sports.io/football/players/2465.png",
+              "team": "Argentina",
+              "team_id": 26
+            },
+            "picked_at": "2026-07-04T07:39:57.516581-04:00"
+          }
+        ],
+        "current_pick_started_at": 1783165197
       },
       "r8": {
         "active": false,
