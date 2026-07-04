@@ -6852,9 +6852,24 @@
               "team_id": 27
             },
             "picked_at": "2026-07-04T11:31:58.607460-04:00"
+          },
+          {
+            "pick": 11,
+            "round": 2,
+            "coach": "Jeff",
+            "team": "USA",
+            "api_team_id": 2384,
+            "goalie": {
+              "id": 50999,
+              "name": "M. Turner",
+              "photo": "https://media.api-sports.io/football/players/50999.png",
+              "team": "USA",
+              "team_id": 2384
+            },
+            "picked_at": "2026-07-04T11:32:11.337956-04:00"
           }
         ],
-        "current_pick_started_at": 1783179118
+        "current_pick_started_at": 1783179131
       },
       "r8": {
         "active": false,
