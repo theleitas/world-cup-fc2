@@ -5480,16 +5480,16 @@
       "matchday": null,
       "home": "Argentina",
       "away": "Cabo Verde",
-      "home_score": 1,
+      "home_score": 2,
       "away_score": 1,
       "status": "In_Play",
-      "minute": 92,
+      "minute": 98,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": "DRAW",
+        "winner": "HOME_TEAM",
         "full_time": {
-          "home": 1,
+          "home": 2,
           "away": 1
         },
         "regular_time": {
@@ -5517,6 +5517,14 @@
           "team": "Cabo Verde",
           "scorer": "Deroy Duarte",
           "assist": "Ryan Mendes"
+        },
+        {
+          "minute": 93,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Argentina",
+          "scorer": "Lisandro Martínez",
+          "assist": "Alexis Mac Allister"
         }
       ]
     },
@@ -5812,7 +5820,7 @@
       "group_assists": 0
     },
     "Lautaro Martinez (Argentina)": {
-      "goals": 1,
+      "goals": 2,
       "assists": 1,
       "group_goals": 1,
       "group_assists": 0
@@ -5940,8 +5948,8 @@
     "Switzerland": "Round of 32",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1783123637,
-  "last_score_refresh_attempt_at": 1783123636,
+  "last_score_refresh_at": 1783123997,
+  "last_score_refresh_attempt_at": 1783123995,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
