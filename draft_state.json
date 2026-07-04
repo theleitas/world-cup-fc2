@@ -6822,9 +6822,24 @@
               "team_id": 1
             },
             "picked_at": "2026-07-04T11:31:26.188162-04:00"
+          },
+          {
+            "pick": 9,
+            "round": 2,
+            "coach": "Chad",
+            "team": "Egypt",
+            "api_team_id": 32,
+            "goalie": {
+              "id": 16797,
+              "name": "Mohamed El Shenawy",
+              "photo": "https://media.api-sports.io/football/players/16797.png",
+              "team": "Egypt",
+              "team_id": 32
+            },
+            "picked_at": "2026-07-04T11:31:31.696635-04:00"
           }
         ],
-        "current_pick_started_at": 1783179086
+        "current_pick_started_at": 1783179091
       },
       "r8": {
         "active": false,
