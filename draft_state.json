@@ -6882,9 +6882,24 @@
               "team_id": 6
             },
             "picked_at": "2026-07-04T11:34:56.516748-04:00"
+          },
+          {
+            "pick": 13,
+            "round": 2,
+            "coach": "Lamp",
+            "team": "Mexico",
+            "api_team_id": 16,
+            "goalie": {
+              "id": 270774,
+              "name": "J. Rangel",
+              "photo": "https://media.api-sports.io/football/players/270774.png",
+              "team": "Mexico",
+              "team_id": 16
+            },
+            "picked_at": "2026-07-04T12:50:30.676565-04:00"
           }
         ],
-        "current_pick_started_at": 1783179296
+        "current_pick_started_at": 1783183830
       },
       "r8": {
         "active": false,
