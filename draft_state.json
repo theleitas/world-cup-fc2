@@ -6912,9 +6912,24 @@
               "team_id": 8
             },
             "picked_at": "2026-07-04T13:05:17.831662-04:00"
+          },
+          {
+            "pick": 15,
+            "round": 2,
+            "coach": "Benji",
+            "team": "Morocco",
+            "api_team_id": 31,
+            "goalie": {
+              "id": 2701,
+              "name": "Y. Bounou",
+              "photo": "https://media.api-sports.io/football/players/2701.png",
+              "team": "Morocco",
+              "team_id": 31
+            },
+            "picked_at": "2026-07-04T13:06:00.867359-04:00"
           }
         ],
-        "current_pick_started_at": 1783184717
+        "current_pick_started_at": 1783184760
       },
       "r8": {
         "active": false,
