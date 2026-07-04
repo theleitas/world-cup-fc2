@@ -6777,9 +6777,24 @@
               "team_id": 5529
             },
             "picked_at": "2026-07-04T09:19:06.343407-04:00"
+          },
+          {
+            "pick": 6,
+            "round": 1,
+            "coach": "Jeff",
+            "team": "France",
+            "api_team_id": 2,
+            "goalie": {
+              "id": 21628,
+              "name": "B. Samba",
+              "photo": "https://media.api-sports.io/football/players/21628.png",
+              "team": "France",
+              "team_id": 2
+            },
+            "picked_at": "2026-07-04T09:39:58.319119-04:00"
           }
         ],
-        "current_pick_started_at": 1783171146
+        "current_pick_started_at": 1783172398
       },
       "r8": {
         "active": false,
