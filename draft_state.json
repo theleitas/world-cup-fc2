@@ -6807,9 +6807,24 @@
               "team_id": 2380
             },
             "picked_at": "2026-07-04T10:12:53.432846-04:00"
+          },
+          {
+            "pick": 8,
+            "round": 1,
+            "coach": "Chad",
+            "team": "Belgium",
+            "api_team_id": 1,
+            "goalie": {
+              "id": 730,
+              "name": "T. Courtois",
+              "photo": "https://media.api-sports.io/football/players/730.png",
+              "team": "Belgium",
+              "team_id": 1
+            },
+            "picked_at": "2026-07-04T11:31:26.188162-04:00"
           }
         ],
-        "current_pick_started_at": 1783174373
+        "current_pick_started_at": 1783179086
       },
       "r8": {
         "active": false,
