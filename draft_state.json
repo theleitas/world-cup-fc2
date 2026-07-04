@@ -6927,9 +6927,24 @@
               "team_id": 31
             },
             "picked_at": "2026-07-04T13:06:00.867359-04:00"
+          },
+          {
+            "pick": 16,
+            "round": 2,
+            "coach": "Peter",
+            "team": "England",
+            "api_team_id": 10,
+            "goalie": {
+              "id": 2932,
+              "name": "J. Pickford",
+              "photo": "https://media.api-sports.io/football/players/2932.png",
+              "team": "England",
+              "team_id": 10
+            },
+            "picked_at": "2026-07-04T13:06:08.841555-04:00"
           }
         ],
-        "current_pick_started_at": 1783184760
+        "current_pick_started_at": 1783184768
       },
       "r8": {
         "active": false,
