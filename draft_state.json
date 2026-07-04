@@ -5537,10 +5537,10 @@
         {
           "minute": 111,
           "injury_time": null,
-          "type": "REGULAR",
-          "team": "Argentina",
-          "scorer": "Christian Romero",
-          "assist": "Lionel Messi"
+          "type": "OWN",
+          "team": "Cabo Verde",
+          "scorer": "Diney Borges",
+          "assist": ""
         }
       ]
     },
@@ -5890,7 +5890,7 @@
     },
     "Lionel Messi (Argentina)": {
       "goals": 7,
-      "assists": 1,
+      "assists": 0,
       "group_goals": 6,
       "group_assists": 0
     },
@@ -6035,8 +6035,8 @@
     "Switzerland": "Round of 16",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1783166887,
-  "last_score_refresh_attempt_at": 1783166887,
+  "last_score_refresh_at": 1783167248,
+  "last_score_refresh_attempt_at": 1783167247,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
