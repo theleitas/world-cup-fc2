@@ -5865,6 +5865,37 @@
         }
       },
       "goals": []
+    },
+    {
+      "id": "537383",
+      "date": "2026-07-09T20:00:00Z",
+      "stage": "Quarter Finals",
+      "group": null,
+      "matchday": null,
+      "home": "France",
+      "away": "Morocco",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
     }
   ],
   "player_stats": {
@@ -6038,7 +6069,7 @@
     "Ivory Coast": "Round of 32",
     "Egypt": "Round of 16",
     "Ghana": "Round of 32",
-    "Morocco": "Round of 16",
+    "Morocco": "Quarterfinals",
     "Senegal": "Round of 32",
     "South Africa": "Round of 32",
     "Tunisia": "Group Stage",
@@ -6058,7 +6089,7 @@
     "Croatia": "Round of 32",
     "Czechia": "Group Stage",
     "England": "Round of 16",
-    "France": "Round of 16",
+    "France": "Quarterfinals",
     "Germany": "Round of 32",
     "Netherlands": "Round of 32",
     "Norway": "Round of 16",
@@ -6069,8 +6100,8 @@
     "Switzerland": "Round of 16",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1783221337,
-  "last_score_refresh_attempt_at": 1783221336,
+  "last_score_refresh_at": 1783221637,
+  "last_score_refresh_attempt_at": 1783221636,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
