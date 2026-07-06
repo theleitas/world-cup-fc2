@@ -5817,16 +5817,16 @@
       "home": "Portugal",
       "away": "Spain",
       "home_score": 0,
-      "away_score": 0,
-      "status": "In_Play",
-      "minute": 84,
+      "away_score": 1,
+      "status": "Finished",
+      "minute": 90,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": "DRAW",
+        "winner": "AWAY_TEAM",
         "full_time": {
           "home": 0,
-          "away": 0
+          "away": 1
         },
         "regular_time": {
           "home": null,
@@ -5837,7 +5837,16 @@
           "away": null
         }
       },
-      "goals": []
+      "goals": [
+        {
+          "minute": 90,
+          "injury_time": 1,
+          "type": "REGULAR",
+          "team": "Spain",
+          "scorer": "Mikel Merino",
+          "assist": ""
+        }
+      ]
     },
     {
       "id": "537380",
@@ -6197,8 +6206,8 @@
     "Switzerland": "Round of 16",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1783370850,
-  "last_score_refresh_attempt_at": 1783370849,
+  "last_score_refresh_at": 1783371923,
+  "last_score_refresh_attempt_at": 1783371921,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
