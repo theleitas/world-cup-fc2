@@ -6000,25 +6000,25 @@
       "matchday": null,
       "home": "Switzerland",
       "away": "Colombia",
-      "home_score": 0,
-      "away_score": 1,
-      "status": "In_Play",
+      "home_score": 4,
+      "away_score": 3,
+      "status": "Finished",
       "minute": 120,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": "AWAY_TEAM",
+        "winner": "HOME_TEAM",
         "full_time": {
-          "home": 0,
-          "away": 1
+          "home": 4,
+          "away": 3
         },
         "regular_time": {
           "home": 0,
           "away": 0
         },
         "penalties": {
-          "home": 0,
-          "away": 1
+          "home": 4,
+          "away": 3
         }
       },
       "goals": []
@@ -6093,6 +6093,37 @@
       "matchday": null,
       "home": "Norway",
       "away": "England",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537386",
+      "date": "2026-07-12T01:00:00Z",
+      "stage": "Quarter Finals",
+      "group": null,
+      "matchday": null,
+      "home": "Argentina",
+      "away": "Switzerland",
       "home_score": null,
       "away_score": null,
       "status": "Timed",
@@ -6295,7 +6326,7 @@
     "Curaçao": "Group Stage",
     "Haiti": "Group Stage",
     "Panama": "Group Stage",
-    "Argentina": "Round of 16",
+    "Argentina": "Quarterfinals",
     "Brazil": "Round of 16",
     "Colombia": "Round of 16",
     "Ecuador": "Round of 32",
@@ -6316,11 +6347,11 @@
     "Scotland": "Group Stage",
     "Spain": "Quarterfinals",
     "Sweden": "Round of 32",
-    "Switzerland": "Round of 16",
+    "Switzerland": "Quarterfinals",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1783464194,
-  "last_score_refresh_attempt_at": 1783464193,
+  "last_score_refresh_at": 1783464797,
+  "last_score_refresh_attempt_at": 1783464796,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
