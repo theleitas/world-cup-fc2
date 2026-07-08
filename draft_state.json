@@ -7273,8 +7273,24 @@
           "Chad",
           "Spencer"
         ],
-        "picks": [],
-        "current_pick_started_at": 1783516887
+        "picks": [
+          {
+            "pick": 1,
+            "round": 1,
+            "coach": "Benji",
+            "team": "Norway",
+            "api_team_id": 1090,
+            "goalie": {
+              "id": 19172,
+              "name": "Ø. Nyland",
+              "photo": "https://media.api-sports.io/football/players/19172.png",
+              "team": "Norway",
+              "team_id": 1090
+            },
+            "picked_at": "2026-07-08T09:21:36.759245-04:00"
+          }
+        ],
+        "current_pick_started_at": 1783516896
       }
     }
   },
