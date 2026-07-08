@@ -7273,24 +7273,8 @@
           "Chad",
           "Spencer"
         ],
-        "picks": [
-          {
-            "pick": 1,
-            "round": 1,
-            "coach": "Benji",
-            "team": "Argentina",
-            "api_team_id": 26,
-            "goalie": {
-              "id": 2465,
-              "name": "J. Musso",
-              "photo": "https://media.api-sports.io/football/players/2465.png",
-              "team": "Argentina",
-              "team_id": 26
-            },
-            "picked_at": "2026-07-08T09:10:55.104857-04:00"
-          }
-        ],
-        "current_pick_started_at": 1783516882
+        "picks": [],
+        "current_pick_started_at": 1783516887
       }
     }
   },
