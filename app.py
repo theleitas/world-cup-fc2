@@ -132,7 +132,7 @@ div[class*="st-key-points-journal-text"] textarea:disabled {
 .goalie-round-bubbles-r32 { grid-template-columns:repeat(4, minmax(0, 1fr)); }
 .goalie-round-bubbles-r16 { grid-template-columns:repeat(2, minmax(0, 1fr)); }
 .goalie-round-bubbles-r8 { grid-template-columns:minmax(0, 1fr); }
-.goalie-slot { min-height:60px; border:1px solid color-mix(in srgb, var(--coach-color) 48%, rgba(255,255,255,.16)); border-radius:7px; background:rgba(255,255,255,.045); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; padding:4px 4px; text-align:center; overflow:hidden; box-shadow:inset 0 0 8px rgba(255,255,255,.035), 0 0 7px color-mix(in srgb, var(--coach-color) 20%, transparent); }
+.goalie-slot { position:relative; min-height:60px; border:1px solid color-mix(in srgb, var(--coach-color) 48%, rgba(255,255,255,.16)); border-radius:7px; background:rgba(255,255,255,.045); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; padding:4px 4px; text-align:center; overflow:hidden; box-shadow:inset 0 0 8px rgba(255,255,255,.035), 0 0 7px color-mix(in srgb, var(--coach-color) 20%, transparent); }
 .goalie-slot-empty { color:#6f777d; font-size:.68rem; font-weight:900; }
 .goalie-slot-flag { font-size:1.3rem; line-height:1; }
 .goalie-slot-flag .flag-icon { margin:0; width:1.05em; height:1.05em; vertical-align:0; }
@@ -143,6 +143,7 @@ div[class*="st-key-points-journal-text"] textarea:disabled {
 .goalie-slot-ga { color:var(--coach-color); font-size:.68rem; line-height:1; font-weight:1000; text-shadow:0 0 7px var(--coach-color); }
 .goalie-slot-tb { color:#b9c2c9; font-size:.6rem; line-height:1; font-weight:900; }
 .goalie-slot-total { margin-top:2px; padding:2px 5px; border-radius:5px; background:color-mix(in srgb, var(--coach-color) 28%, rgba(255,255,255,.08)); color:#fff; font-size:.62rem; line-height:1; font-weight:1000; box-shadow:0 0 8px color-mix(in srgb, var(--coach-color) 36%, transparent); }
+.goalie-slot-eliminated::before { content:""; position:absolute; inset:0; background:rgba(255,23,68,.32); z-index:3; pointer-events:none; }
 .goalie-tb-pill { border:1px solid rgba(185,194,201,.24); border-radius:6px; background:rgba(255,255,255,.045); color:#b9c2c9; font-size:.72rem; font-weight:950; line-height:1.15; text-align:center; padding:4px 6px; margin:0 0 7px; }
 .goalie-tb-pill b { color:var(--coach-color); margin-left:4px; text-shadow:0 0 7px var(--coach-color); }
 .goalie-total-score-line { display:block; margin-top:4px; padding:4px 7px; border-radius:6px; background:color-mix(in srgb, var(--coach-color) 30%, rgba(255,255,255,.08)); color:#fff; font-size:.76rem; font-weight:1000; box-shadow:0 0 10px color-mix(in srgb, var(--coach-color) 42%, transparent); }
@@ -982,13 +983,17 @@ def roster_grid_cell_html(flag_html="", label="", points=None, eliminated=False,
 """
 
 
-def player_roster_grid_cell_html(player, country, points=None, live=False):
+def player_roster_grid_cell_html(player, country, points=None, eliminated=False, live=False):
     if not player:
         return "<div class='roster-cell roster-cell-empty'></div>"
     team = canonical_team_name(country)
-    live_class = " roster-cell-live" if live else ""
+    extra_class = ""
+    if eliminated:
+        extra_class += " roster-cell-eliminated"
+    if live:
+        extra_class += " roster-cell-live"
     return f"""
-<div class='roster-cell player-roster-cell{live_class}'>
+<div class='roster-cell player-roster-cell{extra_class}'>
   {asset_score_badge_html(points)}
   {player_thumb_html(player)}
   <div class='player-roster-text'>
@@ -1023,7 +1028,7 @@ def standings_roster_grid_html(items, kind, points_by_item=None, state=None, liv
             cells.append(roster_grid_cell_html(team_flag_html(team), team, points_by_item.get(team, 0), eliminated=team_is_eliminated(state, team), live=team in live_teams))
         else:
             country = player_country(item)
-            cells.append(player_roster_grid_cell_html(item, country, points_by_item.get(item, 0), live=country in live_teams))
+            cells.append(player_roster_grid_cell_html(item, country, points_by_item.get(item, 0), eliminated=team_is_eliminated(state, country), live=country in live_teams))
     while len(cells) < target_count:
         cells.append(roster_grid_cell_html())
 
@@ -3435,6 +3440,18 @@ def goalie_round_complete(state, round_key):
     return len(goalie_round_state(state, round_key).get("picks", [])) >= goalie_round_required_team_count(round_key)
 
 
+def goalie_round_no_longer_in_play(state, round_key):
+    if round_key not in GOALIE_ROUND_ORDER:
+        return False
+    round_index = GOALIE_ROUND_ORDER.index(round_key)
+    for later_round in GOALIE_ROUND_ORDER[round_index + 1:]:
+        later_state = goalie_round_state(state, later_round)
+        if later_state.get("picks") or later_state.get("active") or goalie_round_can_start(state, later_round):
+            return True
+    matches = goalie_round_matches(state, round_key)
+    return bool(matches) and all(match_is_completed(match) for match in matches)
+
+
 def goalie_next_pick_after_current(sequence, picks):
     next_index = len(picks) + 1
     if next_index >= len(sequence):
@@ -3702,10 +3719,11 @@ def render_current_goalie_draft_room(state, scores):
     render_goalie_draft_round_body(state, scores, round_key)
 
 
-def goalie_slot_cells_html(slots, live_slot_keys=None):
+def goalie_slot_cells_html(slots, live_slot_keys=None, state=None):
     live_slot_keys = live_slot_keys or set()
     rows = []
     for round_key in GOALIE_ROUND_ORDER:
+        round_past = goalie_round_no_longer_in_play(state, round_key) if state else False
         round_slots = sorted([slot for slot in slots if slot.get("round_key") == round_key], key=lambda item: item.get("pick", 0))
         while len(round_slots) < GOALIE_ROUNDS[round_key]["slots"]:
             round_slots.append({"round_key": round_key, "team": "", "saves": 0, "goals_allowed": 0})
@@ -3720,9 +3738,10 @@ def goalie_slot_cells_html(slots, live_slot_keys=None):
                 "photo": slot.get("actual_goalie_photo") or slot.get("goalie_photo") or "",
             }
             live_class = " goalie-slot-live" if (round_key, team) in live_slot_keys else ""
+            past_class = " goalie-slot-eliminated" if round_past else ""
             bubbles.append(
                 f"""
-<div class='goalie-slot{live_class}'>
+<div class='goalie-slot{live_class}{past_class}'>
   {goalie_icon_html(goalie, team)}
   <div class='goalie-slot-name'>{html.escape(goalie["name"])}</div>
   <div class='goalie-slot-team'>{display_team_html(team, include_info=False)}</div>
@@ -3772,7 +3791,7 @@ def render_goalie_challenge_standings(state, scores):
     <div class='score-badge'>{int(item.get("goalie_challenge_points", 0))}</div>
   </div>
   <div class='goalie-tb-pill'>Saves:<b>{int(item.get("goalie_challenge_saves", 0))}</b> | Penalty Saves:<b>{int(item.get("goalie_challenge_penalty_saves", 0))}</b><span class='goalie-tb-line'>Goals Allowed Tiebreaker:<b>{int(item.get("goalie_challenge_goals_allowed", 0))}</b></span><span class='goalie-total-score-line'>Total Score = <b>{int(item.get("goalie_challenge_points", 0))}</b></span></div>
-  <div class='goalie-slot-grid'>{goalie_slot_cells_html(item.get("goalie_challenge_slots", []), live_slot_keys)}</div>
+  <div class='goalie-slot-grid'>{goalie_slot_cells_html(item.get("goalie_challenge_slots", []), live_slot_keys, state=state)}</div>
 </div>
 """
         )
