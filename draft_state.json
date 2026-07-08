@@ -7318,9 +7318,24 @@
               "team_id": 2
             },
             "picked_at": "2026-07-08T14:47:28.851843-04:00"
+          },
+          {
+            "pick": 4,
+            "round": 1,
+            "coach": "Herb",
+            "team": "Argentina",
+            "api_team_id": 26,
+            "goalie": {
+              "id": 2465,
+              "name": "J. Musso",
+              "photo": "https://media.api-sports.io/football/players/2465.png",
+              "team": "Argentina",
+              "team_id": 26
+            },
+            "picked_at": "2026-07-08T17:25:07.865698-04:00"
           }
         ],
-        "current_pick_started_at": 1783536448
+        "current_pick_started_at": 1783545907
       }
     }
   },
