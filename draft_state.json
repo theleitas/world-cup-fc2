@@ -7288,9 +7288,24 @@
               "team_id": 1090
             },
             "picked_at": "2026-07-08T09:21:36.759245-04:00"
+          },
+          {
+            "pick": 2,
+            "round": 1,
+            "coach": "Jayme",
+            "team": "Switzerland",
+            "api_team_id": 15,
+            "goalie": {
+              "id": 25282,
+              "name": "G. Kobel",
+              "photo": "https://media.api-sports.io/football/players/25282.png",
+              "team": "Switzerland",
+              "team_id": 15
+            },
+            "picked_at": "2026-07-08T12:56:41.156642-04:00"
           }
         ],
-        "current_pick_started_at": 1783516896
+        "current_pick_started_at": 1783529801
       }
     }
   },
