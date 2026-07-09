@@ -7363,9 +7363,24 @@
               "team_id": 1
             },
             "picked_at": "2026-07-09T00:53:59.315188-04:00"
+          },
+          {
+            "pick": 7,
+            "round": 1,
+            "coach": "Chad",
+            "team": "Spain",
+            "api_team_id": 9,
+            "goalie": {
+              "id": 19465,
+              "name": "David Raya",
+              "photo": "https://media.api-sports.io/football/players/19465.png",
+              "team": "Spain",
+              "team_id": 9
+            },
+            "picked_at": "2026-07-09T06:32:32.920532-04:00"
           }
         ],
-        "current_pick_started_at": 1783572839
+        "current_pick_started_at": 1783593152
       }
     }
   },
