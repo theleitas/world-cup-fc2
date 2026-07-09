@@ -7378,9 +7378,24 @@
               "team_id": 9
             },
             "picked_at": "2026-07-09T06:32:32.920532-04:00"
+          },
+          {
+            "pick": 8,
+            "round": 1,
+            "coach": "Spencer",
+            "team": "England",
+            "api_team_id": 10,
+            "goalie": {
+              "id": 2932,
+              "name": "J. Pickford",
+              "photo": "https://media.api-sports.io/football/players/2932.png",
+              "team": "England",
+              "team_id": 10
+            },
+            "picked_at": "2026-07-09T06:33:02.398765-04:00"
           }
         ],
-        "current_pick_started_at": 1783593152
+        "current_pick_started_at": 1783593182
       }
     }
   },
