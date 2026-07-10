@@ -6079,17 +6079,17 @@
       "matchday": null,
       "home": "Spain",
       "away": "Belgium",
-      "home_score": null,
-      "away_score": null,
-      "status": "Timed",
-      "minute": null,
+      "home_score": 2,
+      "away_score": 1,
+      "status": "In_Play",
+      "minute": 90,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": null,
+        "winner": "HOME_TEAM",
         "full_time": {
-          "home": null,
-          "away": null
+          "home": 2,
+          "away": 1
         },
         "regular_time": {
           "home": null,
@@ -6100,7 +6100,32 @@
           "away": null
         }
       },
-      "goals": []
+      "goals": [
+        {
+          "minute": 30,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Spain",
+          "scorer": "Fabián Ruiz",
+          "assist": ""
+        },
+        {
+          "minute": 41,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Belgium",
+          "scorer": "Charles De Ketelaere",
+          "assist": "Timothy Castagne"
+        },
+        {
+          "minute": 88,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Spain",
+          "scorer": "Mikel Merino",
+          "assist": ""
+        }
+      ]
     },
     {
       "id": "537385",
@@ -6367,8 +6392,8 @@
     "Switzerland": "Quarterfinals",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1783706946,
-  "last_score_refresh_attempt_at": 1783706945,
+  "last_score_refresh_at": 1783717195,
+  "last_score_refresh_attempt_at": 1783717194,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
