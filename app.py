@@ -466,6 +466,32 @@ API_FOOTBALL_WORLD_CUP_SEASON = 2026
 API_FOOTBALL_SKIP_DETAIL_STATUS_SHORTS = {"NS", "TBD", "PST", "CANC", "ABD", "AWD", "WO"}
 API_FOOTBALL_SKIP_DETAIL_STATUS_WORDS = ("not started", "time to be defined", "postponed", "cancelled", "canceled", "abandoned", "walkover")
 API_FOOTBALL_LIVE_STATUS_SHORTS = {"1H", "HT", "2H", "ET", "BT", "P", "LIVE"}
+VERIFIED_GOAL_ASSIST_OVERRIDES = [
+    {
+        "match_id": "537383",
+        "team": "France",
+        "minute": 66,
+        "scorer": "Ousmane Dembélé",
+        "assist": "Kylian Mbappé",
+        "note": "France vs Morocco quarterfinal: AP and API-Football credit Mbappé with the assist on Dembélé's goal.",
+    },
+    {
+        "match_id": "537393",
+        "team": "France",
+        "minute": 66,
+        "scorer": "Ousmane Dembélé",
+        "assist": "Michael Olise",
+        "note": "France vs Iraq group stage: Bayern and API-Football credit Olise with the assist on Dembélé's goal.",
+    },
+    {
+        "match_id": "537394",
+        "team": "Senegal",
+        "minute": 53,
+        "scorer": "Ismaïla Sarr",
+        "assist": "Sadio Mane",
+        "note": "Norway vs Senegal group stage: API-Football and Yahoo credit Mané with the assist on Sarr's 53rd-minute goal.",
+    }
+]
 GOALIE_ROUNDS = {
     "r32": {"label": "Round of 32", "stage": "Round of 32", "slots": 4, "previous": "Group Stage", "previous_stage": "Group Stage", "previous_required_matches": 72},
     "r16": {"label": "Round of 16", "stage": "Round of 16", "slots": 2, "previous": "Round of 32", "previous_stage": "Round of 32", "previous_required_matches": 16},
@@ -1448,7 +1474,7 @@ def normalize_state(state):
     )
     apply_official_rosters_to_teams(state)
 
-    state["matches"] = [normalize_match(match, index) for index, match in enumerate(state.get("matches") or [])]
+    state["matches"] = apply_verified_goal_assist_overrides([normalize_match(match, index) for index, match in enumerate(state.get("matches") or [])])
     state["player_stats"] = normalize_player_stats(state.get("player_stats"), state["players"])
     state["goalie_challenge"] = normalize_goalie_challenge(state.get("goalie_challenge"))
     return state
@@ -1773,6 +1799,27 @@ def normalize_goal_event(goal):
         "scorer": str(scorer_name or "").strip(),
         "assist": str(assist_name or "").strip(),
     }
+
+
+def goal_event_matches_override(match, goal, override):
+    if str(match.get("id") or "") != str(override.get("match_id") or ""):
+        return False
+    if canonical_team_name(goal.get("team")) != canonical_team_name(override.get("team")):
+        return False
+    if none_or_int(goal.get("minute")) != none_or_int(override.get("minute")):
+        return False
+    scorer = match_player_to_pool(goal.get("scorer"), [override.get("scorer")]) or str(goal.get("scorer") or "").strip()
+    expected = str(override.get("scorer") or "").strip()
+    return clean_key(scorer) == clean_key(expected)
+
+
+def apply_verified_goal_assist_overrides(matches):
+    for match in matches or []:
+        for goal in match.get("goals", []) or []:
+            for override in VERIFIED_GOAL_ASSIST_OVERRIDES:
+                if goal_event_matches_override(match, goal, override):
+                    goal["assist"] = str(override.get("assist") or "").strip()
+    return matches
 
 
 def parse_match_payload_item(item, index):
@@ -2957,6 +3004,7 @@ def refresh_api_scores():
                 key=lambda match: match.get("date") or "",
             )
             if matches:
+                matches = apply_verified_goal_assist_overrides(matches)
                 state["matches"] = matches
                 state["player_stats"] = player_stats_from_matches(matches, state["players"])
                 state["manual_player_stats_override"] = False

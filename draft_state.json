@@ -3120,7 +3120,7 @@
           "type": "REGULAR",
           "team": "Senegal",
           "scorer": "Ismaïla Sarr",
-          "assist": ""
+          "assist": "Sadio Mane"
         },
         {
           "minute": 58,
@@ -4086,7 +4086,7 @@
           "type": "REGULAR",
           "team": "France",
           "scorer": "Ousmane Dembélé",
-          "assist": "Kylian Mbappé"
+          "assist": "Michael Olise"
         },
         {
           "minute": 20,
@@ -6067,7 +6067,7 @@
           "type": "REGULAR",
           "team": "France",
           "scorer": "Ousmane Dembélé",
-          "assist": "Michael Olise"
+          "assist": "Kylian Mbappé"
         }
       ]
     },
@@ -6232,7 +6232,7 @@
       "goals": 8,
       "assists": 2,
       "group_goals": 4,
-      "group_assists": 2
+      "group_assists": 1
     },
     "Harry Kane (England)": {
       "goals": 6,
@@ -6250,7 +6250,7 @@
       "goals": 0,
       "assists": 6,
       "group_goals": 0,
-      "group_assists": 3
+      "group_assists": 4
     },
     "Erling Haaland (Norway)": {
       "goals": 7,
@@ -6332,9 +6332,9 @@
     },
     "Sadio Mane (Senegal)": {
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "group_goals": 0,
-      "group_assists": 0
+      "group_assists": 1
     },
     "Nico Williams (Spain)": {
       "goals": 0,
