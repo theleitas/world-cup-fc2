@@ -6188,6 +6188,37 @@
         }
       },
       "goals": []
+    },
+    {
+      "id": "537387",
+      "date": "2026-07-14T19:00:00Z",
+      "stage": "Semi Finals",
+      "group": null,
+      "matchday": null,
+      "home": "France",
+      "away": "Spain",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
     }
   ],
   "player_stats": {
@@ -6381,19 +6412,19 @@
     "Croatia": "Round of 32",
     "Czechia": "Group Stage",
     "England": "Quarterfinals",
-    "France": "Quarterfinals",
+    "France": "Semifinals",
     "Germany": "Round of 32",
     "Netherlands": "Round of 32",
     "Norway": "Quarterfinals",
     "Portugal": "Round of 16",
     "Scotland": "Group Stage",
-    "Spain": "Quarterfinals",
+    "Spain": "Semifinals",
     "Sweden": "Round of 32",
     "Switzerland": "Quarterfinals",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1783718552,
-  "last_score_refresh_attempt_at": 1783718551,
+  "last_score_refresh_at": 1783729344,
+  "last_score_refresh_attempt_at": 1783729342,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
