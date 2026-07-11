@@ -6135,28 +6135,53 @@
       "matchday": null,
       "home": "Norway",
       "away": "England",
-      "home_score": null,
-      "away_score": null,
-      "status": "Timed",
-      "minute": null,
+      "home_score": 1,
+      "away_score": 2,
+      "status": "In_Play",
+      "minute": 109,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": null,
+        "winner": "AWAY_TEAM",
         "full_time": {
-          "home": null,
-          "away": null
+          "home": 1,
+          "away": 2
         },
         "regular_time": {
-          "home": null,
-          "away": null
+          "home": 1,
+          "away": 1
         },
         "penalties": {
           "home": null,
           "away": null
         }
       },
-      "goals": []
+      "goals": [
+        {
+          "minute": 36,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Norway",
+          "scorer": "Andreas Schjelderup",
+          "assist": "Martin Ødegaard"
+        },
+        {
+          "minute": 45,
+          "injury_time": 2,
+          "type": "REGULAR",
+          "team": "England",
+          "scorer": "Jude Bellingham",
+          "assist": "Anthony Gordon"
+        },
+        {
+          "minute": 93,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "England",
+          "scorer": "Jude Bellingham",
+          "assist": ""
+        }
+      ]
     },
     {
       "id": "537386",
@@ -6423,8 +6448,8 @@
     "Switzerland": "Quarterfinals",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1783803025,
-  "last_score_refresh_attempt_at": 1783803024,
+  "last_score_refresh_at": 1783812806,
+  "last_score_refresh_attempt_at": 1783812804,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
