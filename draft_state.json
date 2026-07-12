@@ -6191,16 +6191,16 @@
       "matchday": null,
       "home": "Argentina",
       "away": "Switzerland",
-      "home_score": 1,
+      "home_score": 2,
       "away_score": 1,
       "status": "In_Play",
-      "minute": 113,
+      "minute": 118,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": "DRAW",
+        "winner": "HOME_TEAM",
         "full_time": {
-          "home": 1,
+          "home": 2,
           "away": 1
         },
         "regular_time": {
@@ -6228,6 +6228,14 @@
           "team": "Switzerland",
           "scorer": "Dan Ndoye",
           "assist": "Ricardo Rodriguez"
+        },
+        {
+          "minute": 112,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Argentina",
+          "scorer": "Julián Álvarez",
+          "assist": "José Manuel López"
         }
       ]
     },
@@ -6307,7 +6315,7 @@
       "group_assists": 1
     },
     "Julian Alvarez (Argentina)": {
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
       "group_goals": 0,
       "group_assists": 0
@@ -6465,8 +6473,8 @@
     "Switzerland": "Quarterfinals",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1783827233,
-  "last_score_refresh_attempt_at": 1783827232,
+  "last_score_refresh_at": 1783827547,
+  "last_score_refresh_attempt_at": 1783827545,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
