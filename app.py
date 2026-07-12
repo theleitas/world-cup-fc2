@@ -2381,6 +2381,14 @@ def goalie_fixture_team_side(fixture, team_name, api_team_id=None):
     return ""
 
 
+def goalie_fixture_goals_allowed(fixture, side):
+    if side == "home":
+        return none_or_int(fixture.get("away_score"))
+    if side == "away":
+        return none_or_int(fixture.get("home_score"))
+    return None
+
+
 def goalie_penalty_event_stats_for_fixture(fixture, side):
     opponent = "away" if side == "home" else "home"
     shootout_penalty_saves = 0
@@ -2507,6 +2515,9 @@ def goalie_score_for_pick(state, round_key, pick):
         if override:
             shootout_penalty_saves = max(shootout_penalty_saves, int(override.get("shootout_penalty_saves", 0)))
         match_penalty_saves += shootout_penalty_saves
+        fixture_goals_allowed = goalie_fixture_goals_allowed(fixture, side)
+        if fixture_goals_allowed is not None:
+            match_goals_allowed = int(fixture_goals_allowed)
         match_goals_allowed = max(match_goals_allowed - int(penalty_events.get("in_match_penalty_goals_allowed", 0)), 0)
         if match_had_goalie_stats or match_penalty_saves or match_goals_allowed:
             counted_matches += 1
@@ -2902,14 +2913,14 @@ def fetch_scorers_from_football_data(token):
 
 
 def stage_to_advancement(stage):
-    key = clean_key(str(stage or "").replace("_", " "))
+    key = clean_key(str(stage or "").replace("_", " ").replace("-", " "))
     if key in ["last 32", "round of 32"]:
         return "Round of 32"
     if key in ["last 16", "round of 16"]:
         return "Round of 16"
-    if key in ["quarter finals", "quarterfinals", "quarter finals"]:
+    if key in ["quarter final", "quarter finals", "quarterfinal", "quarterfinals"]:
         return "Quarterfinals"
-    if key in ["semi finals", "semifinals"]:
+    if key in ["semi final", "semi finals", "semifinal", "semifinals"]:
         return "Semifinals"
     if key == "final":
         return "Final"
