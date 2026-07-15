@@ -6303,17 +6303,104 @@
       "matchday": null,
       "home": "England",
       "away": "Argentina",
-      "home_score": 0,
-      "away_score": 0,
-      "status": "In_Play",
-      "minute": 38,
+      "home_score": 1,
+      "away_score": 2,
+      "status": "Finished",
+      "minute": 90,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": "DRAW",
+        "winner": "AWAY_TEAM",
         "full_time": {
-          "home": 0,
-          "away": 0
+          "home": 1,
+          "away": 2
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": [
+        {
+          "minute": 55,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "England",
+          "scorer": "Anthony Gordon",
+          "assist": "Morgan Rogers"
+        },
+        {
+          "minute": 85,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Argentina",
+          "scorer": "Enzo Fernández",
+          "assist": "Lionel Messi"
+        },
+        {
+          "minute": 90,
+          "injury_time": 2,
+          "type": "REGULAR",
+          "team": "Argentina",
+          "scorer": "Lautaro Martínez",
+          "assist": "Lionel Messi"
+        }
+      ]
+    },
+    {
+      "id": "537389",
+      "date": "2026-07-18T21:00:00Z",
+      "stage": "Third Place",
+      "group": null,
+      "matchday": null,
+      "home": "France",
+      "away": "England",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
+        },
+        "regular_time": {
+          "home": null,
+          "away": null
+        },
+        "penalties": {
+          "home": null,
+          "away": null
+        }
+      },
+      "goals": []
+    },
+    {
+      "id": "537390",
+      "date": "2026-07-19T19:00:00Z",
+      "stage": "Final",
+      "group": null,
+      "matchday": null,
+      "home": "Spain",
+      "away": "Argentina",
+      "home_score": null,
+      "away_score": null,
+      "status": "Timed",
+      "minute": null,
+      "elapsed": null,
+      "clock": "",
+      "score_node": {
+        "winner": null,
+        "full_time": {
+          "home": null,
+          "away": null
         },
         "regular_time": {
           "home": null,
@@ -6384,7 +6471,7 @@
     },
     "Lionel Messi (Argentina)": {
       "goals": 8,
-      "assists": 2,
+      "assists": 4,
       "group_goals": 6,
       "group_assists": 0
     },
@@ -6401,7 +6488,7 @@
       "group_assists": 0
     },
     "Lautaro Martinez (Argentina)": {
-      "goals": 3,
+      "goals": 4,
       "assists": 2,
       "group_goals": 1,
       "group_assists": 0
@@ -6505,7 +6592,7 @@
     "Curaçao": "Group Stage",
     "Haiti": "Group Stage",
     "Panama": "Group Stage",
-    "Argentina": "Semifinals",
+    "Argentina": "Final",
     "Brazil": "Round of 16",
     "Colombia": "Round of 16",
     "Ecuador": "Round of 32",
@@ -6524,13 +6611,13 @@
     "Norway": "Quarterfinals",
     "Portugal": "Round of 16",
     "Scotland": "Group Stage",
-    "Spain": "Semifinals",
+    "Spain": "Final",
     "Sweden": "Round of 32",
     "Switzerland": "Quarterfinals",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1784144381,
-  "last_score_refresh_attempt_at": 1784144379,
+  "last_score_refresh_at": 1784152010,
+  "last_score_refresh_attempt_at": 1784152009,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
