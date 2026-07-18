@@ -6359,17 +6359,17 @@
       "matchday": null,
       "home": "France",
       "away": "England",
-      "home_score": null,
-      "away_score": null,
-      "status": "Timed",
-      "minute": null,
+      "home_score": 0,
+      "away_score": 3,
+      "status": "In_Play",
+      "minute": 41,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": null,
+        "winner": "AWAY_TEAM",
         "full_time": {
-          "home": null,
-          "away": null
+          "home": 0,
+          "away": 3
         },
         "regular_time": {
           "home": null,
@@ -6380,7 +6380,32 @@
           "away": null
         }
       },
-      "goals": []
+      "goals": [
+        {
+          "minute": 3,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "England",
+          "scorer": "Declan Rice",
+          "assist": ""
+        },
+        {
+          "minute": 18,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "England",
+          "scorer": "Ezri Konsa",
+          "assist": "Declan Rice"
+        },
+        {
+          "minute": 37,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "England",
+          "scorer": "Bukayo Saka",
+          "assist": "Marcus Rashford"
+        }
+      ]
     },
     {
       "id": "537390",
@@ -6494,7 +6519,7 @@
       "group_assists": 0
     },
     "Bukayo Saka (England)": {
-      "goals": 0,
+      "goals": 1,
       "assists": 3,
       "group_goals": 0,
       "group_assists": 2
@@ -6616,8 +6641,8 @@
     "Switzerland": "Quarterfinals",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1784407345,
-  "last_score_refresh_attempt_at": 1784407344,
+  "last_score_refresh_at": 1784410897,
+  "last_score_refresh_attempt_at": 1784410895,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
