@@ -1034,7 +1034,7 @@ def player_roster_grid_cell_html(player, country, points=None, eliminated=False,
 def live_match_teams(state):
     teams = set()
     for match in state.get("matches", []):
-        if "friendly" in str(match.get("stage") or "").lower() or not match_is_live(match):
+        if not match_counts_for_competition(match) or not match_is_live(match):
             continue
         for side in ["home", "away"]:
             team = canonical_team_name(match.get(side))
@@ -1112,6 +1112,8 @@ def match_player_to_pool(name, players):
 
 
 def player_is_in_match(player, match):
+    if not match_counts_for_competition(match):
+        return False
     country = canonical_team_name(player_country(player))
     if not country:
         return False
@@ -2061,7 +2063,7 @@ def match_result_points_for_team(match, team_name, goals_for, goals_against):
 
 
 def score_match_for_team(match, team_name):
-    if "friendly" in str(match.get("stage") or "").lower():
+    if not match_counts_for_competition(match):
         return 0
     team_name = canonical_team_name(team_name)
     home = canonical_team_name(match.get("home"))
@@ -2087,7 +2089,7 @@ def goalie_round_matches(state, round_key):
         match
         for match in state.get("matches", [])
         if stage_to_advancement(match.get("stage")) == target_stage
-        and "friendly" not in str(match.get("stage") or "").lower()
+        and match_counts_for_competition(match)
     ]
 
 
@@ -2589,6 +2591,30 @@ def stage_is_group(stage):
     return "group" in str(stage or "").lower()
 
 
+def match_is_third_place(match_or_stage):
+    stage = match_or_stage.get("stage") if isinstance(match_or_stage, dict) else match_or_stage
+    key = clean_key(str(stage or "").replace("_", " ").replace("-", " "))
+    return key in {
+        "3rd place",
+        "3rd place match",
+        "third place",
+        "third place match",
+        "third place play off",
+        "third place playoff",
+        "bronze",
+        "bronze final",
+        "bronze match",
+        "consolation",
+        "consolation final",
+        "consolation match",
+    }
+
+
+def match_counts_for_competition(match):
+    stage = str(match.get("stage") or "")
+    return "friendly" not in stage.lower() and not match_is_third_place(match)
+
+
 def team_is_eliminated(state, team_name):
     if not state:
         return False
@@ -2602,7 +2628,7 @@ def team_is_eliminated(state, team_name):
             return team_name not in goalie_round_available_teams(state, "r32")
         return False
     for match in state.get("matches", []):
-        if "friendly" in str(match.get("stage") or "").lower():
+        if not match_counts_for_competition(match):
             continue
         if advancement_rank(stage_to_advancement(match.get("stage"))) != current_rank:
             continue
@@ -2619,7 +2645,7 @@ def team_is_eliminated(state, team_name):
 def team_goals_in_matches(matches, team_name):
     goals = 0
     for match in matches:
-        if "friendly" in str(match.get("stage") or "").lower():
+        if not match_counts_for_competition(match):
             continue
         home_score, away_score = match_fantasy_goal_scores(match)
         if match.get("home") == team_name and home_score is not None:
@@ -2634,7 +2660,7 @@ def advancement_stage_matches(state, stage_level):
         match
         for match in state.get("matches", [])
         if stage_to_advancement(match.get("stage")) == stage_level
-        and "friendly" not in str(match.get("stage") or "").lower()
+        and match_counts_for_competition(match)
     ]
 
 
@@ -2934,6 +2960,8 @@ def advancement_rank(level):
 def derive_advancement_from_matches(matches):
     advancement = {team["name"]: "Group Stage" for team in WORLD_CUP_TEAMS}
     for match in matches:
+        if not match_counts_for_competition(match):
+            continue
         stage_level = stage_to_advancement(match.get("stage"))
         if not stage_level:
             continue
@@ -2968,7 +2996,7 @@ def match_winner_team(match):
 def player_stats_from_matches(matches, players):
     stats = {player: {"goals": 0, "assists": 0, "group_goals": 0, "group_assists": 0} for player in players}
     for match in matches:
-        if "friendly" in str(match.get("stage") or "").lower():
+        if not match_counts_for_competition(match):
             continue
         is_group = stage_is_group(match.get("stage"))
         for goal in match.get("goals", []):
@@ -3105,7 +3133,7 @@ def render_payout_descriptions():
         st.markdown(
             f"""
 <div class='payout-desc'><b>How Points Are Scored</b><br>
-National teams earn +3 for a win, +1 for a draw, +1 for each regular-time or extra-time goal scored, and +1 for a clean sheet. Penalty kicks in a shootout do not count as team goal points and do not affect clean-sheet points; the shootout winner still counts as the match winner. Star players earn +4 for each goal and +3 for each assist. Advancement bonuses are added automatically only after the prior stage is fully final and the next round is officially populated: Round of 32 +5, Round of 16 +8, Quarterfinals +12, Semifinals +15, Final +20, and Champion +25. These advancement bonuses are total bonuses for the team's deepest confirmed finish, not added together round by round. If a team has advanced farther than the latest fully unlocked bonus stage, it keeps the highest already-unlocked advancement bonus until the next bonus stage unlocks. During live matches, points are shown based on the current state of the match. For example, a team leading 2-0 live would currently show +3 for the win, +2 for goals, and +1 for the clean sheet.</div>
+National teams earn +3 for a win, +1 for a draw, +1 for each regular-time or extra-time goal scored, and +1 for a clean sheet. Penalty kicks in a shootout do not count as team goal points and do not affect clean-sheet points; the shootout winner still counts as the match winner. The third-place match is excluded entirely from competition scoring: no team points, player goals or assists, advancement changes, side-bet scoring, live scoring, or Points Journal entries are awarded for it. Star players earn +4 for each goal and +3 for each assist. Advancement bonuses are added automatically only after the prior stage is fully final and the next round is officially populated: Round of 32 +5, Round of 16 +8, Quarterfinals +12, Semifinals +15, Final +20, and Champion +25. These advancement bonuses are total bonuses for the team's deepest confirmed finish, not added together round by round. If a team has advanced farther than the latest fully unlocked bonus stage, it keeps the highest already-unlocked advancement bonus until the next bonus stage unlocks. During live matches, points are shown based on the current state of the match. For example, a team leading 2-0 live would currently show +3 for the win, +2 for goals, and +1 for the clean sheet.</div>
 
 <div class='payout-desc'><b>Goalie Challenge - $25 Side Bet</b><br>
 Goalie Challenge is completely separate from the main World Cup FC2 standings and never changes the overall Gold, Silver, or Bronze totals. Coaches draft the primary listed goalkeeper for a team before the Round of 32, Round of 16, and Round of 8, but the pick scores as that team's playing goalkeeper slot for that round. That protects a coach if the listed goalkeeper is injured, benched, or replaced. Each coach drafts 4 goalie slots for the Round of 32, 2 goalie slots for the Round of 16, and 1 goalie slot for the Round of 8. The Round of 32 draft order is reverse group-stage rank after the group stage is final. Later goalie draft orders are reverse main standings before that goalie round starts, not including any Goalie Challenge points. Each goalie draft snakes each round. Highest score wins Goalie Challenge Gold ($125), second highest wins Silver ($50), and third highest wins Bronze ($25). If coaches tie, the first tiebreaker is fewest counted goals allowed across all drafted goalie slots. Draft sections unlock only after every game from the previous stage is complete and the full next round is officially populated. A goalie draft stays open until every goalie slot is drafted, even if that round's games have already kicked off, and drafted goalie slots begin accumulating points as soon as match data is available.</div>
@@ -3224,13 +3252,13 @@ def points_tracker_dates(state):
     match_dates = [
         local_match_datetime(match).date()
         for match in state.get("matches", [])
-        if "friendly" not in str(match.get("stage") or "").lower() and local_match_datetime(match)
+        if match_counts_for_competition(match) and local_match_datetime(match)
     ]
     start = min([today] + match_dates) if match_dates else today
     completed_dates = []
     for match in state.get("matches", []):
         local_dt = local_match_datetime(match)
-        if not local_dt or "friendly" in str(match.get("stage") or "").lower():
+        if not local_dt or not match_counts_for_competition(match):
             continue
         if local_dt.date() <= today and any(match_points_by_coach(state, match).values()):
             completed_dates.append(local_dt.date())
@@ -3246,7 +3274,7 @@ def points_tracker_series(state, scores):
     daily = {coach: [0 for _ in dates] for coach in COACHES}
     for match in state.get("matches", []):
         local_dt = local_match_datetime(match)
-        if not local_dt or "friendly" in str(match.get("stage") or "").lower():
+        if not local_dt or not match_counts_for_competition(match):
             continue
         match_date = local_dt.date()
         if match_date < start or match_date > dates[-1]:
@@ -3409,7 +3437,7 @@ def goalie_previous_stage_matches(state, round_key):
     previous_stage = info.get("previous_stage")
     matches = []
     for match in state.get("matches", []):
-        if "friendly" in str(match.get("stage") or "").lower():
+        if not match_counts_for_competition(match):
             continue
         if previous_stage == "Group Stage" and stage_is_group(match.get("stage")):
             matches.append(match)
@@ -3871,7 +3899,7 @@ def render_goalie_challenge(state, scores):
 def group_tracker_match_counts(match):
     if not stage_is_group(match.get("stage")):
         return False
-    if "friendly" in str(match.get("stage") or "").lower():
+    if not match_counts_for_competition(match):
         return False
     if match.get("home_score") is None or match.get("away_score") is None:
         return False
@@ -4163,7 +4191,7 @@ def team_record_and_result_points(state, team_name):
     team_name = canonical_team_name(team_name)
     wins = draws = losses = result_points = 0
     for match in state.get("matches", []):
-        if "friendly" in str(match.get("stage") or "").lower():
+        if not match_counts_for_competition(match):
             continue
         home = canonical_team_name(match.get("home"))
         away = canonical_team_name(match.get("away"))
@@ -4191,7 +4219,7 @@ def next_match_for_team(state, team_name):
     now = datetime.now(ZoneInfo("UTC"))
     candidates = []
     for match in state.get("matches", []):
-        if "friendly" in str(match.get("stage") or "").lower():
+        if not match_counts_for_competition(match):
             continue
         home = canonical_team_name(match.get("home"))
         away = canonical_team_name(match.get("away"))
@@ -4856,6 +4884,8 @@ def drafted_coach_for_player(state, player):
 
 
 def match_player_points_by_coach(state, match):
+    if not match_counts_for_competition(match):
+        return {}
     points_by_coach = {}
     for goal in match.get("goals", []):
         scorer = match_player_to_pool(goal.get("scorer"), state.get("players", []))
@@ -4872,6 +4902,8 @@ def match_player_points_by_coach(state, match):
 
 
 def owned_players_in_match(state, match):
+    if not match_counts_for_competition(match):
+        return []
     teams_in_match = {canonical_team_name(match.get("home")), canonical_team_name(match.get("away"))}
     rows = []
     for coach, data in state["teams"].items():
@@ -4883,6 +4915,8 @@ def owned_players_in_match(state, match):
 
 
 def match_points_for_player(state, match, drafted_player):
+    if not match_counts_for_competition(match):
+        return 0
     total = 0
     for goal in match.get("goals", []):
         scorer = match_player_to_pool(goal.get("scorer"), state.get("players", []))
@@ -4930,6 +4964,8 @@ def goal_minute_text(goal):
 
 
 def match_goal_events_html(state, match):
+    if not match_counts_for_competition(match):
+        return ""
     pieces = []
     for goal in match.get("goals", []):
         minute = goal_minute_text(goal)
@@ -4966,7 +5002,7 @@ def match_journal_title(match):
 
 
 def match_has_point_context(match):
-    if "friendly" in str(match.get("stage") or "").lower():
+    if not match_counts_for_competition(match):
         return False
     if match.get("home_score") is None or match.get("away_score") is None:
         return False
@@ -5167,6 +5203,8 @@ def write_points_journal_files(journals):
 
 
 def match_owned_teams_by_coach(state, match):
+    if not match_counts_for_competition(match):
+        return {}
     owned = {}
     for team_name in (canonical_team_name(match.get("home")), canonical_team_name(match.get("away"))):
         coach = drafted_coach_for_team(state, team_name)
@@ -5214,6 +5252,8 @@ def match_goalie_line_html(state, match):
 
 
 def match_player_points_by_team_and_coach(state, match):
+    if not match_counts_for_competition(match):
+        return {}
     teams_in_match = {canonical_team_name(match.get("home")), canonical_team_name(match.get("away"))}
     points_by_team = {}
     for goal in match.get("goals", []):
@@ -5257,6 +5297,8 @@ def match_clock_text(match):
 
 
 def match_points_by_coach(state, match):
+    if not match_counts_for_competition(match):
+        return {}
     points_by_coach = match_player_points_by_coach(state, match)
     for coach, _, _ in owned_players_in_match(state, match):
         points_by_coach.setdefault(coach, 0)
@@ -5268,6 +5310,8 @@ def match_points_by_coach(state, match):
 
 
 def match_point_chips_html(state, match, only_coach=None, include_teams=False):
+    if not match_counts_for_competition(match):
+        return ""
     if include_teams and not only_coach:
         return match_team_ordered_chips_html(state, match)
 
@@ -5291,6 +5335,8 @@ def match_point_chips_html(state, match, only_coach=None, include_teams=False):
 
 
 def match_team_ordered_chips_html(state, match):
+    if not match_counts_for_competition(match):
+        return ""
     player_points = match_player_points_by_team_and_coach(state, match)
     chips = []
     for team_name in [canonical_team_name(match.get("home")), canonical_team_name(match.get("away"))]:
@@ -5315,6 +5361,8 @@ def match_team_ordered_chips_html(state, match):
 
 
 def coach_has_live_asset(state, coach, match):
+    if not match_counts_for_competition(match):
+        return False
     coach_state = state["teams"].get(coach, {})
     teams_in_match = {canonical_team_name(match.get("home")), canonical_team_name(match.get("away"))}
     if any(canonical_team_name(team) in teams_in_match for team in coach_state.get("national_teams", [])):
@@ -5341,7 +5389,7 @@ def coach_live_matches_html(state, coach):
         match
         for match in state.get("matches", [])
         if match_is_live(match)
-        and "friendly" not in str(match.get("stage") or "").lower()
+        and match_counts_for_competition(match)
     ]
     if not all_live_matches:
         return """
