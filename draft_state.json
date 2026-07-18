@@ -6360,8 +6360,8 @@
       "home": "France",
       "away": "England",
       "home_score": 4,
-      "away_score": 5,
-      "status": "In_Play",
+      "away_score": 6,
+      "status": "Finished",
       "minute": 90,
       "elapsed": null,
       "clock": "",
@@ -6369,7 +6369,7 @@
         "winner": "AWAY_TEAM",
         "full_time": {
           "home": 4,
-          "away": 5
+          "away": 6
         },
         "regular_time": {
           "home": null,
@@ -6452,6 +6452,14 @@
           "team": "France",
           "scorer": "Ousmane Dembélé",
           "assist": "Dayot Upamecano"
+        },
+        {
+          "minute": 90,
+          "injury_time": 8,
+          "type": "REGULAR",
+          "team": "England",
+          "scorer": "Jude Bellingham",
+          "assist": ""
         }
       ]
     },
@@ -6689,8 +6697,8 @@
     "Switzerland": "Quarterfinals",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1784415625,
-  "last_score_refresh_attempt_at": 1784415623,
+  "last_score_refresh_at": 1784415925,
+  "last_score_refresh_attempt_at": 1784415923,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
