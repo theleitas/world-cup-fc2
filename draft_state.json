@@ -6362,7 +6362,7 @@
       "home_score": 2,
       "away_score": 4,
       "status": "In_Play",
-      "minute": 61,
+      "minute": 66,
       "elapsed": null,
       "clock": "",
       "score_node": {
@@ -6471,8 +6471,8 @@
       "group_assists": 0
     },
     "Kylian Mbappe (France)": {
-      "goals": 9,
-      "assists": 4,
+      "goals": 8,
+      "assists": 3,
       "group_goals": 4,
       "group_assists": 2
     },
@@ -6490,7 +6490,7 @@
     },
     "Michael Olise (France)": {
       "goals": 0,
-      "assists": 6,
+      "assists": 5,
       "group_goals": 0,
       "group_assists": 3
     },
@@ -6543,7 +6543,7 @@
       "group_assists": 0
     },
     "Bukayo Saka (England)": {
-      "goals": 2,
+      "goals": 0,
       "assists": 3,
       "group_goals": 0,
       "group_assists": 2
@@ -6665,8 +6665,8 @@
     "Switzerland": "Quarterfinals",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1784413465,
-  "last_score_refresh_attempt_at": 1784413463,
+  "last_score_refresh_at": 1784413765,
+  "last_score_refresh_attempt_at": 1784413763,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
