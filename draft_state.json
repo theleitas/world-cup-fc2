@@ -6471,16 +6471,16 @@
       "matchday": null,
       "home": "Spain",
       "away": "Argentina",
-      "home_score": 0,
+      "home_score": 1,
       "away_score": 0,
-      "status": "Paused",
-      "minute": 105,
+      "status": "In_Play",
+      "minute": 111,
       "elapsed": null,
       "clock": "",
       "score_node": {
-        "winner": "DRAW",
+        "winner": "HOME_TEAM",
         "full_time": {
-          "home": 0,
+          "home": 1,
           "away": 0
         },
         "regular_time": {
@@ -6492,7 +6492,16 @@
           "away": null
         }
       },
-      "goals": []
+      "goals": [
+        {
+          "minute": 106,
+          "injury_time": null,
+          "type": "REGULAR",
+          "team": "Spain",
+          "scorer": "Ferrán Torres",
+          "assist": "Nico Williams"
+        }
+      ]
     }
   ],
   "player_stats": {
@@ -6612,7 +6621,7 @@
     },
     "Nico Williams (Spain)": {
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "group_goals": 0,
       "group_assists": 0
     },
@@ -6697,8 +6706,8 @@
     "Switzerland": "Quarterfinals",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1784497307,
-  "last_score_refresh_attempt_at": 1784497305,
+  "last_score_refresh_at": 1784497683,
+  "last_score_refresh_attempt_at": 1784497680,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
