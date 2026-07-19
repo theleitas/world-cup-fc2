@@ -2089,7 +2089,7 @@ def goalie_round_matches(state, round_key):
         match
         for match in state.get("matches", [])
         if stage_to_advancement(match.get("stage")) == target_stage
-        and match_counts_for_competition(match)
+        and match_counts_for_goalie_challenge(match)
     ]
 
 
@@ -2612,7 +2612,15 @@ def match_is_third_place(match_or_stage):
 
 def match_counts_for_competition(match):
     stage = str(match.get("stage") or "")
-    return "friendly" not in stage.lower() and not match_is_third_place(match)
+    return "friendly" not in stage.lower()
+
+
+def match_counts_for_goalie_challenge(match):
+    return match_counts_for_competition(match) and not match_is_third_place(match)
+
+
+def match_counts_for_advancement(match):
+    return match_counts_for_competition(match) and not match_is_third_place(match)
 
 
 def team_is_eliminated(state, team_name):
@@ -2628,7 +2636,7 @@ def team_is_eliminated(state, team_name):
             return team_name not in goalie_round_available_teams(state, "r32")
         return False
     for match in state.get("matches", []):
-        if not match_counts_for_competition(match):
+        if not match_counts_for_advancement(match):
             continue
         if advancement_rank(stage_to_advancement(match.get("stage"))) != current_rank:
             continue
@@ -2660,7 +2668,7 @@ def advancement_stage_matches(state, stage_level):
         match
         for match in state.get("matches", [])
         if stage_to_advancement(match.get("stage")) == stage_level
-        and match_counts_for_competition(match)
+        and match_counts_for_advancement(match)
     ]
 
 
@@ -2960,7 +2968,7 @@ def advancement_rank(level):
 def derive_advancement_from_matches(matches):
     advancement = {team["name"]: "Group Stage" for team in WORLD_CUP_TEAMS}
     for match in matches:
-        if not match_counts_for_competition(match):
+        if not match_counts_for_advancement(match):
             continue
         stage_level = stage_to_advancement(match.get("stage"))
         if not stage_level:
@@ -3133,10 +3141,10 @@ def render_payout_descriptions():
         st.markdown(
             f"""
 <div class='payout-desc'><b>How Points Are Scored</b><br>
-National teams earn +3 for a win, +1 for a draw, +1 for each regular-time or extra-time goal scored, and +1 for a clean sheet. Penalty kicks in a shootout do not count as team goal points and do not affect clean-sheet points; the shootout winner still counts as the match winner. The third-place match is excluded entirely from competition scoring: no team points, player goals or assists, advancement changes, side-bet scoring, live scoring, or Points Journal entries are awarded for it. Star players earn +4 for each goal and +3 for each assist. Advancement bonuses are added automatically only after the prior stage is fully final and the next round is officially populated: Round of 32 +5, Round of 16 +8, Quarterfinals +12, Semifinals +15, Final +20, and Champion +25. These advancement bonuses are total bonuses for the team's deepest confirmed finish, not added together round by round. If a team has advanced farther than the latest fully unlocked bonus stage, it keeps the highest already-unlocked advancement bonus until the next bonus stage unlocks. During live matches, points are shown based on the current state of the match. For example, a team leading 2-0 live would currently show +3 for the win, +2 for goals, and +1 for the clean sheet.</div>
+National teams earn +3 for a win, +1 for a draw, +1 for each regular-time or extra-time goal scored, and +1 for a clean sheet. Penalty kicks in a shootout do not count as team goal points and do not affect clean-sheet points; the shootout winner still counts as the match winner. The third-place match counts for national-team match points and star-player goals/assists, but it does not create advancement bonuses and it is not part of Goalie Challenge scoring. Star players earn +4 for each goal and +3 for each assist. Advancement bonuses are added automatically only after the prior stage is fully final and the next round is officially populated: Round of 32 +5, Round of 16 +8, Quarterfinals +12, Semifinals +15, Final +20, and Champion +25. These advancement bonuses are total bonuses for the team's deepest confirmed finish, not added together round by round. If a team has advanced farther than the latest fully unlocked bonus stage, it keeps the highest already-unlocked advancement bonus until the next bonus stage unlocks. During live matches, points are shown based on the current state of the match. For example, a team leading 2-0 live would currently show +3 for the win, +2 for goals, and +1 for the clean sheet.</div>
 
 <div class='payout-desc'><b>Goalie Challenge - $25 Side Bet</b><br>
-Goalie Challenge is completely separate from the main World Cup FC2 standings and never changes the overall Gold, Silver, or Bronze totals. Coaches draft the primary listed goalkeeper for a team before the Round of 32, Round of 16, and Round of 8, but the pick scores as that team's playing goalkeeper slot for that round. That protects a coach if the listed goalkeeper is injured, benched, or replaced. Each coach drafts 4 goalie slots for the Round of 32, 2 goalie slots for the Round of 16, and 1 goalie slot for the Round of 8. The Round of 32 draft order is reverse group-stage rank after the group stage is final. Later goalie draft orders are reverse main standings before that goalie round starts, not including any Goalie Challenge points. Each goalie draft snakes each round. Highest score wins Goalie Challenge Gold ($125), second highest wins Silver ($50), and third highest wins Bronze ($25). If coaches tie, the first tiebreaker is fewest counted goals allowed across all drafted goalie slots. Draft sections unlock only after every game from the previous stage is complete and the full next round is officially populated. A goalie draft stays open until every goalie slot is drafted, even if that round's games have already kicked off, and drafted goalie slots begin accumulating points as soon as match data is available.</div>
+Goalie Challenge is completely separate from the main World Cup FC2 standings and never changes the overall Gold, Silver, or Bronze totals. Coaches draft the primary listed goalkeeper for a team before the Round of 32, Round of 16, and Round of 8, but the pick scores as that team's playing goalkeeper slot for that round only. The third-place match is not included in Goalie Challenge scoring. That protects a coach if the listed goalkeeper is injured, benched, or replaced. Each coach drafts 4 goalie slots for the Round of 32, 2 goalie slots for the Round of 16, and 1 goalie slot for the Round of 8. The Round of 32 draft order is reverse group-stage rank after the group stage is final. Later goalie draft orders are reverse main standings before that goalie round starts, not including any Goalie Challenge points. Each goalie draft snakes each round. Highest score wins Goalie Challenge Gold ($125), second highest wins Silver ($50), and third highest wins Bronze ($25). If coaches tie, the first tiebreaker is fewest counted goals allowed across all drafted goalie slots. Draft sections unlock only after every game from the previous stage is complete and the full next round is officially populated. A goalie draft stays open until every goalie slot is drafted, even if that round's games have already kicked off, and drafted goalie slots begin accumulating points as soon as match data is available.</div>
 
 <div class='payout-desc'><b>How Goalie Saves Are Counted</b><br>
 Goalie Challenge scoring is: regular-time and extra-time non-penalty saves are +1 each; penalty-kick saves are +2 each during regular time, extra time, and shootouts; counted goals allowed are -1 each. Counted goals allowed means regular-time and extra-time goals allowed that were not penalty kicks. Penalty-kick goals allowed are not -1 in any situation: not regular time, not extra time, and not shootouts. API-Football regular/extra goalkeeper saves come from <code>goals.saves</code>, in-match penalty saves come from <code>penalty.saved</code> when API-Football provides it, and in-match penalty goals are removed from <code>goals.conceded</code> using the event feed. API-Football's shootout event feed can be incomplete and does not reliably distinguish a saved shootout penalty from a miss wide or off the post. For shootouts, the app counts only verified shootout-save overrides. Opponent shootout <code>Penalty</code> goals are never subtracted.</div>
@@ -3437,7 +3445,7 @@ def goalie_previous_stage_matches(state, round_key):
     previous_stage = info.get("previous_stage")
     matches = []
     for match in state.get("matches", []):
-        if not match_counts_for_competition(match):
+        if not match_counts_for_goalie_challenge(match):
             continue
         if previous_stage == "Group Stage" and stage_is_group(match.get("stage")):
             matches.append(match)
