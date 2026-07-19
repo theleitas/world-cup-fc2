@@ -6503,8 +6503,8 @@
       "group_assists": 0
     },
     "Kylian Mbappe (France)": {
-      "goals": 8,
-      "assists": 3,
+      "goals": 10,
+      "assists": 4,
       "group_goals": 4,
       "group_assists": 2
     },
@@ -6515,14 +6515,14 @@
       "group_assists": 0
     },
     "Ousmane Dembele (France)": {
-      "goals": 5,
+      "goals": 6,
       "assists": 2,
       "group_goals": 4,
       "group_assists": 1
     },
     "Michael Olise (France)": {
       "goals": 0,
-      "assists": 5,
+      "assists": 7,
       "group_goals": 0,
       "group_assists": 3
     },
@@ -6575,7 +6575,7 @@
       "group_assists": 0
     },
     "Bukayo Saka (England)": {
-      "goals": 0,
+      "goals": 3,
       "assists": 3,
       "group_goals": 0,
       "group_assists": 2
@@ -6697,8 +6697,8 @@
     "Switzerland": "Quarterfinals",
     "Türkiye": "Group Stage"
   },
-  "last_score_refresh_at": 1784468687,
-  "last_score_refresh_attempt_at": 1784468687,
+  "last_score_refresh_at": 1784469039,
+  "last_score_refresh_attempt_at": 1784469038,
   "last_api_error": "",
   "draft_enabled": true,
   "current_pick_started_at": 1781199192,
